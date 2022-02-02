@@ -401,4 +401,5 @@ C:\Users\eliam\OneDrive - Pontificia Universidad Católica Madre y Maestra\PUCMM
 C:\Users\eliam\OneDrive - Pontificia Universidad Católica Madre y Maestra\PUCMM ENE-ABR2022\pharma\PharmaV1\PharmaV1\obj\Debug\net5.0\ref\PharmaV1.dll
 C:\Users\eliam\OneDrive - Pontificia Universidad Católica Madre y Maestra\PUCMM ENE-ABR2022\pharma\PharmaV1\PharmaV1\obj\Debug\net5.0\PharmaV1.pdb
 C:\Users\eliam\OneDrive - Pontificia Universidad Católica Madre y Maestra\PUCMM ENE-ABR2022\pharma\PharmaV1\PharmaV1\obj\Debug\net5.0\PharmaV1.genruntimeconfig.cache
+C:\Users\eliam\OneDrive - Pontificia Universidad Católica Madre y Maestra\PUCMM ENE-ABR2022\pharma\PharmaV1\PharmaV1\obj\Debug\net5.0\Razor\Views\Cliente\Index.cshtml.g.cs
 C:\Users\eliam\OneDrive - Pontificia Universidad Católica Madre y Maestra\PUCMM ENE-ABR2022\pharma\PharmaV1\PharmaV1\obj\Debug\net5.0\Razor\Views\Cliente\Login.cshtml.g.cs
