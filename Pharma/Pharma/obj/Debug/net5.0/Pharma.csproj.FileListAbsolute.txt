@@ -18,7 +18,6 @@ C:\Users\eliam\OneDrive - Pontificia Universidad Católica Madre y Maestra\PUCMM
 C:\Users\eliam\OneDrive - Pontificia Universidad Católica Madre y Maestra\PUCMM ENE-ABR2022\pharma\Pharma\Pharma\obj\Debug\net5.0\Pharma.RazorAssemblyInfo.cache
 C:\Users\eliam\OneDrive - Pontificia Universidad Católica Madre y Maestra\PUCMM ENE-ABR2022\pharma\Pharma\Pharma\obj\Debug\net5.0\Pharma.RazorAssemblyInfo.cs
 C:\Users\eliam\OneDrive - Pontificia Universidad Católica Madre y Maestra\PUCMM ENE-ABR2022\pharma\Pharma\Pharma\obj\Debug\net5.0\staticwebassets\Pharma.StaticWebAssets.Manifest.cache
-C:\Users\eliam\OneDrive - Pontificia Universidad Católica Madre y Maestra\PUCMM ENE-ABR2022\pharma\Pharma\Pharma\obj\Debug\net5.0\staticwebassets\Pharma.StaticWebAssets.xml
 C:\Users\eliam\OneDrive - Pontificia Universidad Católica Madre y Maestra\PUCMM ENE-ABR2022\pharma\Pharma\Pharma\obj\Debug\net5.0\scopedcss\bundle\Pharma.styles.css
 C:\Users\eliam\OneDrive - Pontificia Universidad Católica Madre y Maestra\PUCMM ENE-ABR2022\pharma\Pharma\Pharma\obj\Debug\net5.0\Pharma.TagHelpers.input.cache
 C:\Users\eliam\OneDrive - Pontificia Universidad Católica Madre y Maestra\PUCMM ENE-ABR2022\pharma\Pharma\Pharma\obj\Debug\net5.0\Pharma.TagHelpers.output.cache
@@ -39,3 +38,4 @@ C:\Users\eliam\OneDrive - Pontificia Universidad Católica Madre y Maestra\PUCMM
 C:\Users\eliam\OneDrive - Pontificia Universidad Católica Madre y Maestra\PUCMM ENE-ABR2022\pharma\Pharma\Pharma\obj\Debug\net5.0\Pharma.pdb
 C:\Users\eliam\OneDrive - Pontificia Universidad Católica Madre y Maestra\PUCMM ENE-ABR2022\pharma\Pharma\Pharma\obj\Debug\net5.0\Pharma.genruntimeconfig.cache
 C:\Users\eliam\OneDrive - Pontificia Universidad Católica Madre y Maestra\PUCMM ENE-ABR2022\pharma\Pharma\Pharma\obj\Debug\net5.0\Pharma.csproj.CopyComplete
+C:\Users\eliam\OneDrive - Pontificia Universidad Católica Madre y Maestra\PUCMM ENE-ABR2022\pharma\Pharma\Pharma\bin\Debug\net5.0\Pharma.StaticWebAssets.xml
