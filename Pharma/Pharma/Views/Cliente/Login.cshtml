@@ -1,7 +1,7 @@
-﻿
+﻿@model Pharma.Models.Cliente
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Login";
     Layout = null;
 }
 
@@ -9,42 +9,41 @@
 <html>
 <head>
     <meta charset="utf-8" />
-    <link rel="stylesheet" href="./css/stylecl.css"/>
+    <link rel="stylesheet" href="~/css/stylecl.css"/>
     <title>Cliente</title>
 
 </head>
-<body>
-    <h2>Log In</h2>
+<body >
     <div class="container" id="container">
         <div class="form-container sign-up-container">
-            <form action="#">
+            <form method="post" asp-action="Create">
                 <h1>Crear cuenta</h1>
                @*<div class="social-container">
                     <a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
                     <a href="#" class="social"><i class="fab fa-google-plus-g"></i></a>
                     <a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
                 </div>*@
-                <span>or use your email for registration</span>
-                <input type="text" placeholder="Nombre" />
-                <input type="text" placeholder="Cedula" />
-                <input type="email" placeholder="Email" />
-                <input type="password" placeholder="Contraseña" />
-                <button>Registrar</button>
+                <input type="text" placeholder="Nombre" name="Nombre" />
+                <input type="text" placeholder="Apellido" name="Apellido" />
+                <input type="text" placeholder="Cédula" name="Cedula" />
+                <input type="email" placeholder="Correo" name="Correo" />
+                <input type="password" placeholder="Contraseña" name="Password" />
+                <button style="margin-top: 5%" type="submit">Registrar</button>
             </form>
         </div>
         <div class="form-container sign-in-container">
-            <form action="#">
+            <form method="post" asp-action="Login">
                 <h1>Sign in</h1>
                 @*<div class="social-container">
                     <a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
                     <a href="#" class="social"><i class="fab fa-google-plus-g"></i></a>
                     <a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
                 </div>*@
-                <span>or use your account</span>
-                <input type="email" placeholder="Email" />
-                <input type="password" placeholder="Password" />
-                <a href="#">Forgot your password?</a>
-                <button>Iniciar sesión</button>
+
+                <input type="text" placeholder="Cédula" name="Cedula"/>
+                <input type="password" placeholder="Contraseña" name="Password"/>
+                <a href="#">¿Olvidaste tu contraseña?</a>
+                <button type="submit">Iniciar sesión</button>
             </form>
         </div>
         <div class="overlay-container">
@@ -63,15 +62,7 @@
         </div>
     </div>
 
-    @*<footer>
-        <p>
-            Created with <i class="fa fa-heart"></i> by
-            <a target="_blank" href="https://florin-pop.com">Florin Pop</a>
-            - Read how I created this and how you can join the challenge
-            <a target="_blank" href="https://www.florin-pop.com/blog/2019/03/double-slider-sign-in-up-form/">here</a>.
-        </p>
-    </footer>*@
-    <script src="./js/login.js">
+    <script src="~/js/login.js">
 
     </script>
 </body>
