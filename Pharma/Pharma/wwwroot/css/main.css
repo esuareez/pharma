@@ -864,7 +864,7 @@ a.mobile-show {
 .footer-area {
   background-color: #051922;
   color: #fff;
-  padding: 150px 0;
+  padding: 45px 0;
 }
 
 h2.widget-title {
@@ -1359,7 +1359,7 @@ a.mobile-show.search-bar-icon:hover {
 
 ----------------------------------------------------------------------------- */
 .hero-bg {
-  background-image: url(../img/hero-bg.jpg);
+  background-image: url(../img/supply-bg.jpg);
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
@@ -1466,7 +1466,7 @@ input[type="submit"] {
 }
 
 .homepage-bg-1 {
-  background-image: url(../img/hero-bg.jpg);
+  background-image: url(../img/supply-bg.jpg);
 }
 
 .homepage-bg-2 {
