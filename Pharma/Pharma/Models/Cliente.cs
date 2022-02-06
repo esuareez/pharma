@@ -20,6 +20,8 @@ namespace Pharma.Models
         public string Direccion { get; set; }
         public string Cedula { get; set; }
         public string Password { get; set; }
+        public string Ciudad { get; set; }
+        public string CodPostal { get; set; }
 
         public virtual ICollection<ClienteTipoPago> ClienteTipoPagos { get; set; }
     }

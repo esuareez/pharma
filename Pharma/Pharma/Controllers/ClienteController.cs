@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Pharma.Models;
+using RestSharp;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,7 +19,6 @@ namespace Pharma.Controllers
         }
         public IActionResult Index()
         {
-            //var user_id = HttpContext.Request.Cookies["userId"];
             return View();
         }
         public IActionResult Login()
@@ -41,6 +41,9 @@ namespace Pharma.Controllers
                 {
                     _context.Clientes.Add(cliente);
                     _context.SaveChanges();
+                    CookieOptions cookieOptions = new CookieOptions();
+                    cookieOptions.Expires = new DateTimeOffset(DateTime.Now.AddDays(7));
+                    HttpContext.Response.Cookies.Append("userId", cliente.Id.ToString(), cookieOptions);
                     return RedirectToAction("Index");
                 }
                 
@@ -71,5 +74,68 @@ namespace Pharma.Controllers
             }
             return View("Login");
         }
+
+        public IActionResult EditProfile(int? id)
+        {
+            if (id == null || id == 0)
+            {
+                return NotFound();
+            }
+            // Obtener cliente
+
+            var cliente = _context.Clientes.Find(id);
+
+            if (cliente == null)
+            {
+                return NotFound();
+            }
+            
+            return View(cliente);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult EditProfile(Cliente cliente)
+        {
+            if (ModelState.IsValid)
+            {
+
+                _context.Clientes.Update(cliente);
+                _context.SaveChanges();
+                TempData["mensaje"] = "El usuario se ha actualizado correctamente.";
+                return RedirectToAction("Index");
+            }
+            return View();
+        }
+
+        //HTTP Get Delete
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult DeleteCliente(int? id)
+        {
+            // Obtener cliente por id
+
+            var cliente = _context.Clientes.Find(id);
+
+            if (cliente == null)
+            {
+                return NotFound();
+            }
+
+
+            _context.Clientes.Remove(cliente);
+            _context.SaveChanges();
+            CookieOptions cookieOptions = new CookieOptions();
+            cookieOptions.Expires = new DateTimeOffset(DateTime.Now.AddDays(-1));
+            if (Request.Cookies["userId"]!= null)
+            {
+               Response.Cookies.Delete("userId",cookieOptions);
+            }
+            TempData["mensaje"] = "El usuario se ha eliminado correctamente.";
+            return RedirectToAction("Index");
+
+
+        }
+
     }
 }

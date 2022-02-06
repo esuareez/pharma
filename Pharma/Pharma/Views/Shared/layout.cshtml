@@ -40,6 +40,7 @@
 	<link rel="stylesheet" href="~/css/main.css">
 	<!-- responsive -->
 	<link rel="stylesheet" href="~/css/responsive.css">
+	
 
 </head>
 <body>
@@ -80,9 +81,9 @@
 										<!--BOTON LOGIN Y BOTON PERFIL-->
                                         @if(Context.Request.Cookies["userId"] != null)
                                         {
-												<li><a class="user-circle" href="#"><i class="fas fa-user-circle"></i></a>
+												<li><a class="user-circle"><i class="fas fa-user-circle"></i></a>
 													<ul class="sub-menu">
-														<li><a href="index.html">Perfíl</a></li>
+														<li><a asp-controller="Cliente" asp-action="EditProfile" asp-route-id=@int.Parse(Context.Request.Cookies["userId"])>Perfíl</a></li>
 														<li><a href="index_2.html">Cerrar sesión</a></li>
 													</ul>
 												</li>
@@ -216,8 +217,7 @@
 	<script src="~/js/sticker.js"></script>
 	<!-- main js -->
 	<script src="~/js/main.js"></script>
-	<script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js%22%3E"></script>
-	<script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js%22%3E"></script>
+	
 
 </body>
 </html>
