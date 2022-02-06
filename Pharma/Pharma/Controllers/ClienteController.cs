@@ -136,6 +136,16 @@ namespace Pharma.Controllers
 
 
         }
+        public IActionResult LogOut(int? id)
+        {
+            CookieOptions cookieOptions = new CookieOptions();
+            cookieOptions.Expires = new DateTimeOffset(DateTime.Now.AddDays(-1));
+            if (Request.Cookies["userId"] != null)
+            {
+                Response.Cookies.Delete("userId", cookieOptions);
+            }
+            return RedirectToAction("Index");
+        }
 
     }
 }
