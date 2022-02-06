@@ -1,4 +1,12 @@
-﻿<!DOCTYPE html>
+﻿@using System.Security.Claims
+@using Microsoft.AspNetCore.Http
+@using Pharma.Controllers
+
+@{
+
+}
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
@@ -14,6 +22,8 @@
 	<!-- google font -->
 	<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css?family=Poppins:400,700&display=swap" rel="stylesheet">
+	<!--Material Icons-->
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons"rel="stylesheet">
 	<!-- fontawesome -->
 	<link rel="stylesheet" href="~/css/all.min.css">
 	<!-- bootstrap-->
@@ -62,13 +72,24 @@
 								<li class="current-list-item"><a href="#">Home</a>
 								</li>
 								<li><a href="#">About</a></li>
-								</li>
 								<li><a href="#">Contact</a></li>
 								<li><a href="#">Shop</a>
 								</li>
 								<li>
 									<div class="header-icons">
-										<a class="login-btn" asp-controller = "Cliente" asp-action = "Login">Log In</a>
+										<!--BOTON LOGIN Y BOTON PERFIL-->
+                                        @if(Context.Request.Cookies["userId"] != null)
+                                        {
+												<li><a class="user-circle" href="#"><i class="fas fa-user-circle"></i></a>
+													<ul class="sub-menu">
+														<li><a href="index.html">Perfíl</a></li>
+														<li><a href="index_2.html">Cerrar sesión</a></li>
+													</ul>
+												</li>
+										}else{
+											
+											<a class="login-btn" asp-controller = "Cliente" asp-action = "Login">Log In</a>
+										}
 										<a class="shopping-cart" href="#"><i class="fas fa-shopping-cart"></i></a>
 										<a class="mobile-hide search-bar-icon" href="#"><i class="fas fa-search"></i></a>
 									</div>
@@ -195,6 +216,8 @@
 	<script src="~/js/sticker.js"></script>
 	<!-- main js -->
 	<script src="~/js/main.js"></script>
+	<script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js%22%3E"></script>
+	<script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js%22%3E"></script>
 
 </body>
 </html>
