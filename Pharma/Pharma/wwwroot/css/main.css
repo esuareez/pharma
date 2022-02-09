@@ -623,10 +623,10 @@ ul.sub-menu li:last-child {
 }
 
 .mean-container .mean-bar {
-  background-color: transparent;
-  position: absolute;
-  right: 0;
-  top: 15px;
+    background-color: #B50D06;
+    position: absolute;
+    right: 0;
+    top: 15px;
 }
 
 .mean-bar a.meanmenu-reveal {

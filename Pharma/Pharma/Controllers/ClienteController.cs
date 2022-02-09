@@ -103,7 +103,7 @@ namespace Pharma.Controllers
                 _context.Clientes.Update(cliente);
                 _context.SaveChanges();
                 TempData["mensaje"] = "El usuario se ha actualizado correctamente.";
-                return RedirectToAction("Index");
+                return RedirectToAction();
             }
             return View();
         }
