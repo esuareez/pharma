@@ -19,6 +19,9 @@ namespace Pharma.Models
         public string Telefono { get; set; }
         public string Correo { get; set; }
 
+        public string Password { get; set; }
+        public string Cedula { get; set; }
+
         public virtual ICollection<OrdenCompra> OrdenCompras { get; set; }
     }
 }

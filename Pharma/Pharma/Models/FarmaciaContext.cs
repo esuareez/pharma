@@ -124,7 +124,6 @@ namespace Pharma.Models
                 entity.ToTable("Empleado");
 
                 entity.Property(e => e.IdEmpleado)
-                    .ValueGeneratedNever()
                     .HasColumnName("ID_Empleado");
 
                 entity.Property(e => e.Apellido)
@@ -149,6 +148,14 @@ namespace Pharma.Models
                 entity.Property(e => e.Telefono)
                     .HasMaxLength(50)
                     .IsUnicode(false);
+
+                entity.Property(e => e.Password)
+                    .HasMaxLength(50)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.Cedula)
+                   .HasMaxLength(50)
+                   .IsUnicode(false);
             });
 
             modelBuilder.Entity<Factura>(entity =>

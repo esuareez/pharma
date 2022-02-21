@@ -19,11 +19,21 @@ namespace Pharma.Controllers
         }
         public IActionResult Index()
         {
+            Validate();
             return View();
         }
         public IActionResult Login()
         {
             return View();
+        }
+
+        public void Validate()
+        {
+            if (Request.Cookies["userId"] == null)
+            {
+                RedirectToAction("Login");
+            }
+
         }
 
         [HttpPost]
@@ -53,11 +63,10 @@ namespace Pharma.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken] // que un bot no pueda enviar muchas request
-        public IActionResult Login(Cliente cliente)
+        public IActionResult Login(string Cedula, string Password)
         {
-            if (ModelState.IsValid)
-            {
-                var _cliente = _context.Clientes.Where(s => s.Cedula == cliente.Cedula && s.Password == cliente.Password);
+            
+                var _cliente = _context.Clientes.Where(s => s.Cedula == Cedula && s.Password == Password);
                 if(_cliente.Any())
                 {
                     var ck = _cliente.FirstOrDefault();
@@ -68,15 +77,22 @@ namespace Pharma.Controllers
                 }
                 else
                 {
-                    return View("Login");
+                    var empleado = _context.Empleados.Where(s => s.Correo == Cedula);
+                    if (empleado.Any())
+                    {
+                        var ck = empleado.FirstOrDefault();
+                        CookieOptions cookieOptions = new CookieOptions();
+                        cookieOptions.Expires = new DateTimeOffset(DateTime.Now.AddDays(1));
+                        HttpContext.Response.Cookies.Append("userId", ck.IdEmpleado.ToString(), cookieOptions);
+                    return RedirectToAction("Dashboard", "Empleado");
+                    }                
+                        return View("Login");
                 }
-                
-            }
-            return View("Login");
         }
 
         public IActionResult EditProfile(int? id)
         {
+
             if (id == null || id == 0)
             {
                 return NotFound();
@@ -145,6 +161,11 @@ namespace Pharma.Controllers
                 Response.Cookies.Delete("userId", cookieOptions);
             }
             return RedirectToAction("Index");
+        }
+
+        public IActionResult ForgotPassword()
+        {
+            return View();
         }
 
     }

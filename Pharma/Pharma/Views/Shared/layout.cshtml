@@ -1,7 +1,9 @@
-﻿@using System.Security.Claims
-@using Microsoft.AspNetCore.Http
+﻿@using Microsoft.AspNetCore.Http
 @using Pharma.Controllers
 
+@{
+	
+}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -86,6 +88,7 @@
 										}else{
 											
 											<a class="login-btn" asp-controller = "Cliente" asp-action = "Login">Log In</a>
+											<a class="login-btn" asp-controller = "Empleado" asp-action = "Dashboard">Empleados</a>
 										}
 										<a class="shopping-cart" href="#"><i class="fas fa-shopping-cart"></i></a>
 										<a class="mobile-hide search-bar-icon" href="#"><i class="fas fa-search"></i></a>
