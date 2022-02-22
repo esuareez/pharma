@@ -42,8 +42,9 @@ namespace Pharma.Controllers
         {
             if (ModelState.IsValid)
             {
-                var _cliente = _context.Clientes.Where(s => s.Cedula == cliente.Cedula);
-                if (_cliente.Any())
+                var _cliente = _context.Clientes.Where(s => s.Cedula == cliente.Cedula || s.Correo == cliente.Correo);
+                var _client = _context.Empleados.Where(s => s.Cedula == cliente.Cedula || s.Correo == cliente.Correo);
+                if (_cliente.Any() || _client.Any())
                 {
                     //sweetalert
                 }
@@ -66,7 +67,7 @@ namespace Pharma.Controllers
         public IActionResult Login(string Cedula, string Password)
         {
             
-                var _cliente = _context.Clientes.Where(s => s.Cedula == Cedula && s.Password == Password);
+                var _cliente = _context.Clientes.Where(s => (s.Cedula == Cedula || s.Correo == Cedula) && s.Password == Password);
                 if(_cliente.Any())
                 {
                     var ck = _cliente.FirstOrDefault();
@@ -77,13 +78,13 @@ namespace Pharma.Controllers
                 }
                 else
                 {
-                    var empleado = _context.Empleados.Where(s => s.Correo == Cedula);
+                    var empleado = _context.Empleados.Where(s => s.Correo == Cedula && s.Password == Password);
                     if (empleado.Any())
                     {
                         var ck = empleado.FirstOrDefault();
                         CookieOptions cookieOptions = new CookieOptions();
                         cookieOptions.Expires = new DateTimeOffset(DateTime.Now.AddDays(1));
-                        HttpContext.Response.Cookies.Append("userId", ck.IdEmpleado.ToString(), cookieOptions);
+                        HttpContext.Response.Cookies.Append("emplId", ck.IdEmpleado.ToString(), cookieOptions);
                     return RedirectToAction("Dashboard", "Empleado");
                     }                
                         return View("Login");

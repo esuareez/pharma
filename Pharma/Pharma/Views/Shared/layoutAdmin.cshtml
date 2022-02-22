@@ -1,9 +1,8 @@
 ﻿@using Microsoft.AspNetCore.Http
 @using Pharma.Controllers
-@model Pharma.Models.Empleado
 
 @{
-    
+     
 }
 <!DOCTYPE html>
 <html lang="en">
@@ -42,7 +41,7 @@
                     <ul class="menu">
                         <li class="sidebar-title">Menu</li>
 
-                        <li class="sidebar-item active ">
+                        <li class="sidebar-item">
                             <a  class='sidebar-link' asp-controller="Empleado" asp-action="Dashboard">
                                 <i class="fa-solid fa-bars"></i>
                                 <span>Dashboard</span>
@@ -121,6 +120,40 @@
                         </div>
                     </div>
                 </nav>
+                <div class="dropdown">
+                                <a href="#" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <div class="user-menu d-flex">
+                                        <div class="user-name text-end me-3">
+                                            @*<a class="mb-0 text-gray-600" asp-controller="Empleado" 
+                                            asp-action="getEmployee" name="Nombre"></a>
+                                            <a class="mb-0 text-sm text-gray-600" asp-controller="Empleado" 
+                                            asp-action="getEmployee" name="Puesto"></a>*@
+                                        </div>
+                                        <div class="user-img d-flex align-items-center">
+                                            <div class="avatar avatar-md">
+                                                <img src="assets/images/faces/1.jpg">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton">
+                                    <li>
+                                        @*<h6 class="dropdown-header">Hello, <a asp-for="Nombre"></a></h6>*@
+                                    </li>
+                                    <li><a class="dropdown-item" href="#"><i class="icon-mid bi bi-person me-2"></i> My
+                                            Profile</a></li>
+                                    <li><a class="dropdown-item" href="#"><i class="icon-mid bi bi-gear me-2"></i>
+                                            Settings</a></li>
+                                    <li><a class="dropdown-item" href="#"><i class="icon-mid bi bi-wallet me-2"></i>
+                                            Wallet</a></li>
+                                    <li>
+                                        <hr class="dropdown-divider">
+                                    </li>
+                                    <li><a class="dropdown-item" href="#"><i
+                                                class="icon-mid bi bi-box-arrow-left me-2"></i> Logout</a></li>
+                                </ul>
+                            </div>
+            </header>
 
 
                     @RenderBody()
@@ -136,7 +169,6 @@
                         </div>
                     </div>
                 </footer>
-            </div>
         </div>
     </div>
     <script src="~/css/css-emp/vendors/perfect-scrollbar/perfect-scrollbar.min.js"></script>

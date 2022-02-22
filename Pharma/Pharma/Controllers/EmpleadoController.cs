@@ -17,22 +17,9 @@ namespace Pharma.Controllers
         {
             _context = context;
         }
-        public ActionResult Dashboard(int? id)
+        public ActionResult Dashboard()
         {
-            if (id == null || id == 0)
-            {
-                return NotFound();
-            }
-            // Obtener cliente
-
-            var empleado = _context.Empleados.Find(id);
-
-            if (empleado == null)
-            {
-                return NotFound();
-            }
-
-            return View(empleado);
+            return View();
         }
 
         public ActionResult Create()
@@ -61,9 +48,6 @@ namespace Pharma.Controllers
                 {
                     _context.Empleados.Add(empleado);
                     _context.SaveChanges();
-                    //CookieOptions cookieOptions = new CookieOptions();
-                    //cookieOptions.Expires = new DateTimeOffset(DateTime.Now.AddDays(7));
-                    //HttpContext.Response.Cookies.Append("userId", cliente.Id.ToString(), cookieOptions);
                     return RedirectToAction("Employee");
                 }
 
