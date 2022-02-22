@@ -19,7 +19,6 @@ namespace Pharma.Controllers
         }
         public IActionResult Index()
         {
-            Validate();
             return View();
         }
         public IActionResult Login()
@@ -29,10 +28,8 @@ namespace Pharma.Controllers
 
         public void Validate()
         {
-            if (Request.Cookies["userId"] == null)
-            {
-                RedirectToAction("Login");
-            }
+            
+            
 
         }
 
@@ -85,6 +82,9 @@ namespace Pharma.Controllers
                         CookieOptions cookieOptions = new CookieOptions();
                         cookieOptions.Expires = new DateTimeOffset(DateTime.Now.AddDays(1));
                         HttpContext.Response.Cookies.Append("emplId", ck.IdEmpleado.ToString(), cookieOptions);
+                        HttpContext.Response.Cookies.Append("name", ck.Nombre, cookieOptions);
+                        HttpContext.Response.Cookies.Append("lastname", ck.Apellido, cookieOptions);
+                        HttpContext.Response.Cookies.Append("rol", ck.Puesto, cookieOptions);
                     return RedirectToAction("Dashboard", "Empleado");
                     }                
                         return View("Login");

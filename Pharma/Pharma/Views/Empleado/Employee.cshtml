@@ -4,7 +4,7 @@
     Layout = "~/Views/Shared/layoutAdmin.cshtml";
 }
 
-<div class="page-heading">
+<div class="page-heading container">
                     <div class="page-title">
                         <div class="row">
                             <div class="col-12 col-md-6 order-md-1 order-last">
@@ -50,8 +50,11 @@
                             <td>@item.Apellido</td>
                             <td>@item.Puesto</td>
                             <td>
-                                <a class="btn btn-success"><i class="fa-solid fa-pen-to-square"></i></a>
-                                <a class="btn btn-danger"><i class="fa-solid fa-trash-can"></i></a>
+                                <a class="btn btn-success" asp-controller="Empleado" asp-action="EditProfile"
+                                asp-route-id=@item.IdEmpleado><i class="fa-solid fa-pen-to-square"></i></a>
+                                <a class="btn btn-danger" asp-controller="Empleado" asp-action="Delete"
+                                asp-route-id=@item.IdEmpleado><i class="fa-solid fa-trash-can"></i></a>
+                                @Html.ActionLink("Empleado","DeleteEmpleado",new{id=@item.IdEmpleado})
                             </td>
                    </tr>
                 }

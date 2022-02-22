@@ -1,0 +1,92 @@
+﻿@model Pharma.Models.Empleado;
+@{
+    ViewData["Title"] = "EditProfile";
+    Layout = "~/Views/Shared/layoutAdmin.cshtml";
+}
+ <div class="page-title container-sm">
+    <div class="row">
+        <div class="col-12 col-md-6 order-md-1 order-last">
+            <h3>Datos del empleado</h3>
+            <p class="text-subtitle text-muted"></p>
+        </div>
+    </div>
+</div>
+ <!-- // Basic multiple Column Form section start -->
+
+                <section id="multiple-column-form">
+                    <form method="post" asp-action="EditProfile">
+                        <div class="container">
+                        <div class="row match-height">
+                        <div class="col-12">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h4 class="card-title">Datos del empleado</h4>
+                                </div>
+                                <div class="card-content">
+                                    <div class="card-body">
+                                        
+                                            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                                            <input type="hidden" asp-for="IdEmpleado" />
+                                            <input type="hidden" asp-for="Password" />
+                                            <div class="row">
+                                                <div class="col-md-6 col-12">
+                                                    <div class="form-group">
+                                                        <label for="first-name-column">Nombre</label>
+                                                        <input type="text" id="first-name-column" class="form-control"
+                                                            asp-for="Nombre" name="Nombre">
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6 col-12">
+                                                    <div class="form-group">
+                                                        <label for="last-name-column">Apellido</label>
+                                                        <input type="text" id="last-name-column" class="form-control"
+                                                             asp-for="Apellido" name="Apellido">
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6 col-12">
+                                                    <div class="form-group">
+                                                        <label for="city-column">Cédula</label>
+                                                        <input type="text" id="city-column" class="form-control"
+                                                              asp-for="Cedula" name="Cedula">
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6 col-12">
+                                                    
+                                                        <label for="helperText">Puesto</label>
+                                                        <div class="form-group">
+                                                            <select class="choices form-select"  asp-for="Puesto" name="Puesto">
+                                                                <option value="Farmacéutico">Farmacéutico</option>
+                                                                <option value="Administrador">Administrador</option>
+                                                            </select>
+                                                        </div>
+                                                    
+                                                </div>
+                                                <div class="col-md-6 col-12">
+                                                    <div class="form-group">
+                                                        <label for="company-column">Telefono</label>
+                                                        <input type="text" id="company-column" class="form-control"
+                                                            asp-for="Telefono" name="Telefono">
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6 col-12">
+                                                    <div class="form-group">
+                                                        <label for="email-id-column">Email</label>
+                                                        <input type="email" id="email-id-column" class="form-control"
+                                                            asp-for="Correo" name="Correo">
+                                                    </div>
+                                                </div>
+                                                </div>
+                                                <div class="col-12 d-flex justify-content-end">
+                                                    <button type="submit"
+                                                        class="btn btn-primary me-1 mb-1">Guardar cambios</button>
+                                                </div>
+                                            </div>
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    </div>
+                    </form>
+                </section>
