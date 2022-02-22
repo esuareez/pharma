@@ -117,17 +117,9 @@ namespace Pharma.Controllers
         //HTTP Get Delete
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult DeleteEmpleado(int? id)
+        public IActionResult DeleteEmpleado(Empleado empleado)
         {
             // Obtener cliente por id
-
-            var empleado = _context.Empleados.Find(id);
-
-            if (empleado == null)
-            {
-                return NotFound();
-            }
-
 
             _context.Empleados.Remove(empleado);
             _context.SaveChanges();
