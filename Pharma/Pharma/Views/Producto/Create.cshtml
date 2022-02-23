@@ -1,0 +1,179 @@
+﻿@model Pharma.Models.Producto
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/layoutAdmin.cshtml";
+}
+
+<head>
+        
+        
+    <link rel="stylesheet" href="~/css/css-emp/vendors/toastify/toastify.css">
+    <link href="https://unpkg.com/filepond/dist/filepond.css" rel="stylesheet">
+    <link href="https://unpkg.com/filepond-plugin-image-preview/dist/filepond-plugin-image-preview.css" rel="stylesheet">
+    
+       
+    </head>
+
+<div id="main-content container-fluid">
+                <div class="page-heading">
+                    <div class="page-title">
+                        <div class="row">
+                            <div class="col-12 col-md-6 order-md-1 order-last">
+                                <h3>Nuevo producto</h3>
+                                
+                            </div>
+                            <div class="col-12 col-md-6 order-md-2 order-first">
+                                <nav aria-label="breadcrumb" class="breadcrumb-header float-start float-lg-end">
+                                    <ol class="breadcrumb">
+                                        <li class="breadcrumb-item"><a href="">Dashboard</a></li>
+                                        <li class="breadcrumb-item active" aria-current="page">DataTable</li>
+                                    </ol>
+                                </nav>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-12 col-md-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h5 class="card-title">Datos del producto</h5>
+                            </div>
+                            <div class="card-content">
+                                <div class="card-body">
+                                    <form class="form form-center" method="post" asp-action="Create" enctype="multipart/form-data">
+                                        
+                                        <div class="form-body ">
+                                            <div class="row ">
+                                                <div class="col-md-4 ">
+                                                    <label>Nombre del producto</label>
+                                                </div>
+                                                <div class="col-md-8 form-group">
+                                                    <input type="text" id="first-name" class="form-control"
+                                                        name="Nombre" placeholder="Winasorb Antigripal">
+                                                </div>
+                                                
+                                                <div class="col-md-4">
+                                                    <label>Tipo de producto</label>
+                                                </div>
+                                                <div class="col-md-8 form-group">
+                                                    <select class="choices form-select" name="TipoProducto">
+                                                        <option value="Vitrina">Vitrina</option>
+                                                        <option value="Nevera">Nevera</option>
+                                                        <option value="Controlado">Controlados</option>
+                                                        <option value="Medicamento">Medicamento</option>
+                                                    </select>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <label>Precio Compra</label>
+                                                </div>
+                                                <div class="col-md-8 form-group">
+                                                    <input type="number" id="contact-info" class="form-control"
+                                                        name="PrecioCompra" placeholder="15">
+                                                </div>
+
+                                                <div class="col-md-4">
+                                                    <label>Precio Venta</label>
+                                                </div>
+                                                <div class="col-md-8 form-group">
+                                                    <input type="number" id="contact-info" class="form-control"
+                                                        name="PrecioVenta" placeholder="20">
+                                                </div>
+
+                                                <div class="col-md-4">
+                                                    <label>Cantidad</label>
+                                                </div>
+                                                <div class="col-md-8 form-group">
+                                                    <input type="number" id="contact-info" class="form-control"
+                                                        name="Cantidad" placeholder="10">
+                                                </div>
+                                                
+                                                <div class="col" style="margin-top: 3%">
+                                                    <label>Imagen del producto</label>
+                                                </div>
+                                                <p class="card-text">La imagen puede tener un tamaño máximo de 3MB.
+                                                </p>
+                                                <!-- File uploader with validation -->
+                                                <input name="Img.FormFile" type="file" 
+                                                class="with-validation-filepond" required multiple data-max-file-size="1MB" data-max-files="3">
+                                                
+                                                <div class="form-group mb-3">
+                                                    <label for="exampleFormControlTextarea1" class="form-label">Descripción del producto</label>
+                                                    <textarea class="form-control" id="exampleFormControlTextarea1"
+                                                        rows="3" name="Descripcion"></textarea>
+                                                </div>
+
+                                                <div class="col-sm-12 d-flex justify-content-end">
+                                                    <button type="submit"
+                                                        class="btn btn-primary me-1 mb-1">Guardar cambios</button>
+                                                    <button type="reset"
+                                                        class="btn btn-light-secondary me-1 mb-1">Reiniciar</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+
+                        </div>
+                        
+                    </div>
+                </div>
+                
+    
+    
+            </div>
+
+<!-- filepond validation -->
+        <script src="https://unpkg.com/filepond-plugin-file-validate-size/dist/filepond-plugin-file-validate-size.js"></script>
+        <script src="https://unpkg.com/filepond-plugin-file-validate-type/dist/filepond-plugin-file-validate-type.js"></script>
+
+        <!-- image editor -->
+        <script src="https://unpkg.com/filepond-plugin-image-exif-orientation/dist/filepond-plugin-image-exif-orientation.js"></script>
+        <script src="https://unpkg.com/filepond-plugin-image-crop/dist/filepond-plugin-image-crop.js"></script>
+        <script src="https://unpkg.com/filepond-plugin-image-filter/dist/filepond-plugin-image-filter.js"></script>
+        <script src="https://unpkg.com/filepond-plugin-image-preview/dist/filepond-plugin-image-preview.js"></script>
+        <script src="https://unpkg.com/filepond-plugin-image-resize/dist/filepond-plugin-image-resize.js"></script>
+
+        <!-- toastify -->
+        <script src="~/css/css-emp/vendors/toastify/toastify.js"></script>
+
+        <!-- filepond -->
+        <script src="https://unpkg.com/filepond/dist/filepond.js"></script>
+        <script>
+            // register desired plugins...
+            FilePond.registerPlugin(
+                // validates the size of the file...
+                FilePondPluginFileValidateSize,
+                // validates the file type...
+                FilePondPluginFileValidateType,
+        
+                // calculates & dds cropping info based on the input image dimensions and the set crop ratio...
+                FilePondPluginImageCrop,
+                // preview the image file type...
+                FilePondPluginImagePreview,
+                // filter the image file
+                FilePondPluginImageFilter,
+                // corrects mobile image orientation...
+                FilePondPluginImageExifOrientation,
+                // calculates & adds resize information...
+                FilePondPluginImageResize,
+            );
+            
+           
+        
+            // Filepond: With Validation
+            FilePond.create( document.querySelector('.with-validation-filepond'), { 
+                allowImagePreview: false,
+                allowMultiple: true,
+                allowFileEncode: false,
+                required: true,
+                acceptedFileTypes: ['image/png'],
+                fileValidateTypeDetectType: (source, type) => new Promise((resolve, reject) => {
+                    // Do custom type detection here and return with promise
+                    resolve(type);
+                })
+            });
+        
+            
+        </script>
+

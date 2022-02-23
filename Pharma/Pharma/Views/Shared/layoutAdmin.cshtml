@@ -52,7 +52,7 @@
                         </li>
                         
                         <li class="sidebar-item  ">
-                            <a href="#" class='sidebar-link'>
+                            <a asp-controller="Producto" asp-action="Products" class='sidebar-link'>
                                 <i class="fa-solid fa-box"></i>
                                 <span>Productos</span>
                             </a>
@@ -175,30 +175,17 @@
                                         @TempData["mensaje"]
                 <button type="button" class="btn-close" data-bs-dismiss="alert"
                     aria-label="Close"></button>
-                </div>
-                    
-                    
+                </div>    
             }
                 @RenderBody()
             </div>
                     
                     
-                    <footer>
-                    <div class="footer clearfix mb-0 text-muted">
-                        <div class="float-start">
-                            <p>2021 &copy; SPICY-SAUCE</p>
-                        </div>
-                        <div class="float-end">
-                            <p>Crafted with <span class="text-danger"><i class="bi bi-heart-fill icon-mid"></i></span>
-                                by <a href="#">Eliam</a></p>
-                        </div>
-                    </div>
-                </footer>
+                    
         </div>
     </div>
     <script src="~/css/css-emp/vendors/perfect-scrollbar/perfect-scrollbar.min.js"></script>
     <script src="~/css/css-emp/js/bootstrap.bundle.min.js"></script>
-
     <script src="~/css/css-emp/js/main.js"></script>
 </body>
 

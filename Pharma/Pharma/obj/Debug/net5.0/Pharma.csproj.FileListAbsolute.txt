@@ -9,7 +9,6 @@ C:\Users\eliam\OneDrive - Pontificia Universidad Católica Madre y Maestra\PUCMM
 C:\Users\eliam\OneDrive - Pontificia Universidad Católica Madre y Maestra\PUCMM ENE-ABR2022\pharma\Pharma\Pharma\bin\Debug\net5.0\Pharma.pdb
 C:\Users\eliam\OneDrive - Pontificia Universidad Católica Madre y Maestra\PUCMM ENE-ABR2022\pharma\Pharma\Pharma\bin\Debug\net5.0\Pharma.Views.dll
 C:\Users\eliam\OneDrive - Pontificia Universidad Católica Madre y Maestra\PUCMM ENE-ABR2022\pharma\Pharma\Pharma\bin\Debug\net5.0\Pharma.Views.pdb
-C:\Users\eliam\OneDrive - Pontificia Universidad Católica Madre y Maestra\PUCMM ENE-ABR2022\pharma\Pharma\Pharma\obj\Debug\net5.0\Pharma.csproj.AssemblyReference.cache
 C:\Users\eliam\OneDrive - Pontificia Universidad Católica Madre y Maestra\PUCMM ENE-ABR2022\pharma\Pharma\Pharma\obj\Debug\net5.0\Pharma.GeneratedMSBuildEditorConfig.editorconfig
 C:\Users\eliam\OneDrive - Pontificia Universidad Católica Madre y Maestra\PUCMM ENE-ABR2022\pharma\Pharma\Pharma\obj\Debug\net5.0\Pharma.AssemblyInfoInputs.cache
 C:\Users\eliam\OneDrive - Pontificia Universidad Católica Madre y Maestra\PUCMM ENE-ABR2022\pharma\Pharma\Pharma\obj\Debug\net5.0\Pharma.AssemblyInfo.cs
@@ -155,3 +154,6 @@ C:\Users\eliam\OneDrive - Pontificia Universidad Católica Madre y Maestra\PUCMM
 C:\Users\eliam\OneDrive - Pontificia Universidad Católica Madre y Maestra\PUCMM ENE-ABR2022\pharma\Pharma\Pharma\obj\Debug\net5.0\Razor\Views\Empleado\Employee.cshtml.g.cs
 C:\Users\eliam\OneDrive - Pontificia Universidad Católica Madre y Maestra\PUCMM ENE-ABR2022\pharma\Pharma\Pharma\obj\Debug\net5.0\Razor\Views\Empleado\EditProfile.cshtml.g.cs
 C:\Users\eliam\OneDrive - Pontificia Universidad Católica Madre y Maestra\PUCMM ENE-ABR2022\pharma\Pharma\Pharma\obj\Debug\net5.0\Razor\Views\Empleado\Delete.cshtml.g.cs
+C:\Users\eliam\OneDrive - Pontificia Universidad Católica Madre y Maestra\PUCMM ENE-ABR2022\pharma\Pharma\Pharma\obj\Debug\net5.0\Razor\Views\Producto\Products.cshtml.g.cs
+C:\Users\eliam\OneDrive - Pontificia Universidad Católica Madre y Maestra\PUCMM ENE-ABR2022\pharma\Pharma\Pharma\obj\Debug\net5.0\Pharma.csproj.AssemblyReference.cache
+C:\Users\eliam\OneDrive - Pontificia Universidad Católica Madre y Maestra\PUCMM ENE-ABR2022\pharma\Pharma\Pharma\obj\Debug\net5.0\Razor\Views\Producto\Create.cshtml.g.cs

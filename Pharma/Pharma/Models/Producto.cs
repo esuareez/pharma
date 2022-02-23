@@ -20,6 +20,8 @@ namespace Pharma.Models
         public int Cantidad { get; set; }
         public double PrecioCompra { get; set; }
         public double? PrecioVenta { get; set; }
+        
+        public byte[] Img { get; set; }
         public DateTime? FechaVencimiento { get; set; }
 
         public virtual ICollection<Pedido> Pedidos { get; set; }

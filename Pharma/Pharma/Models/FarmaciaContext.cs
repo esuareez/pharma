@@ -267,19 +267,18 @@ namespace Pharma.Models
             modelBuilder.Entity<Producto>(entity =>
             {
                 entity.Property(e => e.Id)
-                    .ValueGeneratedNever()
                     .HasColumnName("ID");
 
                 entity.Property(e => e.Descripcion)
                     .IsRequired()
-                    .HasMaxLength(50)
+                    .HasMaxLength(500)
                     .IsUnicode(false);
 
                 entity.Property(e => e.FechaVencimiento).HasColumnType("date");
 
                 entity.Property(e => e.Nombre)
                     .IsRequired()
-                    .HasMaxLength(50)
+                    .HasMaxLength(100)
                     .IsUnicode(false);
 
                 entity.Property(e => e.PrecioCompra).HasColumnName("Precio_Compra");
@@ -290,6 +289,10 @@ namespace Pharma.Models
                     .IsRequired()
                     .HasMaxLength(60)
                     .IsUnicode(false);
+
+                entity.Property(e => e.Img)
+                    .IsRequired();
+
             });
 
             modelBuilder.Entity<ProductoTipoProducto>(entity =>
