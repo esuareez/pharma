@@ -75,7 +75,7 @@ namespace Pharma.Controllers
                 }
                 else
                 {
-                    var empleado = _context.Empleados.Where(s => s.Correo == Cedula && s.Password == Password);
+                    var empleado = _context.Empleados.Where(s => (s.Correo == Cedula || s.Cedula == Cedula) && s.Password == Password);
                     if (empleado.Any())
                     {
                         var ck = empleado.FirstOrDefault();

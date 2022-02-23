@@ -50,14 +50,7 @@
                                 <span>Dashboard</span>
                             </a>
                         </li>
-
-                        <li class="sidebar-item  ">
-                            <a asp-controller="Empleado" asp-action="Employee" class='sidebar-link'>
-                                <i class="fa-solid fa-user"></i>
-                                <span>Empleados</span>
-                            </a>
-                        </li>
-
+                        
                         <li class="sidebar-item  ">
                             <a href="#" class='sidebar-link'>
                                 <i class="fa-solid fa-box"></i>
@@ -67,10 +60,29 @@
 
                         <li class="sidebar-item  ">
                             <a href="#" class='sidebar-link'>
+                                <i class="fa-solid fa-box"></i>
+                                <span>Pedidos</span>
+                            </a>
+                        </li>
+
+                        @if(Context.Request.Cookies["rol"] == "Administrador")
+                        {
+                            <li class="sidebar-item  ">
+                            <a asp-controller="Empleado" asp-action="Employee" class='sidebar-link'>
+                                <i class="fa-solid fa-user"></i>
+                                <span>Empleados</span>
+                            </a>
+                            </li>
+
+                            <li class="sidebar-item  ">
+                            <a href="#" class='sidebar-link'>
                                 <i class="fa-solid fa-basket-shopping"></i>
                                 <span>Orden de Compra</span>
                             </a>
-                        </li>
+                            </li>
+                        }
+
+                        
 
                     </ul>
                 </div>
