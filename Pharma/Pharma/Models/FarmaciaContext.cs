@@ -293,6 +293,12 @@ namespace Pharma.Models
                 entity.Property(e => e.Img)
                     .IsRequired();
 
+                entity.Property(e => e.Estado)
+                    .IsRequired();
+
+                entity.Property(e => e.Laboratorio);
+                    
+
             });
 
             modelBuilder.Entity<ProductoTipoProducto>(entity =>

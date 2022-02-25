@@ -15,6 +15,7 @@ namespace Pharma.Models
 
         public int Id { get; set; }
         public string Nombre { get; set; }
+        public string Laboratorio { get; set; }
         public string Descripcion { get; set; }
         public string TipoProducto { get; set; }
         public int Cantidad { get; set; }
@@ -22,6 +23,7 @@ namespace Pharma.Models
         public double? PrecioVenta { get; set; }
         
         public byte[] Img { get; set; }
+        public int Estado { get; set; }
         public DateTime? FechaVencimiento { get; set; }
 
         public virtual ICollection<Pedido> Pedidos { get; set; }

@@ -1,12 +1,14 @@
-﻿@model Pharma.Models.Producto
+﻿@model Pharma.Models.Producto;
 @{
-    ViewData["Title"] = "Create";
+    ViewData["Title"] = "Edit";
     Layout = "~/Views/Shared/layoutAdmin.cshtml";
+
+
+
 }
 
 <head>
-        
-        <style>
+    <style>
             .profile {
                 text-align: center;
                 margin-bottom: 25px;
@@ -47,47 +49,23 @@
             margin: 0 auto;
         }
         </style>
-    
-    
-       
-    </head>
+</head>
 
-<div id="main-content container-fluid">
-                <div class="page-heading">
-                    <div class="page-title">
-                        <div class="row">
-                            <div class="col-12 col-md-6 order-md-1 order-last">
-                                <h3>Nuevo producto</h3>
-                                
-                            </div>
-                            <div class="col-12 col-md-6 order-md-2 order-first">
-                                <nav aria-label="breadcrumb" class="breadcrumb-header float-start float-lg-end">
-                                    <ol class="breadcrumb">
-                                        <li class="breadcrumb-item"><a href="">Dashboard</a></li>
-                                        <li class="breadcrumb-item active" aria-current="page">DataTable</li>
-                                    </ol>
-                                </nav>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="col-12 col-md-12">
+<div class="container" style="width: 75%">
+                        
                         <div class="card">
-                            <div class="card-header">
-                                <h5 class="card-title">Datos del producto</h5>
-                            </div>
                             <div class="card-content">
-                                <div class="card-body">
-                                   <form class="form form-center" method="post" asp-action="Create" enctype="multipart/form-data">
+                                <form class="form form-center" method="post" asp-action="Edit" enctype="multipart/form-data">
                                     <br>
                                         <div class="center">
                                             <div class="profile">
                                                 <div class="avatar">
-                                                    <input id="file-uploader" type="file" name="Image" value="">
+                                                    <input id="file-uploader" type="file"  asp-for="Img" name="Image" >
                                                     <div class="img"
-                                                        style="background-image:url('https://www.pngitem.com/pimgs/m/286-2867618_vector-illustration-of-pharmaceutical-medicine-oral-pills-vector.png')">
+                                                        style="background-image:url('data:image/jpeg;base64,@Convert.ToBase64String(@Model.Img)')">
                                                     </div>
                                                     <label class="avatar-selector" for="file-uploader"><i class="fa-solid fa-arrow-up-from-bracket"></i></label>
+                                                    
                                                 </div>
                                             </div>
                                         </div>    
@@ -100,14 +78,14 @@
                                                 </div>
                                                 <div class="col-md-8 form-group">
                                                     <input type="text" id="first-name" class="form-control"
-                                                        name="Nombre" placeholder="Winasorb Antigripal">
+                                                        asp-for="Nombre" name="Nombre" placeholder="Winasorb Antigripal" value="@Model.Nombre">
                                                 </div>
                                                 
                                                 <div class="col-md-4">
                                                     <label>Tipo de producto</label>
                                                 </div>
                                                 <div class="col-md-8 form-group">
-                                                    <select class="choices form-select" name="TipoProducto">
+                                                    <select class="choices form-select" asp-for="TipoProducto" name="TipoProducto">
                                                         <option value="Vitrina">Vitrina</option>
                                                         <option value="Nevera">Nevera</option>
                                                         <option value="Controlado">Controlados</option>
@@ -119,7 +97,7 @@
                                                 </div>
                                                 <div class="col-md-8 form-group">
                                                     <input type="number" id="contact-info" class="form-control"
-                                                        name="PrecioCompra"  placeholder="15">
+                                                        asp-for="PrecioCompra" name="PrecioCompra"  placeholder="15">
                                                 </div>
 
                                                 <div class="col-md-4">
@@ -127,7 +105,7 @@
                                                 </div>
                                                 <div class="col-md-8 form-group">
                                                     <input type="number" id="contact-info" class="form-control"
-                                                        name="PrecioVenta" placeholder="20">
+                                                        asp-for="Cantidad" name="PrecioVenta" placeholder="20">
                                                 </div>
 
                                                 <div class="col-md-4">
@@ -135,7 +113,7 @@
                                                 </div>
                                                 <div class="col-md-8 form-group">
                                                     <input type="number" id="contact-info" class="form-control"
-                                                        name="Cantidad" placeholder="10">
+                                                        asp-for="Cantidad" name="Cantidad" placeholder="10">
                                                 </div>
 
                                                 <div class="col-md-4">
@@ -143,14 +121,14 @@
                                                 </div>
                                                 <div class="col-md-8 form-group">
                                                     <input type="text" id="contact-info" class="form-control"
-                                                        name="Laboratorio" placeholder="Bayer">
+                                                        asp-for="Laboratorio" name="Laboratorio" placeholder="Bayer">
                                                 </div>
 
                                                 <div class="col-md-4">
                                                     <label>Estado</label>
                                                 </div>
                                                 <div class="col-md-8 form-group">
-                                                    <select class="choices form-select" name="Estado">
+                                                    <select class="choices form-select" asp-for="Estado" name="Estado">
                                                         <option value="1">Público</option>
                                                         <option value="0">Privado</option>
                                                     </select>
@@ -159,7 +137,7 @@
                                                 <div class="form-group mb-3">
                                                     <label for="exampleFormControlTextarea1" class="form-label">Descripción del producto</label>
                                                     <textarea class="form-control" id="exampleFormControlTextarea1"
-                                                        rows="3" name="Descripcion"></textarea>
+                                                        rows="3" asp-for="Descripcion" name="Descripcion"></textarea>
                                                 </div>
 
                                                 <div class="col-sm-12 d-flex justify-content-end">
@@ -172,26 +150,20 @@
                                         </div>
                                     </div>
                                 </form>
-                                </div>
                             </div>
-
+                        
                         </div>
                         
                     </div>
-                </div>
-                
-    
-    
-            </div>
 
-
-    <script id="rendered-js">
-    (() => {
-        document.querySelector("#file-uploader").addEventListener("change", e => {
-            const image = e.target.files[0];
-            const imageURL = URL.createObjectURL(image);
-            document.querySelector(".profile .img").
-            style.backgroundImage = ` url("${imageURL}")`;
-        });
-    })();
+<script id="rendered-js">
+            (() => {
+                document.querySelector("#file-uploader").addEventListener("change", e => {
+                    const image = e.target.files[0];
+                    const imageURL = URL.createObjectURL(image);
+                    document.querySelector(".profile .img").
+                    style.backgroundImage = ` url("${imageURL}")`;
+                });
+            })();
     </script>
+

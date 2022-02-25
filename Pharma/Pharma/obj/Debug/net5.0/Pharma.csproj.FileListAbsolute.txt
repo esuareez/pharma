@@ -157,3 +157,4 @@ C:\Users\eliam\OneDrive - Pontificia Universidad Católica Madre y Maestra\PUCMM
 C:\Users\eliam\OneDrive - Pontificia Universidad Católica Madre y Maestra\PUCMM ENE-ABR2022\pharma\Pharma\Pharma\obj\Debug\net5.0\Razor\Views\Producto\Products.cshtml.g.cs
 C:\Users\eliam\OneDrive - Pontificia Universidad Católica Madre y Maestra\PUCMM ENE-ABR2022\pharma\Pharma\Pharma\obj\Debug\net5.0\Pharma.csproj.AssemblyReference.cache
 C:\Users\eliam\OneDrive - Pontificia Universidad Católica Madre y Maestra\PUCMM ENE-ABR2022\pharma\Pharma\Pharma\obj\Debug\net5.0\Razor\Views\Producto\Create.cshtml.g.cs
+C:\Users\eliam\OneDrive - Pontificia Universidad Católica Madre y Maestra\PUCMM ENE-ABR2022\pharma\Pharma\Pharma\obj\Debug\net5.0\Razor\Views\Producto\Edit.cshtml.g.cs
