@@ -78,27 +78,21 @@ namespace Pharma.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult Edit(Producto producto, IFormFile Image)
         {
-            var prod = _context.Productos.Where(s => s.Nombre == producto.Nombre && s.Laboratorio == producto.Laboratorio);
-            if (prod.Any())
+            
+            if(Image != null)
             {
-                TempData["mensaje"] = "Ya existe un producto de este laboratorio.";
-            }
-            else
-            {
-                if(Image != null)
+                using (var ms = new MemoryStream())
                 {
-                    using (var ms = new MemoryStream())
-                    {
-                        Image.CopyTo(ms);
-                        producto.Img = ms.ToArray();
-                    }
+                    Image.CopyTo(ms);
+                    producto.Img = ms.ToArray();
                 }
-                
-                _context.Productos.Update(producto);
-                _context.SaveChanges();
-                return RedirectToAction("Products");
             }
-            return View();
+                
+            _context.Productos.Update(producto);
+            _context.SaveChanges();
+            return RedirectToAction("Products");
+            
+          
         }
 
 

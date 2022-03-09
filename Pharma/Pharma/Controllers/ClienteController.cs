@@ -169,5 +169,11 @@ namespace Pharma.Controllers
             return View();
         }
 
+        public IActionResult Shop()
+        {
+            IEnumerable<Producto> listProducto = _context.Productos;
+            return View(listProducto);
+        }
+
     }
 }
