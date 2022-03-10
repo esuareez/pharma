@@ -40,14 +40,14 @@
             {
 				@foreach(var item in Model)
 				{
-					<div class="col-lg-4 col-md-6 text-center strawberry">
+					<div class="col-lg-4 col-md-6 text-center">
 						<div class="single-product-item">
 							<div class="product-image">
-								<div class="img" style="background-image:url('data:image/*;base64,@Convert.ToBase64String(item.Img)')"></div>
+								<img src="data:image/*;base64,@Convert.ToBase64String(item.Img)" height="200px" alt="">
 							</div>
 							<h3>@item.Nombre</h3>
 							<p class="product-price">RD$ @item.PrecioVenta</p>
-							<a href="cart.html" class="cart-btn"><i class="fas fa-shopping-cart"></i> Add to Cart</a>
+							<a class="cart-btn"><i class="fas fa-shopping-cart"></i> Add to Cart</a>
 						</div>
 					</div>
 				}

@@ -30,11 +30,11 @@ namespace Pharma.Controllers
         [ValidateAntiForgeryToken] // que un bot no pueda enviar muchas request
         public IActionResult Create(Producto producto, IFormFile Image)
         {
-            
+
             if (ModelState.IsValid)
             {
                 var prod = _context.Productos.Where(s => s.Nombre == producto.Nombre && s.Laboratorio == producto.Laboratorio);
-                if(prod.Any())
+                if (prod.Any())
                 {
                     TempData["mensaje"] = "Ya existe un producto de este laboratorio.";
                 }
@@ -49,7 +49,7 @@ namespace Pharma.Controllers
                     _context.SaveChanges();
                     return RedirectToAction("Products");
                 }
-                
+
             }
             return View("Products");
         }
@@ -64,7 +64,7 @@ namespace Pharma.Controllers
             // Obtener cliente
 
             var producto = _context.Productos.Find(id);
-            
+
 
             if (producto == null)
             {
@@ -78,24 +78,28 @@ namespace Pharma.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult Edit(Producto producto, IFormFile Image)
         {
-            
-            if(Image != null)
+
+            if (Image != null)
             {
                 using (var ms = new MemoryStream())
                 {
                     Image.CopyTo(ms);
                     producto.Img = ms.ToArray();
                 }
+                _context.Productos.Update(producto);
             }
-                
-            _context.Productos.Update(producto);
+            else
+            {
+                _context.Productos.Update(producto);
+                _context.Entry(producto).Property(o => o.Img).IsModified = false;
+            }
+
             _context.SaveChanges();
             return RedirectToAction("Products");
-            
-          
+
+
         }
-
-
 
     }
 }
+
