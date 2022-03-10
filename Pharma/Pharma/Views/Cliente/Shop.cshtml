@@ -40,7 +40,9 @@
             {
 				@foreach(var item in Model)
 				{
-					<div class="col-lg-4 col-md-6 text-center">
+					@if(item.Estado == 1)
+					{
+						<div class="col-lg-4 col-md-6 text-center">
 						<div class="single-product-item">
 							<div class="product-image">
 								<img src="data:image/*;base64,@Convert.ToBase64String(item.Img)" height="200px" alt="">
@@ -49,7 +51,9 @@
 							<p class="product-price">RD$ @item.PrecioVenta</p>
 							<a class="cart-btn"><i class="fas fa-shopping-cart"></i> Add to Cart</a>
 						</div>
-					</div>
+						</div>
+					}
+					
 				}
 			}
 			else
