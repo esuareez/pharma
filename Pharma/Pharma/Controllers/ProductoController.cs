@@ -128,10 +128,12 @@ namespace Pharma.Controllers
                     _pedido.Estado = 1;
                     _pedido.IdCliente = idUser;
                     _context.Pedidos.Add(_pedido);
+                    _context.SaveChanges();
 
+                    var _pedi = _context.Pedidos.Where(s => s.Estado == 1 && s.IdCliente == idUser).FirstOrDefault();
                     PedidoProducto pp = new PedidoProducto();
                     pp.Idproducto = id;
-                    pp.Idpedido = pedido.IdPedido;
+                    pp.Idpedido = _pedi.IdPedido;
                     pp.Cantidad = 1;
                     _context.PedidoProductos.Add(pp);
                 }

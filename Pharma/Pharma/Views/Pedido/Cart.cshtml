@@ -2,7 +2,7 @@
 @{
 	ViewData["Title"] = "Cart";
 	Layout = "~/Views/Shared/layout.cshtml";
-
+	double total = 0;
 }
 
 <!-- breadcrumb-section -->
@@ -43,15 +43,20 @@
 							</thead>
 							<tbody>
 								@foreach (var item in Model)
-								{	
-									<tr class="table-body-row">
-									<td class="product-remove"><a href="#"><i class="far fa-window-close"></i></a></td>
-									<td class="product-image"><img src="data:image/*;base64,@Convert.ToBase64String(item.IdproductoNavigation.Img)" alt=""></td>
-									<td class="product-name">@item.IdproductoNavigation.Nombre</td>
-									<td class="product-price">@item.IdproductoNavigation.PrecioVenta</td>
-									<td class="product-quantity"><input type="number" value=@item.Cantidad></td>
-									<td class="product-total">@item.IdproductoNavigation.Cantidad</td>
-									</tr>
+								{
+									@if(item.IdpedidoNavigation.IdCliente == int.Parse(Context.Request.Cookies["userId"]))
+									{
+										<tr class="table-body-row">
+										<td class="product-remove"><a asp-controller="Pedido" asp-action="Remove" asp-route-id="@item.IdproductoNavigation.Id"><i class="far fa-window-close"></i></a></td>
+										<td class="product-image"><img src="data:image/*;base64,@Convert.ToBase64String(item.IdproductoNavigation.Img)" width="60px" alt=""></td>
+										<td class="product-name">@item.IdproductoNavigation.Nombre</td>
+										<td class="product-price">@item.IdproductoNavigation.PrecioVenta</td>
+										<td class="product-quantity"><input type="number" min="1" max=@item.IdproductoNavigation.Cantidad value=@item.Cantidad></td>
+										<td class="product-total">@item.IdproductoNavigation.Cantidad</td>
+										</tr>
+									}
+									
+									@*@total = total + (@item.Cantidad * @item.IdproductoNavigation.PrecioVenta);*@
 								}
 								
 							</tbody>
@@ -72,15 +77,15 @@
 							<tbody>
 								<tr class="total-data">
 									<td><strong>Subtotal: </strong></td>
-									<td>$500</td>
+									<td>RD$ @total</td>
 								</tr>
 								<tr class="total-data">
 									<td><strong>Shipping: </strong></td>
-									<td>$45</td>
+									<td>RD$ 0</td>
 								</tr>
 								<tr class="total-data">
 									<td><strong>Total: </strong></td>
-									<td>$545</td>
+									<td>RD$ @total</td>
 								</tr>
 							</tbody>
 						</table>
