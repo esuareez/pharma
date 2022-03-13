@@ -10,6 +10,7 @@ namespace Pharma.Models
         public Pedido()
         {
             Facturas = new HashSet<Factura>();
+            PedidoProductos = new HashSet<PedidoProducto>();
         }
 
         public int IdPedido { get; set; }
@@ -21,5 +22,6 @@ namespace Pharma.Models
 
         public virtual Producto IdProductoNavigation { get; set; }
         public virtual ICollection<Factura> Facturas { get; set; }
+        public virtual ICollection<PedidoProducto> PedidoProductos { get; set; }
     }
 }

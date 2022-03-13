@@ -100,6 +100,20 @@ namespace Pharma.Controllers
 
         }
 
+        public IActionResult addCart(int? id)
+        {
+            var pedido = _context.Pedidos.Where(s => s.Estado == "Carrito");
+            if(pedido != null)
+            {
+
+            }
+            else
+            {
+
+            }
+            return View();
+        }
+
     }
 }
 

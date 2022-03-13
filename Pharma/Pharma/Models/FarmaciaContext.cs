@@ -23,17 +23,17 @@ namespace Pharma.Models
         public virtual DbSet<Factura> Facturas { get; set; }
         public virtual DbSet<OrdenCompra> OrdenCompras { get; set; }
         public virtual DbSet<Pedido> Pedidos { get; set; }
+        public virtual DbSet<PedidoProducto> PedidoProductos { get; set; }
         public virtual DbSet<Producto> Productos { get; set; }
-        public virtual DbSet<ProductoTipoProducto> ProductoTipoProductos { get; set; }
         public virtual DbSet<Proveedor> Proveedors { get; set; }
         public virtual DbSet<TipoPago> TipoPagos { get; set; }
-        public virtual DbSet<TipoProducto> TipoProductos { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             if (!optionsBuilder.IsConfigured)
             {
-                optionsBuilder.UseSqlServer("DefaultConnection");
+#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
+                optionsBuilder.UseSqlServer("Server=SPICY-SAUCE;Database=Farmacia;User ID=SPICY-SAUCE\\\\\\\\eliam;Trusted_Connection=true;MultipleActiveResultSets=true");
             }
         }
 
@@ -55,7 +55,15 @@ namespace Pharma.Models
                 entity.Property(e => e.Cedula)
                     .IsRequired()
                     .HasMaxLength(11)
-                    .IsUnicode(true);
+                    .IsUnicode(false);
+
+                entity.Property(e => e.Ciudad)
+                    .HasMaxLength(50)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.CodPostal)
+                    .HasMaxLength(50)
+                    .IsUnicode(false);
 
                 entity.Property(e => e.Correo)
                     .IsRequired()
@@ -77,14 +85,6 @@ namespace Pharma.Models
                     .IsUnicode(false);
 
                 entity.Property(e => e.Telefono)
-                    .HasMaxLength(50)
-                    .IsUnicode(false);
-
-                entity.Property(e => e.Ciudad)
-                    .HasMaxLength(50)
-                    .IsUnicode(false);
-
-                entity.Property(e => e.CodPostal)
                     .HasMaxLength(50)
                     .IsUnicode(false);
             });
@@ -123,15 +123,20 @@ namespace Pharma.Models
 
                 entity.ToTable("Empleado");
 
-                entity.Property(e => e.IdEmpleado)
-                    .HasColumnName("ID_Empleado");
+                entity.Property(e => e.IdEmpleado).HasColumnName("ID_Empleado");
 
                 entity.Property(e => e.Apellido)
                     .IsRequired()
                     .HasMaxLength(60)
                     .IsUnicode(false);
 
+                entity.Property(e => e.Cedula)
+                    .IsRequired()
+                    .HasMaxLength(11)
+                    .IsUnicode(false);
+
                 entity.Property(e => e.Correo)
+                    .IsRequired()
                     .HasMaxLength(50)
                     .IsUnicode(false);
 
@@ -140,22 +145,20 @@ namespace Pharma.Models
                     .HasMaxLength(60)
                     .IsUnicode(false);
 
+                entity.Property(e => e.Password)
+                    .IsRequired()
+                    .HasMaxLength(50)
+                    .IsUnicode(false);
+
                 entity.Property(e => e.Puesto)
                     .IsRequired()
                     .HasMaxLength(50)
                     .IsUnicode(false);
 
                 entity.Property(e => e.Telefono)
+                    .IsRequired()
                     .HasMaxLength(50)
                     .IsUnicode(false);
-
-                entity.Property(e => e.Password)
-                    .HasMaxLength(50)
-                    .IsUnicode(false);
-
-                entity.Property(e => e.Cedula)
-                   .HasMaxLength(50)
-                   .IsUnicode(false);
             });
 
             modelBuilder.Entity<Factura>(entity =>
@@ -164,9 +167,7 @@ namespace Pharma.Models
 
                 entity.ToTable("Factura");
 
-                entity.Property(e => e.IdFactura)
-                    .ValueGeneratedNever()
-                    .HasColumnName("ID_Factura");
+                entity.Property(e => e.IdFactura).HasColumnName("ID_Factura");
 
                 entity.Property(e => e.FechaFactura)
                     .HasColumnType("date")
@@ -195,10 +196,7 @@ namespace Pharma.Models
 
                 entity.ToTable("OrdenCompra");
 
-                entity.Property(e => e.IdOrComp)
-                    .HasMaxLength(6)
-                    .HasColumnName("ID_OrComp")
-                    .IsFixedLength(true);
+                entity.Property(e => e.IdOrComp).HasColumnName("ID_OrComp");
 
                 entity.Property(e => e.DescripcionProducto)
                     .HasMaxLength(100)
@@ -235,14 +233,11 @@ namespace Pharma.Models
 
             modelBuilder.Entity<Pedido>(entity =>
             {
-                entity.HasKey(e => e.IdPedido)
-                    .HasName("PK_Pedido_1");
+                entity.HasKey(e => e.IdPedido);
 
                 entity.ToTable("Pedido");
 
-                entity.Property(e => e.IdPedido)
-                    .ValueGeneratedNever()
-                    .HasColumnName("ID_Pedido");
+                entity.Property(e => e.IdPedido).HasColumnName("ID_Pedido");
 
                 entity.Property(e => e.Estado)
                     .IsRequired()
@@ -264,9 +259,33 @@ namespace Pharma.Models
                     .HasConstraintName("FK_Pedido_Productos");
             });
 
+            modelBuilder.Entity<PedidoProducto>(entity =>
+            {
+                entity.HasKey(e => new { e.Idpedido, e.Idproducto });
+
+                entity.ToTable("PedidoProducto");
+
+                entity.Property(e => e.Idpedido).HasColumnName("IDPedido");
+
+                entity.Property(e => e.Idproducto).HasColumnName("IDProducto");
+
+                entity.HasOne(d => d.IdpedidoNavigation)
+                    .WithMany(p => p.PedidoProductos)
+                    .HasForeignKey(d => d.Idpedido)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_PedidoProducto_Pedido");
+
+                entity.HasOne(d => d.IdproductoNavigation)
+                    .WithMany(p => p.PedidoProductos)
+                    .HasForeignKey(d => d.Idproducto)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_PedidoProducto_Productos");
+            });
+
             modelBuilder.Entity<Producto>(entity =>
             {
                 entity.Property(e => e.Id)
+                    .ValueGeneratedNever()
                     .HasColumnName("ID");
 
                 entity.Property(e => e.Descripcion)
@@ -275,6 +294,10 @@ namespace Pharma.Models
                     .IsUnicode(false);
 
                 entity.Property(e => e.FechaVencimiento).HasColumnType("date");
+
+                entity.Property(e => e.Laboratorio)
+                    .HasMaxLength(100)
+                    .IsUnicode(false);
 
                 entity.Property(e => e.Nombre)
                     .IsRequired()
@@ -289,46 +312,6 @@ namespace Pharma.Models
                     .IsRequired()
                     .HasMaxLength(60)
                     .IsUnicode(false);
-
-                entity.Property(e => e.Img)
-                    .IsRequired();
-
-                entity.Property(e => e.Estado)
-                    .IsRequired();
-
-                entity.Property(e => e.Laboratorio);
-                    
-
-            });
-
-            modelBuilder.Entity<ProductoTipoProducto>(entity =>
-            {
-                entity.HasKey(e => new { e.IdProducto, e.IdTipo });
-
-                entity.ToTable("ProductoTipoProducto");
-
-                entity.Property(e => e.IdProducto).HasColumnName("ID_Producto");
-
-                entity.Property(e => e.IdTipo)
-                    .HasMaxLength(4)
-                    .HasColumnName("ID_Tipo")
-                    .IsFixedLength(true);
-
-                entity.Property(e => e.Descripcion)
-                    .HasMaxLength(30)
-                    .IsFixedLength(true);
-
-                entity.HasOne(d => d.IdProductoNavigation)
-                    .WithMany(p => p.ProductoTipoProductos)
-                    .HasForeignKey(d => d.IdProducto)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK_ProductoTipoProducto_Productos");
-
-                entity.HasOne(d => d.IdTipoNavigation)
-                    .WithMany(p => p.ProductoTipoProductos)
-                    .HasForeignKey(d => d.IdTipo)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK_ProductoTipoProducto_TipoProducto");
             });
 
             modelBuilder.Entity<Proveedor>(entity =>
@@ -371,20 +354,6 @@ namespace Pharma.Models
                 entity.Property(e => e.IdPago)
                     .ValueGeneratedNever()
                     .HasColumnName("ID_Pago");
-
-                entity.Property(e => e.Descripcion)
-                    .HasMaxLength(20)
-                    .IsFixedLength(true);
-            });
-
-            modelBuilder.Entity<TipoProducto>(entity =>
-            {
-                entity.ToTable("TipoProducto");
-
-                entity.Property(e => e.Id)
-                    .HasMaxLength(4)
-                    .HasColumnName("ID")
-                    .IsFixedLength(true);
 
                 entity.Property(e => e.Descripcion)
                     .HasMaxLength(20)

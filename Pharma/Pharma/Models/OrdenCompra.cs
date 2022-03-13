@@ -7,7 +7,7 @@ namespace Pharma.Models
 {
     public partial class OrdenCompra
     {
-        public string IdOrComp { get; set; }
+        public int IdOrComp { get; set; }
         public int IdProveedor { get; set; }
         public int IdEmpleado { get; set; }
         public string Producto { get; set; }
