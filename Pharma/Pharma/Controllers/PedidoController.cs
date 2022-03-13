@@ -13,7 +13,11 @@ namespace Pharma.Controllers
         }
         public IActionResult Cart()
         {
-            IEnumerable<Pedido> listProducto = _context.Pedidos;
+            IEnumerable<PedidoProducto> listProducto = _context.PedidoProductos;
+            foreach(var product in listProducto)
+            {
+                product.IdproductoNavigation = _context.Productos.Find(product.Idproducto);
+            }
             return View(listProducto);
         }
 
