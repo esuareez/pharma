@@ -1,7 +1,8 @@
-﻿
+﻿@model IEnumerable<Pharma.Models.PedidoProducto>
 @{
-    ViewData["Title"] = "Cart";
-    Layout = "~/Views/Shared/layout.cshtml";
+	ViewData["Title"] = "Cart";
+	Layout = "~/Views/Shared/layout.cshtml";
+	double total = 0;
 }
 
 <!-- breadcrumb-section -->
@@ -20,49 +21,47 @@
 	<!-- end breadcrumb section -->
 
 	<!-- cart -->
+@if (Model.Count() > 0)
+{
 	<div class="cart-section mt-150 mb-150">
 		<div class="container">
+
 			<div class="row">
 				<div class="col-lg-8 col-md-12">
 					<div class="cart-table-wrap">
+
 						<table class="cart-table">
 							<thead class="cart-table-head">
 								<tr class="table-head-row">
 									<th class="product-remove"></th>
-									<th class="product-image">Product Image</th>
-									<th class="product-name">Name</th>
-									<th class="product-price">Price</th>
-									<th class="product-quantity">Quantity</th>
-									<th class="product-total">Total</th>
+									<th class="product-image">Imagen</th>
+									<th class="product-name">Nombre</th>
+									<th class="product-price">Precio</th>
+									<th class="product-quantity">Cantidad</th>
+									<th class="product-total">Disponibilidad</th>
 								</tr>
 							</thead>
 							<tbody>
-								<tr class="table-body-row">
-									<td class="product-remove"><a href="#"><i class="far fa-window-close"></i></a></td>
-									<td class="product-image"><img src="assets/img/products/product-img-1.jpg" alt=""></td>
-									<td class="product-name">Strawberry</td>
-									<td class="product-price">$85</td>
-									<td class="product-quantity"><input type="number" placeholder="0"></td>
-									<td class="product-total">1</td>
-								</tr>
-								<tr class="table-body-row">
-									<td class="product-remove"><a href="#"><i class="far fa-window-close"></i></a></td>
-									<td class="product-image"><img src="assets/img/products/product-img-2.jpg" alt=""></td>
-									<td class="product-name">Berry</td>
-									<td class="product-price">$70</td>
-									<td class="product-quantity"><input type="number" placeholder="0"></td>
-									<td class="product-total">1</td>
-								</tr>
-								<tr class="table-body-row">
-									<td class="product-remove"><a href="#"><i class="far fa-window-close"></i></a></td>
-									<td class="product-image"><img src="assets/img/products/product-img-3.jpg" alt=""></td>
-									<td class="product-name">Lemon</td>
-									<td class="product-price">$35</td>
-									<td class="product-quantity"><input type="number" placeholder="0"></td>
-									<td class="product-total">1</td>
-								</tr>
+								@foreach (var item in Model)
+								{
+									@if(item.IdpedidoNavigation.IdCliente == int.Parse(Context.Request.Cookies["userId"]))
+									{
+										<tr class="table-body-row">
+										<td class="product-remove"><a asp-controller="Pedido" asp-action="Remove" asp-route-id="@item.IdproductoNavigation.Id"><i class="far fa-window-close"></i></a></td>
+										<td class="product-image"><img src="data:image/*;base64,@Convert.ToBase64String(item.IdproductoNavigation.Img)" width="60px" alt=""></td>
+										<td class="product-name">@item.IdproductoNavigation.Nombre</td>
+										<td class="product-price">@item.IdproductoNavigation.PrecioVenta</td>
+										<td class="product-quantity"><input type="number" min="1" max=@item.IdproductoNavigation.Cantidad value=@item.Cantidad></td>
+										<td class="product-total">@item.IdproductoNavigation.Cantidad</td>
+										</tr>
+									}
+									
+									@*@total = total + (@item.Cantidad * @item.IdproductoNavigation.PrecioVenta);*@
+								}
+								
 							</tbody>
 						</table>
+
 					</div>
 				</div>
 
@@ -78,15 +77,15 @@
 							<tbody>
 								<tr class="total-data">
 									<td><strong>Subtotal: </strong></td>
-									<td>$500</td>
+									<td>RD$ @total</td>
 								</tr>
 								<tr class="total-data">
 									<td><strong>Shipping: </strong></td>
-									<td>$45</td>
+									<td>RD$ 0</td>
 								</tr>
 								<tr class="total-data">
 									<td><strong>Total: </strong></td>
-									<td>$545</td>
+									<td>RD$ @total</td>
 								</tr>
 							</tbody>
 						</table>
@@ -105,9 +104,11 @@
 							</form>
 						</div>
 					</div>
+
 				</div>
 			</div>
 		</div>
 	</div>
-	<!-- end cart -->
+}
+<!-- end cart -->
 

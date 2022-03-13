@@ -1,6 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Pharma.Models;
 using System.Collections.Generic;
+using System.IO;
+using System.Linq;
 
 namespace Pharma.Controllers
 {
@@ -13,18 +15,28 @@ namespace Pharma.Controllers
         }
         public IActionResult Cart()
         {
-            IEnumerable<Pedido> listProducto = _context.Pedidos;
+            IEnumerable<PedidoProducto> listProducto = _context.PedidoProductos;
+            foreach(var product in listProducto)
+            {
+                product.IdproductoNavigation = _context.Productos.Find(product.Idproducto);
+                product.IdpedidoNavigation = _context.Pedidos.Find(product.Idpedido);
+            }
             return View(listProducto);
         }
 
-        public IActionResult Create(Pedido pedido)
+        public IActionResult Remove(int id)
         {
-            var _ped = _context.Pedidos.Find(pedido.IdPedido);
-            if(_ped != null && _ped.Estado == "Carrito")
+            int idUser = int.Parse(HttpContext.Request.Cookies["userId"]);
+            var pedido = _context.Pedidos.Where(s => s.Estado == 1 && s.IdCliente == idUser).FirstOrDefault();
+            if(pedido != null)
             {
-
+                var pd = _context.PedidoProductos.Find(pedido.IdPedido,id);
+                _context.PedidoProductos.Remove(pd);
+                _context.SaveChanges();
+                return RedirectToAction("Cart","Pedido");
             }
-            return View("Cart");
+            return RedirectToAction("Cart", "Pedido");
         }
+        
     }
 }

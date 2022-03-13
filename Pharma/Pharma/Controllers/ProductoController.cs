@@ -100,18 +100,51 @@ namespace Pharma.Controllers
 
         }
 
-        public IActionResult addCart(int? id)
+        public IActionResult addCart(int id)
         {
-            var pedido = _context.Pedidos.Where(s => s.Estado == "Carrito");
-            if(pedido != null)
+            int idUser = int.Parse(HttpContext.Request.Cookies["userId"]);
+            if(idUser > 0)
             {
+                var pedido = _context.Pedidos.Where(s => s.Estado == 1 && s.IdCliente == idUser).FirstOrDefault();
+                if (pedido != null)
+                {
+                    var pedprod = _context.PedidoProductos.Where(s => s.Idpedido == pedido.IdPedido && s.Idproducto == id); //Si el producto existe en el pedido, retorna al carrito.
+                    if (pedprod.Any())
+                    {
+                        return RedirectToAction("Cart", "Pedido");
+                    }
+                    else
+                    {
+                        PedidoProducto pp = new PedidoProducto();
+                        pp.Idproducto = id;
+                        pp.Idpedido = pedido.IdPedido;
+                        pp.Cantidad = 1;
+                        _context.PedidoProductos.Add(pp);
+                    }
+                }
+                else
+                {
+                    Pedido _pedido = new Pedido();
+                    _pedido.Estado = 1;
+                    _pedido.IdCliente = idUser;
+                    _context.Pedidos.Add(_pedido);
+                    _context.SaveChanges();
 
+                    var _pedi = _context.Pedidos.Where(s => s.Estado == 1 && s.IdCliente == idUser).FirstOrDefault();
+                    PedidoProducto pp = new PedidoProducto();
+                    pp.Idproducto = id;
+                    pp.Idpedido = _pedi.IdPedido;
+                    pp.Cantidad = 1;
+                    _context.PedidoProductos.Add(pp);
+                }
+                _context.SaveChanges();
+                return RedirectToAction("Shop", "Cliente");
             }
             else
             {
-
+                return RedirectToAction("Login","Cliente");
             }
-            return View();
+            
         }
 
     }

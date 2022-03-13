@@ -14,13 +14,10 @@ namespace Pharma.Models
         }
 
         public int IdPedido { get; set; }
-        public int IdProducto { get; set; }
         public int IdCliente { get; set; }
-        public int Cantidad { get; set; }
         public DateTime? FechaPedido { get; set; }
-        public string Estado { get; set; }
+        public int Estado { get; set; }
 
-        public virtual Producto IdProductoNavigation { get; set; }
         public virtual ICollection<Factura> Facturas { get; set; }
         public virtual ICollection<PedidoProducto> PedidoProductos { get; set; }
     }
