@@ -17,14 +17,6 @@ namespace Pharma.Controllers
             return View(listProducto);
         }
 
-        public IActionResult Create(Pedido pedido)
-        {
-            var _ped = _context.Pedidos.Find(pedido.IdPedido);
-            if(_ped != null && _ped.Estado == "Carrito")
-            {
-
-            }
-            return View("Cart");
-        }
+        
     }
 }

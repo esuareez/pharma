@@ -102,31 +102,47 @@ namespace Pharma.Controllers
 
         public IActionResult addCart(int id)
         {
-            var pedido = _context.Pedidos.Where(s => s.Estado == "Carrito" && s.IdCliente == int.Parse(HttpContext.Request.Cookies["userId"])).FirstOrDefault();
-            if(pedido != null)
+            int idUser = int.Parse(HttpContext.Request.Cookies["userId"]);
+            if(idUser > 0)
             {
-                var pedprod = _context.PedidoProductos.Where(s => s.Idpedido == pedido.IdPedido  && s.Idproducto == id); //Si el producto existe en el pedido, retorna al carrito.
-                if(pedprod.Any())
+                var pedido = _context.Pedidos.Where(s => s.Estado == 1 && s.IdCliente == idUser).FirstOrDefault();
+                if (pedido != null)
                 {
-                    return RedirectToAction("Cart","Pedido");
+                    var pedprod = _context.PedidoProductos.Where(s => s.Idpedido == pedido.IdPedido && s.Idproducto == id); //Si el producto existe en el pedido, retorna al carrito.
+                    if (pedprod.Any())
+                    {
+                        return RedirectToAction("Cart", "Pedido");
+                    }
+                    else
+                    {
+                        PedidoProducto pp = new PedidoProducto();
+                        pp.Idproducto = id;
+                        pp.Idpedido = pedido.IdPedido;
+                        pp.Cantidad = 1;
+                        _context.PedidoProductos.Add(pp);
+                    }
                 }
                 else
                 {
+                    Pedido _pedido = new Pedido();
+                    _pedido.Estado = 1;
+                    _pedido.IdCliente = idUser;
+                    _context.Pedidos.Add(_pedido);
+
                     PedidoProducto pp = new PedidoProducto();
                     pp.Idproducto = id;
                     pp.Idpedido = pedido.IdPedido;
                     pp.Cantidad = 1;
                     _context.PedidoProductos.Add(pp);
-                    _context.SaveChanges();
                 }
+                _context.SaveChanges();
+                return RedirectToAction("Shop", "Cliente");
             }
             else
             {
-                Pedido _pedido = new Pedido();
-                _pedido.Estado = "Carrito";
-                _pedido.IdCliente = int.Parse(HttpContext.Request.Cookies["userId"]);
+                return RedirectToAction("Login","Cliente");
             }
-            return View("Shop","Cliente");
+            
         }
 
     }
