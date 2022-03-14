@@ -19,7 +19,8 @@ namespace Pharma.Controllers
         }
         public IActionResult Index()
         {
-            return View();
+            IEnumerable<Producto> listProducto = _context.Productos;
+            return View(listProducto);
         }
         public IActionResult Login()
         {

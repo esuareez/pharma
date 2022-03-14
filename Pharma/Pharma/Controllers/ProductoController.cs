@@ -102,9 +102,10 @@ namespace Pharma.Controllers
 
         public IActionResult addCart(int id)
         {
-            int idUser = int.Parse(HttpContext.Request.Cookies["userId"]);
-            if(idUser > 0)
+           
+            if (HttpContext.Request.Cookies["userId"] != null)
             {
+                int idUser = int.Parse(HttpContext.Request.Cookies["userId"]);
                 var pedido = _context.Pedidos.Where(s => s.Estado == 1 && s.IdCliente == idUser).FirstOrDefault();
                 if (pedido != null)
                 {
