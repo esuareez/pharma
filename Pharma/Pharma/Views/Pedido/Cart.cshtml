@@ -3,6 +3,7 @@
 	ViewData["Title"] = "Cart";
 	Layout = "~/Views/Shared/layout.cshtml";
 	double total = 0;
+	int[] pedido;
 }
 
 <!-- breadcrumb-section -->
@@ -51,12 +52,13 @@
 										<td class="product-image"><img src="data:image/*;base64,@Convert.ToBase64String(item.IdproductoNavigation.Img)" width="60px" alt=""></td>
 										<td class="product-name">@item.IdproductoNavigation.Nombre</td>
 										<td class="product-price">@item.IdproductoNavigation.PrecioVenta</td>
-										<td class="product-quantity"><input type="number" min="1" max=@item.IdproductoNavigation.Cantidad value=@item.Cantidad></td>
+										<td class="product-quantity"><input id="cantidad" name="cantidad[]" type="number" min="1" max=@item.IdproductoNavigation.Cantidad value=@item.Cantidad></td>
 										<td class="product-total">@item.IdproductoNavigation.Cantidad</td>
 										</tr>
+										<input hidden name="idproducto[]" value="@item.Idproducto"/>
 									}
 									
-									@*@total = total + (@item.Cantidad * @item.IdproductoNavigation.PrecioVenta);*@
+									@*@total += (@item.Cantidad * @item.IdproductoNavigation.PrecioVenta);*@
 								}
 								
 							</tbody>
@@ -90,18 +92,10 @@
 							</tbody>
 						</table>
 						<div class="cart-buttons">
-							<a href="cart.html" class="boxed-btn">Update Cart</a>
+							<a onclick="Update()" class="boxed-btn">Update Cart</a>
 							<a href="checkout.html" class="boxed-btn black">Check Out</a>
-						</div>
-					</div>
-
-					<div class="coupon-section">
-						<h3>Apply Coupon</h3>
-						<div class="coupon-form-wrap">
-							<form action="index.html">
-								<p><input type="text" placeholder="Coupon"></p>
-								<p><input type="submit" value="Apply"></p>
-							</form>
+							<br>
+							<a asp-controller="Cliente" asp-action="Shop" class="boxed-btn black">Seguir comprando</a>
 						</div>
 					</div>
 
@@ -109,6 +103,27 @@
 			</div>
 		</div>
 	</div>
+
+
 }
+
+
+
+<script>
+    var Update = function () {
+		console.log("funciono");
+		var cant = $('input[name^="cantidad[]"]'); 
+		var idproducto = $('input[name^="idproducto[]"]');
+         var url = '@Url.Action("Update", "Pedido")';
+        $.ajax({
+            type: "POST",
+            url: url,
+            data: { cantidad: cant, idproducto: idproducto },
+            success: function (result) {
+                console.log("funciono");
+            }
+        })
+    }
+</script>
 <!-- end cart -->
 

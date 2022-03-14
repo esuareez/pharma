@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Pharma.Models;
 using System.Collections.Generic;
 using System.IO;
@@ -37,6 +38,13 @@ namespace Pharma.Controllers
             }
             return RedirectToAction("Cart", "Pedido");
         }
-        
+
+        [HttpPost]
+        [AllowAnonymous]
+        public IActionResult Update(string[] cantidad, string[] idproducto)
+        {
+            return RedirectToAction("Cart", "Pedido");
+        }
+
     }
 }
