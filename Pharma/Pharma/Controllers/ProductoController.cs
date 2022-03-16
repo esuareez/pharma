@@ -74,6 +74,15 @@ namespace Pharma.Controllers
             return View(producto);
         }
 
+        public IActionResult Remove(int? id)
+        {
+            var producto = _context.Productos.Find(id);
+
+            _context.Productos.Remove(producto);
+            _context.SaveChanges();
+            return RedirectToAction("Products");
+        }
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public IActionResult Edit(Producto producto, IFormFile Image)

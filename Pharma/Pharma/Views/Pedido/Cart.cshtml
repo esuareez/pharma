@@ -2,7 +2,7 @@
 @{
 	ViewData["Title"] = "Cart";
 	Layout = "~/Views/Shared/layout.cshtml";
-	double total = 0;
+	double total = ViewBag.Total;
 	int[] pedido;
 }
 
@@ -12,8 +12,8 @@
 			<div class="row">
 				<div class="col-lg-8 offset-lg-2 text-center">
 					<div class="breadcrumb-text">
-						<p>Fresh and Organic</p>
-						<h1>Cart</h1>
+						<p>La mejor calidad</p>
+						<h1>Carrito</h1>
 					</div>
 				</div>
 			</div>
@@ -58,7 +58,6 @@
 										<input hidden name="idproducto[]" value="@item.Idproducto"/>
 									}
 									
-									@*@total += (@item.Cantidad * @item.IdproductoNavigation.PrecioVenta);*@
 								}
 								
 							</tbody>
@@ -76,6 +75,7 @@
 									<th>Price</th>
 								</tr>
 							</thead>
+							
 							<tbody>
 								<tr class="total-data">
 									<td><strong>Subtotal: </strong></td>
@@ -112,15 +112,27 @@
 <script>
     var Update = function () {
 		console.log("funciono");
-		var cant = $('input[name^="cantidad[]"]'); 
+		var cant = $('input[name^="cantidad[]"]');
 		var idproducto = $('input[name^="idproducto[]"]');
+		var cantidad = [];
+		var idp = [];
+		for (let i = 0; i < cant.length; i++) {
+			 
+			 cantidad[i] = cant[i].value; 
+		}
+		for (let i = 0; i < cant.length; i++) {
+			 
+			 idp[i] = idproducto[i].value; 
+		}
+		console.log(idp);
+		
          var url = '@Url.Action("Update", "Pedido")';
         $.ajax({
             type: "POST",
             url: url,
-            data: { cantidad: cant, idproducto: idproducto },
+            data: { cantidad: cantidad, idproducto: idp },
             success: function (result) {
-                console.log("funciono");
+                document.location.reload();
             }
         })
     }

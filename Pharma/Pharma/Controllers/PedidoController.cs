@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Pharma.Models;
 using System.Collections.Generic;
@@ -16,12 +17,16 @@ namespace Pharma.Controllers
         }
         public IActionResult Cart()
         {
+            double total = 0;
             IEnumerable<PedidoProducto> listProducto = _context.PedidoProductos;
             foreach(var product in listProducto)
             {
                 product.IdproductoNavigation = _context.Productos.Find(product.Idproducto);
                 product.IdpedidoNavigation = _context.Pedidos.Find(product.Idpedido);
+                if (product.IdpedidoNavigation.IdCliente == int.Parse(HttpContext.Request.Cookies["userId"]))
+                    total += (product.IdproductoNavigation.PrecioVenta * product.Cantidad);
             }
+            ViewBag.Total = total;
             return View(listProducto);
         }
 
@@ -43,7 +48,21 @@ namespace Pharma.Controllers
         [AllowAnonymous]
         public IActionResult Update(string[] cantidad, string[] idproducto)
         {
-            return RedirectToAction("Cart", "Pedido");
+            int idUser = int.Parse(HttpContext.Request.Cookies["userId"]);
+            int idp = 0;
+            var pedido = _context.Pedidos.Where(s => s.Estado == 1 && s.IdCliente == idUser).FirstOrDefault();
+            if (pedido != null)
+            {
+                for (int i = 0; i < idproducto.Length; i++)
+                {
+                    idp = int.Parse(idproducto[i]);
+                    var pd = _context.PedidoProductos.Find(pedido.IdPedido,idp);
+                    pd.Cantidad = int.Parse(cantidad[i]);
+                    _context.PedidoProductos.Update(pd);
+                    _context.SaveChanges();
+                }
+            }
+            return Cart();
         }
 
     }
