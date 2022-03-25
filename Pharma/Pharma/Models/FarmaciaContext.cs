@@ -22,6 +22,7 @@ namespace Pharma.Models
         public virtual DbSet<Empleado> Empleados { get; set; }
         public virtual DbSet<Factura> Facturas { get; set; }
         public virtual DbSet<OrdenCompra> OrdenCompras { get; set; }
+        public virtual DbSet<OrdenProducto> OrdenProductos { get; set; }
         public virtual DbSet<Pedido> Pedidos { get; set; }
         public virtual DbSet<PedidoProducto> PedidoProductos { get; set; }
         public virtual DbSet<Producto> Productos { get; set; }
@@ -198,25 +199,11 @@ namespace Pharma.Models
 
                 entity.Property(e => e.IdOrComp).HasColumnName("ID_OrComp");
 
-                entity.Property(e => e.DescripcionProducto)
-                    .HasMaxLength(100)
-                    .HasColumnName("Descripcion_Producto")
-                    .IsFixedLength(true);
-
-                entity.Property(e => e.Estado)
-                    .HasMaxLength(50)
-                    .IsUnicode(false);
-
                 entity.Property(e => e.Fecha).HasColumnType("date");
 
                 entity.Property(e => e.IdEmpleado).HasColumnName("ID_Empleado");
 
                 entity.Property(e => e.IdProveedor).HasColumnName("ID_Proveedor");
-
-                entity.Property(e => e.Producto)
-                    .IsRequired()
-                    .HasMaxLength(7)
-                    .IsFixedLength(true);
 
                 entity.HasOne(d => d.IdEmpleadoNavigation)
                     .WithMany(p => p.OrdenCompras)
@@ -227,8 +214,30 @@ namespace Pharma.Models
                 entity.HasOne(d => d.IdProveedorNavigation)
                     .WithMany(p => p.OrdenCompras)
                     .HasForeignKey(d => d.IdProveedor)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK_OrdenCompra_Proveedor");
+            });
+
+            modelBuilder.Entity<OrdenProducto>(entity =>
+            {
+                entity.HasKey(e => new { e.IdOc, e.IdProducto });
+
+                entity.ToTable("OrdenProducto");
+
+                entity.Property(e => e.IdOc).HasColumnName("ID_OC");
+
+                entity.Property(e => e.IdProducto).HasColumnName("ID_Producto");
+
+                entity.HasOne(d => d.IdOcNavigation)
+                    .WithMany(p => p.OrdenProductos)
+                    .HasForeignKey(d => d.IdOc)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_OrdenProducto_OrdenCompra");
+
+                entity.HasOne(d => d.IdProductoNavigation)
+                    .WithMany(p => p.OrdenProductos)
+                    .HasForeignKey(d => d.IdProducto)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_OrdenProducto_Productos");
             });
 
             modelBuilder.Entity<Pedido>(entity =>

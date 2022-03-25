@@ -9,6 +9,7 @@ namespace Pharma.Models
     {
         public Producto()
         {
+            OrdenProductos = new HashSet<OrdenProducto>();
             PedidoProductos = new HashSet<PedidoProducto>();
         }
 
@@ -24,6 +25,7 @@ namespace Pharma.Models
         public int Estado { get; set; }
         public string Laboratorio { get; set; }
 
+        public virtual ICollection<OrdenProducto> OrdenProductos { get; set; }
         public virtual ICollection<PedidoProducto> PedidoProductos { get; set; }
     }
 }

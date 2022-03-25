@@ -17,6 +17,7 @@ namespace Pharma.Models
         public string Telefono { get; set; }
         public string Nombre { get; set; }
         public string Correo { get; set; }
+        public byte[] Img { get; set; }
 
         public virtual ICollection<OrdenCompra> OrdenCompras { get; set; }
     }
