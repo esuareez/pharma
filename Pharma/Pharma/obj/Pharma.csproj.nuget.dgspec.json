@@ -1,25 +1,21 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\eliam\\OneDrive - Pontificia Universidad Católica Madre y Maestra\\PUCMM ENE-ABR2022\\pharma\\Pharma\\Pharma\\Pharma.csproj": {}
+    "D:\\PUCMM\\ENEABR2022\\ISoftware\\pharma\\Pharma\\Pharma\\Pharma.csproj": {}
   },
   "projects": {
-    "C:\\Users\\eliam\\OneDrive - Pontificia Universidad Católica Madre y Maestra\\PUCMM ENE-ABR2022\\pharma\\Pharma\\Pharma\\Pharma.csproj": {
+    "D:\\PUCMM\\ENEABR2022\\ISoftware\\pharma\\Pharma\\Pharma\\Pharma.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\eliam\\OneDrive - Pontificia Universidad Católica Madre y Maestra\\PUCMM ENE-ABR2022\\pharma\\Pharma\\Pharma\\Pharma.csproj",
+        "projectUniqueName": "D:\\PUCMM\\ENEABR2022\\ISoftware\\pharma\\Pharma\\Pharma\\Pharma.csproj",
         "projectName": "Pharma",
-        "projectPath": "C:\\Users\\eliam\\OneDrive - Pontificia Universidad Católica Madre y Maestra\\PUCMM ENE-ABR2022\\pharma\\Pharma\\Pharma\\Pharma.csproj",
+        "projectPath": "D:\\PUCMM\\ENEABR2022\\ISoftware\\pharma\\Pharma\\Pharma\\Pharma.csproj",
         "packagesPath": "C:\\Users\\eliam\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\eliam\\OneDrive - Pontificia Universidad Católica Madre y Maestra\\PUCMM ENE-ABR2022\\pharma\\Pharma\\Pharma\\obj\\",
+        "outputPath": "D:\\PUCMM\\ENEABR2022\\ISoftware\\pharma\\Pharma\\Pharma\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
-        ],
         "configFilePaths": [
           "C:\\Users\\eliam\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net5.0"
@@ -73,12 +69,6 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "downloadDependencies": [
-            {
-              "name": "Microsoft.NETCore.App.Host.win-x64",
-              "version": "[5.0.13, 5.0.13]"
-            }
-          ],
           "frameworkReferences": {
             "Microsoft.AspNetCore.App": {
               "privateAssets": "none"
@@ -87,7 +77,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.101\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.201\\RuntimeIdentifierGraph.json"
         }
       }
     }

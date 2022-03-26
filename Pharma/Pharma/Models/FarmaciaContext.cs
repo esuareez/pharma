@@ -40,7 +40,7 @@ namespace Pharma.Models
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.HasAnnotation("Relational:Collation", "Modern_Spanish_CI_AS");
+            modelBuilder.HasAnnotation("Relational:Collation", "SQL_Latin1_General_CP1_CI_AS");
 
             modelBuilder.Entity<Cliente>(entity =>
             {
@@ -214,7 +214,7 @@ namespace Pharma.Models
                 entity.HasOne(d => d.IdProveedorNavigation)
                     .WithMany(p => p.OrdenCompras)
                     .HasForeignKey(d => d.IdProveedor)
-                    .HasConstraintName("FK_OrdenCompra_Proveedor");
+                    .HasConstraintName("FK_OrdenCompra_Proveedors");
             });
 
             modelBuilder.Entity<OrdenProducto>(entity =>
@@ -310,13 +310,10 @@ namespace Pharma.Models
 
             modelBuilder.Entity<Proveedor>(entity =>
             {
-                entity.HasKey(e => e.IdProveedor);
+                entity.HasKey(e => e.IdProveedor)
+                    .HasName("PK_Proveedor");
 
-                entity.ToTable("Proveedor");
-
-                entity.Property(e => e.IdProveedor)
-                    .ValueGeneratedNever()
-                    .HasColumnName("ID_Proveedor");
+                entity.Property(e => e.IdProveedor).HasColumnName("ID_Proveedor");
 
                 entity.Property(e => e.Correo)
                     .IsRequired()

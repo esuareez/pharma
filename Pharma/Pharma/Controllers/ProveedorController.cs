@@ -14,6 +14,12 @@ namespace Pharma.Controllers
         {
             _context = context;
         }
+
+        public IActionResult Proveedores()
+        {
+            IEnumerable<Proveedor> listProveedor = _context.Proveedors;
+            return View(listProveedor);
+        }
         public IActionResult Create()
         {
             return View();
@@ -21,7 +27,7 @@ namespace Pharma.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken] // que un bot no pueda enviar muchas request
-        public IActionResult Create(Proveedor proveedor, IFormFile Image)
+        public IActionResult Create(Proveedor proveedor, IFormFile Image, int ventana)
         {
 
             if (ModelState.IsValid)
@@ -40,10 +46,14 @@ namespace Pharma.Controllers
                     }
                     _context.Proveedors.Add(proveedor);
                     _context.SaveChanges();
+                    if(ventana != null)
+                        return RedirectToAction("Orders","Orden");
                     return RedirectToAction("Proveedores");
                 }
 
             }
+            if (ventana != null)
+                return RedirectToAction("Orders", "Orden");
             return View("Proveedores");
         }
     }

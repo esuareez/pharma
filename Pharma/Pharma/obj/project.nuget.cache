@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "49M3ZPYcSTH5z3svpPEwu5poglhDfAXLgibzxyi1o/g6dxZTGhCqTuRht79AUcwdxzZLpN5KYXde+iCCxQ/6Yw==",
+  "dgSpecHash": "7d1K2iH2JiLPLjTQnNkrxLkRpPdCdr69HHlrXyWSCV7avJ06xCpEs1QhRt1OFJ2YZbOfhV5ztGFBHpU9j1cpOg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\eliam\\OneDrive - Pontificia Universidad Católica Madre y Maestra\\PUCMM ENE-ABR2022\\pharma\\Pharma\\Pharma\\Pharma.csproj",
+  "projectFilePath": "D:\\PUCMM\\ENEABR2022\\ISoftware\\pharma\\Pharma\\Pharma\\Pharma.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\eliam\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\eliam\\.nuget\\packages\\microsoft.aspnetcore.html.abstractions\\2.2.0\\microsoft.aspnetcore.html.abstractions.2.2.0.nupkg.sha512",
@@ -129,8 +129,7 @@
     "C:\\Users\\eliam\\.nuget\\packages\\system.xml.readerwriter\\4.3.0\\system.xml.readerwriter.4.3.0.nupkg.sha512",
     "C:\\Users\\eliam\\.nuget\\packages\\system.xml.xdocument\\4.3.0\\system.xml.xdocument.4.3.0.nupkg.sha512",
     "C:\\Users\\eliam\\.nuget\\packages\\system.xml.xmldocument\\4.3.0\\system.xml.xmldocument.4.3.0.nupkg.sha512",
-    "C:\\Users\\eliam\\.nuget\\packages\\system.xml.xmlserializer\\4.3.0\\system.xml.xmlserializer.4.3.0.nupkg.sha512",
-    "C:\\Users\\eliam\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\5.0.13\\microsoft.netcore.app.host.win-x64.5.0.13.nupkg.sha512"
+    "C:\\Users\\eliam\\.nuget\\packages\\system.xml.xmlserializer\\4.3.0\\system.xml.xmlserializer.4.3.0.nupkg.sha512"
   ],
   "logs": []
 }

@@ -28,7 +28,7 @@ namespace Pharma.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken] // que un bot no pueda enviar muchas request
-        public IActionResult Create(Producto producto, IFormFile Image)
+        public IActionResult Create(Producto producto, IFormFile Image, int ventana)
         {
 
             if (ModelState.IsValid)
@@ -47,10 +47,14 @@ namespace Pharma.Controllers
                     }
                     _context.Productos.Add(producto);
                     _context.SaveChanges();
+                    if (ventana != null)
+                        return RedirectToAction("Orders", "Orden");
                     return RedirectToAction("Products");
                 }
 
             }
+            if (ventana != null)
+                return RedirectToAction("Orders", "Orden");
             return View("Products");
         }
 

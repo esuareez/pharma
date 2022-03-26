@@ -1,0 +1,61 @@
+﻿@model IEnumerable<Pharma.Models.Proveedor>
+@{
+    ViewData["Title"] = "Products";
+    Layout = "~/Views/Shared/layoutAdmin.cshtml";
+}
+
+<div id="main-content container-fluid">
+                <div class="page-heading">
+                    <div class="page-title">
+                        <div class="row">
+                            <div class="col-12 col-md-6 order-md-1 order-last">
+                                <h3>Seleccione un proveedor</h3>
+                                <p class="text-subtitle text-muted">Proveedores para la orden de compra.</p>
+                                 <a asp-controller="Proveedor" asp-action="Create" class="btn btn-success">Crear proveedor</a>
+                                 <br>
+                            </div>
+                        </div>
+                    </div>
+                @if (Model.Count() > 0)
+                {
+                <section class="section">
+                    <div class="card">
+                        <div class="card-body">
+                            <form method="post" asp-action="Create" asp-controller="Orden">
+                                <div class="col-md-4">
+                                    <label>Estado</label>
+                                </div>
+                                <div class="col-md-8 form-group">
+                                    <select class="choices form-select" name="id">
+                                    @foreach (var item in Model)
+                                    {
+                                                
+                                                        <option value=@item.IdProveedor>@item.Nombre</option>
+                                                
+                                    }
+                                    </select>
+                                     </div>
+                                     <div class="col-sm-12 d-flex justify-content-end">
+                                                    <button type="submit"
+                                                        class="btn btn-primary me-1 mb-1">Guardar cambios</button>
+                                                </div>
+                                    </form>
+                        </div>
+                    </div>
+
+                </section>
+        
+           }else{
+                <br><p>No existen registros de proovedores.</p>
+            }
+            </div>
+</div>
+        
+    
+        <script src="~/css/css-emp/vendors/simple-datatables/simple-datatables.js"></script>
+        <script>
+            // Simple Datatable
+            let table1 = document.querySelector('#table1');
+            let dataTable = new simpleDatatables.DataTable(table1);
+        </script>
+

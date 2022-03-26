@@ -1,6 +1,6 @@
-﻿@model IEnumerable<Pharma.Models.OrdenCompra>
+﻿@model IEnumerable<Pharma.Models.Proveedor>
 @{
-    ViewData["Title"] = "Products";
+    ViewData["Title"] = "Proveedores";
     Layout = "~/Views/Shared/layoutAdmin.cshtml";
 }
 
@@ -9,16 +9,16 @@
                     <div class="page-title">
                         <div class="row">
                             <div class="col-12 col-md-6 order-md-1 order-last">
-                                <h3>Ordenes de compra</h3>
-                                <p class="text-subtitle text-muted">Ver, modificar, eliminar las ordenes de compra.</p>
-                                 <a asp-controller="Orden" asp-action="SelecProveedor" class="btn btn-success">Crear orden</a>
+                                <h3>Proveedores</h3>
+                                <p class="text-subtitle text-muted">Ver, modificar, eliminar proveedores.</p>
+                                 <a asp-controller="Proveedor" asp-action="Create" class="btn btn-success">Crear proveedor</a>
                                  <br>
                             </div>
                             <div class="col-12 col-md-6 order-md-2 order-first">
                                 <nav aria-label="breadcrumb" class="breadcrumb-header float-start float-lg-end">
                                     <ol class="breadcrumb">
                                         <li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
-                                        <li class="breadcrumb-item active" aria-current="page">Products</li>
+                                        <li class="breadcrumb-item active" aria-current="page">Proveedores</li>
                                     </ol>
                                 </nav>
                             </div>
@@ -32,9 +32,10 @@
                             <table class="table table-striped" id="table1">
                                 <thead>
                                     <tr>
-                                        <th>Proveedor</th>
-                                        <th>Fecha</th>
-                                        <th>Monto a pagar</th>
+                                        <th>Nombre</th>
+                                        <th>Correo</th>
+                                        <th>Telefono</th>
+                                        <th>Direccion</th>
                                         <th>Acción</th>
                                     </tr>
                                 </thead>
@@ -42,12 +43,13 @@
                                     @foreach (var item in Model)
                                     {
                                         <tr>
-                                                <td>@item.IdProveedorNavigation.Nombre</td>
-                                                <td>@item.Fecha</td>
-                                                <td>@item.MontoPagar</td>
+                                                <td>@item.Nombre</td>
+                                                <td>@item.Correo</td>
+                                                <td>@item.Telefono</td>
+                                                <td>@item.Direccion</td>
                                                 <td>
-                                                    <a class="btn btn-success" asp-controller="Producto" asp-action="Edit" asp-route-id=@item.IdOrComp><i class="fa-solid fa-pen-to-square"></i></a>
-                                                    @*<a class="btn btn-danger"><i class="fa-solid fa-trash-can"></i></a>*@
+                                                    <a class="btn btn-success" ><i class="fa-solid fa-pen-to-square"></i></a>
+                                                    <a class="btn btn-danger"><i class="fa-solid fa-trash-can"></i></a>
                                                 </td>
                                         </tr>
                                     }
@@ -59,7 +61,7 @@
                 </section>
         
            }else{
-                <br><p>No existen registros de una orden de compra.</p>
+                <p>No existen registros de proveedores.</p>
             }
             </div>
 </div>

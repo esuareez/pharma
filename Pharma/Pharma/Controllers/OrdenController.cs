@@ -17,7 +17,30 @@ namespace Pharma.Controllers
         public IActionResult Orders()
         {
             IEnumerable<OrdenCompra> listOrden = _context.OrdenCompras;
-            return View(listOrden);
+            foreach (var compra in listOrden)
+            {
+                compra.IdProveedorNavigation = _context.Proveedors.Find(compra.IdProveedor);
+            }
+                return View(listOrden);
+        }
+
+        public IActionResult SelecProveedor()
+        {
+            IEnumerable<Proveedor> listProveedor = _context.Proveedors;
+            return View(listProveedor);
+        }
+
+        public IActionResult Create(int id)
+        {
+            OrdenCompra compra = new OrdenCompra();
+            compra.IdProveedor = id;
+            compra.Fecha = System.DateTime.Now.Date;
+            compra.IdEmpleado = int.Parse(HttpContext.Request.Cookies["emplId"]);
+            compra.MontoPagar = 0;
+            compra.Estado = 0;
+            _context.OrdenCompras.Add(compra);
+            _context.SaveChanges();
+            return RedirectToAction("Orders");
         }
     }
 }
