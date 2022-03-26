@@ -1,10 +1,12 @@
-﻿using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.RazorPages;
 using Pharma.Models;
+using RestSharp;
+using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
+using System.Security.Claims;
 namespace Pharma.Controllers
 {
     public class OrdenController : Controller
@@ -40,7 +42,33 @@ namespace Pharma.Controllers
             compra.Estado = 0;
             _context.OrdenCompras.Add(compra);
             _context.SaveChanges();
+            CookieOptions cookieOptions = new CookieOptions();
+            cookieOptions.Expires = new DateTimeOffset(DateTime.Now.AddDays(1));
+            HttpContext.Response.Cookies.Append("idOC", compra.IdOrComp.ToString(), cookieOptions);
+            return RedirectToAction("SelecProducto");
+        }
+
+        public IActionResult Cart(int id, int idp, int cantidad)
+        {
+            OrdenProducto ordenProducto = new OrdenProducto();
+            ordenProducto.IdOc = id;
+            ordenProducto.Cantidad = cantidad;  
+            ordenProducto.IdProducto = idp;
+            _context.OrdenProductos.Add(ordenProducto);
+            _context.SaveChanges();
+            CookieOptions cookieOptions = new CookieOptions();
+            cookieOptions.Expires = new DateTimeOffset(DateTime.Now.AddDays(-1));
+            if (Request.Cookies["idOC"] != null)
+            {
+                Response.Cookies.Delete("idOC", cookieOptions);
+            }
             return RedirectToAction("Orders");
+        }
+
+        public IActionResult SelecProducto()
+        {
+            IEnumerable<Producto> listProducto = _context.Productos;
+            return View(listProducto);
         }
     }
 }

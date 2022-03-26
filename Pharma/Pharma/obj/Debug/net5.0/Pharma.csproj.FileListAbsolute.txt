@@ -327,3 +327,4 @@ D:\PUCMM\ENEABR2022\ISoftware\pharma\Pharma\Pharma\obj\Debug\net5.0\Pharma.genru
 D:\PUCMM\ENEABR2022\ISoftware\pharma\Pharma\Pharma\obj\Debug\net5.0\ref\Pharma.dll
 D:\PUCMM\ENEABR2022\ISoftware\pharma\Pharma\Pharma\obj\Debug\net5.0\Razor\Views\Proveedor\Proveedores.cshtml.g.cs
 D:\PUCMM\ENEABR2022\ISoftware\pharma\Pharma\Pharma\obj\Debug\net5.0\Razor\Views\Orden\SelecProveedor.cshtml.g.cs
+D:\PUCMM\ENEABR2022\ISoftware\pharma\Pharma\Pharma\obj\Debug\net5.0\Razor\Views\Orden\SelecProducto.cshtml.g.cs
