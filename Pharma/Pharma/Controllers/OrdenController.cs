@@ -29,7 +29,8 @@ namespace Pharma.Controllers
         public IActionResult SelecProveedor()
         {
             IEnumerable<Proveedor> listProveedor = _context.Proveedors;
-            return View(listProveedor);
+            ViewBag.Proveedors = listProveedor;
+            return View();
         }
 
         public IActionResult Create(int id)
@@ -56,12 +57,12 @@ namespace Pharma.Controllers
             ordenProducto.IdProducto = idp;
             _context.OrdenProductos.Add(ordenProducto);
             _context.SaveChanges();
-            CookieOptions cookieOptions = new CookieOptions();
+            /*CookieOptions cookieOptions = new CookieOptions();
             cookieOptions.Expires = new DateTimeOffset(DateTime.Now.AddDays(-1));
             if (Request.Cookies["idOC"] != null)
             {
                 Response.Cookies.Delete("idOC", cookieOptions);
-            }
+            }*/
             return RedirectToAction("Orders");
         }
 

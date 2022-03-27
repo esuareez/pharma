@@ -46,8 +46,8 @@
                                     
                                     @foreach (var item in Model)
                                     {
-                                        <input type="hidden" name="id" value=@oc>
-                                        <input type="hidden" name="idprod" value=@item.Id>
+                                        @*<input type="hidden" name="id" value=@oc>
+                                        <input type="hidden" name="idprod" value=@item.Id>*@
                                         <tr>
                                                 
                                                 <td>@item.Nombre</td>
@@ -55,7 +55,7 @@
                                                 <td>@item.PrecioVenta</td>
                                                 <td><input name="Cantidad" type="number" min="1" value="1"></td>
                                                 <td>
-                                                    <button class="btn btn-success" type="submit">Añadir</button>
+                                                    <a class="btn btn-success" asp-controller="Orden" asp-action="Cart" asp-route-id=@oc asp-route-idp="@item.Id" asp-route-cantidad="Cantidad"><i class="fa-solid fa-pen-to-square"></i></a>
                                                     @*<a class="btn btn-danger"><i class="fa-solid fa-trash-can"></i></a>*@
                                                 </td>
                                         </tr>
