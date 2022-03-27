@@ -29,7 +29,9 @@ namespace Pharma.Controllers
         public IActionResult SelecProveedor()
         {
             IEnumerable<Proveedor> listProveedor = _context.Proveedors;
+            IEnumerable<Producto> listProducto = _context.Productos;
             ViewBag.Proveedors = listProveedor;
+            ViewBag.Productos = listProducto;
             return View();
         }
 
@@ -42,34 +44,30 @@ namespace Pharma.Controllers
             compra.MontoPagar = 0;
             compra.Estado = 0;
             _context.OrdenCompras.Add(compra);
-            _context.SaveChanges();
-            CookieOptions cookieOptions = new CookieOptions();
-            cookieOptions.Expires = new DateTimeOffset(DateTime.Now.AddDays(1));
-            HttpContext.Response.Cookies.Append("idOC", compra.IdOrComp.ToString(), cookieOptions);
+            _context.SaveChanges();            
             return RedirectToAction("SelecProducto");
         }
 
-        public IActionResult Cart(int id, int idp, int cantidad)
+        public IActionResult Cart(int idp, int cantidad)
         {
+            var ordencompra = _context.OrdenCompras.Where(s => s.Estado == 0).FirstOrDefault();
             OrdenProducto ordenProducto = new OrdenProducto();
-            ordenProducto.IdOc = id;
+            ordenProducto.IdOc = ordencompra.IdOrComp;
             ordenProducto.Cantidad = cantidad;  
             ordenProducto.IdProducto = idp;
             _context.OrdenProductos.Add(ordenProducto);
             _context.SaveChanges();
-            /*CookieOptions cookieOptions = new CookieOptions();
-            cookieOptions.Expires = new DateTimeOffset(DateTime.Now.AddDays(-1));
-            if (Request.Cookies["idOC"] != null)
-            {
-                Response.Cookies.Delete("idOC", cookieOptions);
-            }*/
-            return RedirectToAction("Orders");
+            return RedirectToAction("SelecProducto");
         }
 
         public IActionResult SelecProducto()
         {
+            var ordencompra = _context.OrdenCompras.Where(s => s.Estado == 0).FirstOrDefault();
+            ViewBag.OrdenCompra = ordencompra.IdOrComp;
             IEnumerable<Producto> listProducto = _context.Productos;
-            return View(listProducto);
+            IEnumerable<OrdenProducto> ordenProductos = _context.OrdenProductos;
+            ViewBag.Productos = listProducto;
+            return View(ordenProductos);
         }
     }
 }

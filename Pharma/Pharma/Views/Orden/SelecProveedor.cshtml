@@ -17,11 +17,12 @@
                             </div>
                         </div>
                     </div>
-               
+               <form method="post" asp-action="Create" asp-controller="Orden">
                 <section class="section">
+                    
                     <div class="card">
                         <div class="card-body">
-                            <form method="post" asp-action="Create" asp-controller="Orden">
+                            
                                 <div class="col-md-4">
                                     <label>Proveedores</label>
                                 </div>
@@ -30,22 +31,22 @@
                                     <select class="choices form-select" name="id">
                                     @foreach (var item in ViewBag.Proveedors)
                                     {
-                                                
-                                                        <option value=@item.IdProveedor>@item.Nombre</option>
+
+                                        <option value=@item.IdProveedor>@item.Nombre</option>
                                                 
                                     }
                                     </select>
-                                     </div>
-                                     <div class="col-sm-12 d-flex justify-content-end">
-                                                    <button type="submit"
-                                                        class="btn btn-primary me-1 mb-1">Guardar cambios</button>
-                                                </div>
-                                    </form>
+                                </div>     
                         </div>
                     </div>
 
+                    
+                    <div class="col-sm-12 d-flex justify-content-end">
+                        <button type="submit"
+                            class="btn btn-primary me-1 mb-1">Guardar cambios</button>
+                    </div>
                 </section>
-        
+        </form>
           
             </div>
 </div>

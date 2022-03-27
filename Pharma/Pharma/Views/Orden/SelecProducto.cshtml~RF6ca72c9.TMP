@@ -5,9 +5,6 @@
     int oc = int.Parse(Context.Request.Cookies["idOC"]);
 }
 
-<!-- Include Choices CSS -->
-    <link rel="stylesheet" href="~/css/css-emp/vendors/choices.js/choices.min.css" />
-
 <div id="main-content container-fluid">
                 <div class="page-heading">
                     <div class="page-title">
@@ -37,33 +34,19 @@
                             <div class="card-content">
                                 <div class="card-body">
                                     <div class="row">
-                                         <form method="post" asp-action="Cart" asp-controller="Orden">
-                                        <div class="col-4">
+                                        <div class="col-md-6 mb-2">
                                             <h6>Productos</h6>
                                             <div class="form-group">
-                                               
-                                                <select class="choices form-select" name="idp">
+                                                <form method="post" asp-action="Cart" asp-controller="Orden">
+                                                <select class="choices form-select">
                                                     @foreach (var item in ViewBag.Productos)
                                                      {
                                                         <option value=@item.Id>@item.Nombre</option>
                                                     }
                                                 </select>
-                                                
+                                                </form>
                                             </div>
                                         </div>
-                                        <div class="col-4">
-                                                <label>Cantidad</label>
-                                                <div class="form-group">
-                                                    <input type="number" id="contact-info" class="form-control"
-                                                        name="cantidad" placeholder="10">
-                                                </div>
-                                        </div>
-                                                <div class="col-4">
-                                                    <button type="submit"
-                                                        class="btn btn-primary me-1 mb-1">Añadir a la orden</button>
-                                                </div>
-                                                
-                                                </form>
                                     </div>
                                 </div>
                             </div>
@@ -91,18 +74,19 @@
                                 <tbody>
                                     @foreach (var item in Model)
                                     {
-                                        @if(@item.IdOc == ViewBag.OrdenCompra)
-                                        {
-                                            <tr>
-                                                    <td>@item.IdProductoNavigation.Nombre</td>
-                                                    <td>@item.IdProductoNavigation.TipoProducto</td>
-                                                    <td>@item.IdProductoNavigation.PrecioCompra</td>
-                                                    <td>@item.Cantidad</td>
-                                                    <td>
-                                                        <a class="btn btn-danger"><i class="fa-solid fa-trash-can"></i></a>
-                                                    </td>
-                                            </tr>
-                                        }    
+                                        @*<input type="hidden" name="id" value=@oc>
+                                        <input type="hidden" name="idprod" value=@item.Id>*@
+                                        <tr>
+                                                
+                                                <td>@item.IdProductoNavigation.Nombre</td>
+                                                <td>@item.IdProductoNavigation.TipoProducto</td>
+                                                <td>@item.IdProductoNavigation.PrecioCompra</td>
+                                                <td>@item.Cantidad</td>
+                                                <td>
+                                                    <a class="btn btn-success" asp-controller="Orden" asp-action="Cart" asp-route-id=@oc asp-route-idp="@item.Id" asp-route-cantidad="Cantidad"><i class="fa-solid fa-pen-to-square"></i></a>
+                                                    @*<a class="btn btn-danger"><i class="fa-solid fa-trash-can"></i></a>*@
+                                                </td>
+                                        </tr>
                                     }
                                 </tbody>
                             </table>
@@ -124,10 +108,10 @@
             let table1 = document.querySelector('#table1');
             let dataTable = new simpleDatatables.DataTable(table1);
         </script>
-        <script src="~/css/css-emp/vendors/perfect-scrollbar/perfect-scrollbar.min.js"></script>
-        <script src="~/css/css-emp/js/bootstrap.bundle.min.js"></script>
+        <script src="assets/vendors/perfect-scrollbar/perfect-scrollbar.min.js"></script>
+        <script src="assets/js/bootstrap.bundle.min.js"></script>
 
         <!-- Include Choices JavaScript -->
-        <script src="~/css/css-emp/vendors/choices.js/choices.min.js"></script>
-        <script src="~/css/css-emp/js/main.js"></script>
+        <script src="assets/vendors/choices.js/choices.min.js"></script>
+        <script src="assets/js/main.js"></script>
 
