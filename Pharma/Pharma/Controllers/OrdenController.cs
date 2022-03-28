@@ -300,7 +300,7 @@ namespace Pharma.Controllers
             orden.IdProveedorNavigation = _context.Proveedors.Find(orden.IdProveedor);
             ViewBag.Compra = orden;
             ViewBag.Proveedors = proveedors;
-
+            
             return View(listProducto);
         }
     }
