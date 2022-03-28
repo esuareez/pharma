@@ -69,5 +69,31 @@ namespace Pharma.Controllers
             ViewBag.Productos = listProducto;
             return View(ordenProductos);
         }
+
+        public IActionResult Remove(int idp)
+        {
+            var ordencompra = _context.OrdenCompras.Where(s => s.Estado == 0).FirstOrDefault();
+            var pd = _context.OrdenProductos.Find(ordencompra.IdOrComp, idp);
+            _context.OrdenProductos.Remove(pd);
+            _context.SaveChanges();
+            return RedirectToAction("SelecProducto");
+        }
+        public IActionResult EndOC()
+        {
+            var ordencompra = _context.OrdenCompras.Where(s => s.Estado == 0).FirstOrDefault();
+            ordencompra.Estado = 1;
+            IEnumerable<OrdenProducto> ordenProductos = _context.OrdenProductos;
+            foreach (var item in ordenProductos)
+            {
+                item.IdProductoNavigation = _context.Productos.Find(item.IdProducto);
+                if (ordencompra.IdOrComp == item.IdOc)
+                {
+                    ordencompra.MontoPagar += (item.Cantidad * item.IdProductoNavigation.PrecioCompra);
+                }
+            }
+            _context.OrdenCompras.Update(ordencompra);
+            _context.SaveChanges();
+            return RedirectToAction("Orders");
+        }
     }
 }
