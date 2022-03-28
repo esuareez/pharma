@@ -52,5 +52,60 @@ namespace Pharma.Controllers
             }
             return View("Proveedores");
         }
+
+
+        public IActionResult Edit(int? id)
+        {
+
+            if (id == null || id == 0)
+            {
+                return NotFound();
+            }
+            // Obtener cliente
+
+            var proveedor = _context.Proveedors.Find(id);
+
+
+            if (proveedor == null)
+            {
+                return NotFound();
+            }
+
+            return View(proveedor);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Edit(Proveedor proveedor, IFormFile Image)
+        {
+
+            if (Image != null)
+            {
+                using (var ms = new MemoryStream())
+                {
+                    Image.CopyTo(ms);
+                    proveedor.Img = ms.ToArray();
+                }
+                _context.Proveedors.Update(proveedor);
+            }
+            else
+            {
+                _context.Proveedors.Update(proveedor);
+                _context.Entry(proveedor).Property(o => o.Img).IsModified = false;
+            }
+
+            _context.SaveChanges();
+            return RedirectToAction("Proveedores");
+
+
+        }
+
+        public IActionResult Remove(int? id)
+        {
+            var proveedor = _context.Proveedors.Find(id);
+            _context.Proveedors.Remove(proveedor);
+            _context.SaveChanges();
+            return RedirectToAction("Proveedores");
+        }
     }
 }

@@ -48,8 +48,8 @@
                                                 <td>@item.Telefono</td>
                                                 <td>@item.Direccion</td>
                                                 <td>
-                                                    <a class="btn btn-success" ><i class="fa-solid fa-pen-to-square"></i></a>
-                                                    <a class="btn btn-danger"><i class="fa-solid fa-trash-can"></i></a>
+                                                    <a class="btn btn-success" asp-controller="Proveedor" asp-action="Edit" asp-route-id=@item.IdProveedor><i class="fa-solid fa-pen-to-square"></i></a>
+                                                    <a class="btn btn-danger" asp-controller="Proveedor" asp-action="Remove" asp-route-id=@item.IdProveedor><i class="fa-solid fa-trash-can"></i></a>
                                                 </td>
                                         </tr>
                                     }
