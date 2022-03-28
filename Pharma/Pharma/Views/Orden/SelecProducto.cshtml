@@ -15,7 +15,7 @@
                 <div class="col-12 col-md-6 order-md-1 order-last">
                     <h3>Productos</h3>
                     <p class="text-subtitle text-muted">Ver, modificar, eliminar productos.</p>
-                    <a asp-controller="Producto" asp-action="Create" class="btn btn-success">Crear producto</a>
+                    <a asp-controller="Orden" asp-action="CreateProduct" class="btn btn-success justify-content-end">Crear producto</a>
                     <br>
                 </div>
                 <div class="col-12 col-md-6 order-md-2 order-first">
@@ -95,7 +95,7 @@
                                 <td>@item.IdProductoNavigation.PrecioCompra</td>
                                 <td>@item.Cantidad</td>
                                 <td>
-                                    <a class="btn btn-danger" asp-action="Remove" asp-controller="Orden" asp-route-idp=@item.IdProducto><i class="fa-solid fa-trash-can"></i></a>
+                                    <a class="btn btn-danger justify-content-end" asp-action="Remove" asp-controller="Orden" asp-route-idp=@item.IdProducto><i class="fa-solid fa-trash-can"></i></a>
                                 </td>
                             </tr>
                             }

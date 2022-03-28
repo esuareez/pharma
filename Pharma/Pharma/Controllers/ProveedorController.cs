@@ -46,14 +46,10 @@ namespace Pharma.Controllers
                     }
                     _context.Proveedors.Add(proveedor);
                     _context.SaveChanges();
-                    if(ventana != null)
-                        return RedirectToAction("Orders","Orden");
                     return RedirectToAction("Proveedores");
                 }
 
             }
-            if (ventana != null)
-                return RedirectToAction("Orders", "Orden");
             return View("Proveedores");
         }
     }

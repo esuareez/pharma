@@ -5,6 +5,7 @@ using Pharma.Models;
 using RestSharp;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Security.Claims;
 namespace Pharma.Controllers
@@ -82,6 +83,7 @@ namespace Pharma.Controllers
         {
             var ordencompra = _context.OrdenCompras.Where(s => s.Estado == 0).FirstOrDefault();
             ordencompra.Estado = 1;
+            
             IEnumerable<OrdenProducto> ordenProductos = _context.OrdenProductos;
             foreach (var item in ordenProductos)
             {
@@ -94,6 +96,72 @@ namespace Pharma.Controllers
             _context.OrdenCompras.Update(ordencompra);
             _context.SaveChanges();
             return RedirectToAction("Orders");
+        }
+
+        public ActionResult CreateProduct()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken] // que un bot no pueda enviar muchas request
+        public IActionResult CreateProduct(Producto producto, IFormFile Image)
+        {
+
+            if (ModelState.IsValid)
+            {
+                var prod = _context.Productos.Where(s => s.Nombre == producto.Nombre && s.Laboratorio == producto.Laboratorio);
+                if (prod.Any())
+                {
+                    TempData["mensaje"] = "Ya existe un producto de este laboratorio.";
+                }
+                else
+                {
+                    using (var ms = new MemoryStream())
+                    {
+                        Image.CopyTo(ms);
+                        producto.Img = ms.ToArray();
+                    }
+                    _context.Productos.Add(producto);
+                    _context.SaveChanges();
+                    return RedirectToAction("SelecProducto");
+                }
+
+            }
+            return View("SelecProducto");
+        }
+
+        public IActionResult CreateProveedor()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken] // que un bot no pueda enviar muchas request
+        public IActionResult CreateProveedor(Proveedor proveedor, IFormFile Image)
+        {
+
+            if (ModelState.IsValid)
+            {
+                var ordn = _context.Proveedors.Where(s => s.Nombre == proveedor.Nombre);
+                if (ordn.Any())
+                {
+                    TempData["mensaje"] = "Ya existe este proveedor.";
+                }
+                else
+                {
+                    using (var ms = new MemoryStream())
+                    {
+                        Image.CopyTo(ms);
+                        proveedor.Img = ms.ToArray();
+                    }
+                    _context.Proveedors.Add(proveedor);
+                    _context.SaveChanges();
+                    return RedirectToAction("SelecProveedor");
+                }
+
+            }
+            return View("SelecProveedor");
         }
     }
 }
