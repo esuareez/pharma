@@ -1,0 +1,133 @@
+﻿@model IEnumerable<Pharma.Models.OrdenProducto>
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/layoutAdmin.cshtml";
+    IEnumerable<Pharma.Models.Proveedor> proveedor = (IEnumerable<Pharma.Models.Proveedor>)ViewBag.Proveedors;
+    OrdenCompra oc = (OrdenCompra)ViewBag.Compra;
+}
+
+<!-- Include Choices CSS -->
+    <link rel="stylesheet" href="~/css/css-emp/vendors/choices.js/choices.min.css" />
+
+<div id="main-content container-fluid">
+    <div class="page-heading">
+        <div class="page-title">
+            <div class="row">
+                <div class="col-12 col-md-6 order-md-1 order-last">
+                    <h3>Editar orden de compra</h3>
+                    
+                </div>
+            </div>
+        </div>
+
+
+        @if (Model.Count() > 0)
+        {
+        <section class="section">
+            <div class="card">
+                <div class="card-body">
+                            <div class="container">
+                                    <h3>Proveedores</h3>
+                                        <div class="col-md-8 form-group">
+                                            <select id="proveedor" class="choices form-select" asp-for=@oc.IdProveedor>
+                                            @foreach (var item in proveedor)
+                                            {
+                                                <option value=@item.IdProveedor>@item.Nombre</option>
+                                                
+                                            }
+                                            </select>
+                            </div>
+
+                    <h3>Productos seleccionados</h3>
+                    <table class="table table-striped" id="table1">
+                        <thead>
+                            <tr>
+                                <th>Nombre</th>
+                                <th>Tipo</th>
+                                <th>Precio</th>
+                                <th>Cantidad</th>
+                                <th>Acción</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                @if(item.IdOc == oc.IdOrComp)
+                                    {
+                                        <tr>
+                                            <td>@item.IdProductoNavigation.Nombre</td>
+                                            <td>@item.IdProductoNavigation.TipoProducto</td>
+                                            <td>@item.IdProductoNavigation.PrecioCompra</td>
+                                            <td><input id="cantidad" name="cantidad[]" type="number" min="1" value=@item.Cantidad></td>
+                                            <td>
+                                                <a class="btn btn-danger justify-content-end" asp-action="Remove" asp-controller="Orden" asp-route-idp=@item.IdProducto><i class="fa-solid fa-trash-can"></i></a>
+                                            </td>
+                                            <input hidden name="idproducto[]" value="@item.IdProducto"/>
+                                        </tr>
+                                    }
+                                    
+                            }
+                        </tbody>
+                    </table>
+                </div>
+                
+            </div>
+            
+        </section>
+        <div class="d-flex justify-content-end">
+            <a class="btn btn-success mr-3" onclick="Update()">Actualizar orden</a>
+        </div>
+        
+
+        }else{
+
+        }
+    </div>
+</div>
+        
+    
+        <script src="~/css/css-emp/vendors/simple-datatables/simple-datatables.js"></script>
+        <script>
+            // Simple Datatable
+            let table1 = document.querySelector('#table1');
+            let dataTable = new simpleDatatables.DataTable(table1);
+        </script>
+        <script src="~/css/css-emp/vendors/perfect-scrollbar/perfect-scrollbar.min.js"></script>
+        <script src="~/css/css-emp/js/bootstrap.bundle.min.js"></script>
+
+        <!-- Include Choices JavaScript -->
+        <script src="~/css/css-emp/vendors/choices.js/choices.min.js"></script>
+        <script src="~/css/css-emp/js/main.js"></script>
+
+        <script>
+    var Update = function () {
+		console.log("funciono");
+		var cant = $('input[name^="cantidad[]"]');
+		var idproducto = $('input[name^="idproducto[]"]');
+        var idorden = @oc.IdOrComp;
+        var idproveedor = $('#proveedor').val();
+        console.log("proveedor = " + idproveedor);
+		var cantidad = [];
+		var idp = [];
+		for (let i = 0; i < cant.length; i++) {
+			 
+			 cantidad[i] = cant[i].value; 
+		}
+		for (let i = 0; i < cant.length; i++) {
+			 
+			 idp[i] = idproducto[i].value; 
+		}
+		
+		
+         var url = '@Url.Action("Update", "Orden")';
+        $.ajax({
+            type: "POST",
+            url: url,
+            data: { cantidad: cantidad, idproducto: idp , idc: idorden, idpr: idproveedor},
+            success: function () {
+                location.href = '@Url.Action("Orders", "Orden")';
+            }
+        })
+    }
+</script>
+<!-- end cart -->

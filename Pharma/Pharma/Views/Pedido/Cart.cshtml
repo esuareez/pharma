@@ -94,8 +94,8 @@
 						<div class="cart-buttons">
 							<a onclick="Update()" class="boxed-btn">Update Cart</a>
 							<a href="checkout.html" class="boxed-btn black">Check Out</a>
-							<br>
-							<a asp-controller="Cliente" asp-action="Shop" class="boxed-btn black">Seguir comprando</a>
+							@*<br>
+							<a asp-controller="Cliente" asp-action="Shop" class="boxed-btn black">Seguir comprando</a>*@
 						</div>
 					</div>
 
@@ -131,8 +131,8 @@
             type: "POST",
             url: url,
             data: { cantidad: cantidad, idproducto: idp },
-            success: function (result) {
-                document.location.reload();
+            success: function () {
+                location.reload();
             }
         })
     }

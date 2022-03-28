@@ -215,94 +215,22 @@ namespace Pharma.Controllers
 
         [HttpPost]
         [AllowAnonymous]
-        public void Update(string[] cantidad, string[] idproducto, string idc, string idpr)
+        public IActionResult Update(string[] cantidad, string[] idproducto)
         {
             int idp = 0;
-            double total = 0;
-            int idcc = int.Parse(idc);
-            int idprv = int.Parse(idpr);
-            var productos = _context.OrdenProductos.Where(s => s.IdOc == idcc).FirstOrDefault();
-            if (productos != null)
+            var pedido = _context.Pedidos.Where(s => s.Estado == 1 && s.IdCliente == idUser).FirstOrDefault();
+            if (pedido != null)
             {
                 for (int i = 0; i < idproducto.Length; i++)
                 {
                     idp = int.Parse(idproducto[i]);
-                    var pd = _context.OrdenProductos.Find(idcc, productos.IdProducto);
+                    var pd = _context.PedidoProductos.Find(pedido.IdPedido, idp);
                     pd.Cantidad = int.Parse(cantidad[i]);
-                    _context.OrdenProductos.Update(pd);
+                    _context.PedidoProductos.Update(pd);
+                    _context.SaveChanges();
                 }
             }
-            var oc = _context.OrdenCompras.Find(idcc);
-            oc.IdProveedor = idprv;
-
-            IEnumerable<OrdenProducto> ordenProductos = _context.OrdenProductos;
-            foreach (var item in ordenProductos)
-            {
-                
-                item.IdProductoNavigation = _context.Productos.Find(item.IdProducto);
-                if (oc.IdOrComp == item.IdOc)
-                {
-                   total += (item.Cantidad * item.IdProductoNavigation.PrecioCompra);
-                }
-            }
-            oc.MontoPagar = total;
-            _context.OrdenCompras.Update(oc);
-            _context.SaveChanges();
-        }
-
-        public IActionResult Complete(int id)
-        {
-            var orden = _context.OrdenCompras.Find(id);
-            orden.Estado = 2;
-            _context.OrdenCompras.Update(orden);
-            IEnumerable<Producto> productos = _context.Productos;
-            foreach(var item in productos)
-            {
-                var pd = _context.OrdenProductos.Find(id, item.Id);
-                if(pd != null)
-                {
-                    item.Cantidad += pd.Cantidad;
-                    _context.Productos.Update(item);
-                }
-            }
-            _context.SaveChanges();
-            TempData["mensaje"] = "Orden de compra entregada.";
-            return RedirectToAction("Orders");
-        }
-
-        public IActionResult RemoveOC(int id)
-        {
-            IEnumerable<Producto> productos = _context.Productos;
-            foreach (var item in productos)
-            {
-                var pd = _context.OrdenProductos.Find(id, item.Id);
-                if (pd != null)
-                {
-                    _context.OrdenProductos.Remove(pd);
-                }
-            }
-            var orden = _context.OrdenCompras.Find(id);
-            _context.OrdenCompras.Remove(orden);
-            _context.SaveChanges();
-            TempData["mensaje"] = "Orden de compra eliminada con éxito.";
-            return RedirectToAction("Orders");
-        }
-
-        public IActionResult View(int id)
-        {
-            IEnumerable<OrdenProducto> listProducto = _context.OrdenProductos;
-            foreach (var item in listProducto)
-            {
-                item.IdProductoNavigation = _context.Productos.Find(item.IdProducto);
-            }
-            IEnumerable<Proveedor> proveedors = _context.Proveedors;
-            var orden = _context.OrdenCompras.Find(id);
-            orden.IdProveedorNavigation = _context.Proveedors.Find(orden.IdProveedor);
-            ViewBag.Compra = orden;
-            ViewBag.Proveedors = proveedors;
-
-            return View(listProducto);
+            return Cart();
         }
     }
-
 }

@@ -14,14 +14,7 @@
                                  <a asp-controller="Orden" asp-action="SelecProveedor" class="btn btn-success">Crear orden</a>
                                  <br>
                             </div>
-                            <div class="col-12 col-md-6 order-md-2 order-first">
-                                <nav aria-label="breadcrumb" class="breadcrumb-header float-start float-lg-end">
-                                    <ol class="breadcrumb">
-                                        <li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
-                                        <li class="breadcrumb-item active" aria-current="page">Products</li>
-                                    </ol>
-                                </nav>
-                            </div>
+                            
                         </div>
                     </div>
                 @if (Model.Count() > 0)
@@ -35,21 +28,42 @@
                                         <th>Proveedor</th>
                                         <th>Fecha</th>
                                         <th>Monto a pagar</th>
-                                        <th>Acción</th>
+                                        <th>Estado</th>
+                                        <th>Acciones</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     @foreach (var item in Model)
                                     {
+                                    @if(item.Estado > 0)
+                                    {
                                         <tr>
                                                 <td>@item.IdProveedorNavigation.Nombre</td>
                                                 <td>@item.Fecha</td>
                                                 <td>@item.MontoPagar</td>
+                                                @if(item.Estado == 1)
+                                                {
+                                                <td><span class="badge bg-warning">En proceso</span></td>
+                                                }
+                                                @if(item.Estado == 2)
+                                                {
+                                                <td><span class="badge bg-success">Entregada</span></td>
+                                                }
                                                 <td>
-                                                    <a class="btn btn-success" asp-controller="Producto" asp-action="Edit" asp-route-id=@item.IdOrComp><i class="fa-solid fa-pen-to-square"></i></a>
-                                                    @*<a class="btn btn-danger"><i class="fa-solid fa-trash-can"></i></a>*@
+                                                @if(item.Estado != 2)
+                                                {
+                                                    <a class="btn btn-success" asp-controller="Orden" asp-action="Complete" asp-route-id=@item.IdOrComp><i class="fa-solid fa-check"></i></a>
+                                                    <a class="btn btn-warning" asp-controller="Orden" asp-action="EOrden" asp-route-id=@item.IdOrComp><i class="fa-solid fa-pen-to-square"></i></a>
+                                                    <a class="btn btn-danger" asp-controller="Orden" asp-action="RemoveOC" asp-route-id=@item.IdOrComp><i class="fa-solid fa-trash-can"></i></a>
+                                                }
+                                                @if(item.Estado == 2)
+                                                {
+                                                    <a class="btn btn-dark" asp-controller="Orden" asp-action="View" asp-route-id=@item.IdOrComp><i class="fa-solid fa-eye"></i></a>
+                                                }
+                                                
                                                 </td>
                                         </tr>
+                                    }
                                     }
                                 </tbody>
                             </table>

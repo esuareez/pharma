@@ -46,7 +46,7 @@ namespace Pharma.Controllers
 
         [HttpPost]
         [AllowAnonymous]
-        public IActionResult Update(string[] cantidad, string[] idproducto)
+        public void Update(string[] cantidad, string[] idproducto)
         {
             int idUser = int.Parse(HttpContext.Request.Cookies["userId"]);
             int idp = 0;
@@ -62,7 +62,6 @@ namespace Pharma.Controllers
                     _context.SaveChanges();
                 }
             }
-            return Cart();
         }
 
     }
