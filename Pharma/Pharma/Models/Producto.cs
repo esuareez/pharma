@@ -24,6 +24,7 @@ namespace Pharma.Models
         public byte[] Img { get; set; }
         public int Estado { get; set; }
         public string Laboratorio { get; set; }
+        public int? Itbis { get; set; }
 
         public virtual ICollection<OrdenProducto> OrdenProductos { get; set; }
         public virtual ICollection<PedidoProducto> PedidoProductos { get; set; }

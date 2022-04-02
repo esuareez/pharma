@@ -289,6 +289,10 @@ namespace Pharma.Models
 
                 entity.Property(e => e.FechaVencimiento).HasColumnType("date");
 
+                entity.Property(e => e.Itbis)
+                    .HasColumnName("ITBIS")
+                    .HasDefaultValueSql("((0))");
+
                 entity.Property(e => e.Laboratorio)
                     .HasMaxLength(100)
                     .IsUnicode(false);

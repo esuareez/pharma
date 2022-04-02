@@ -15,8 +15,12 @@ namespace Pharma.Controllers
             _context = context;
         }
         public ActionResult Products()
-        {
+        { 
             IEnumerable<Producto> listProducto = _context.Productos;
+            IEnumerable<OrdenProducto> ordenCompras = _context.OrdenProductos;
+            IEnumerable<PedidoProducto> listPedidos = _context.PedidoProductos;
+            ViewBag.PedidoProducto = listPedidos;
+            ViewBag.OrdenProducto = ordenCompras;
             return View(listProducto);
         }
 
@@ -78,6 +82,7 @@ namespace Pharma.Controllers
         {
             var producto = _context.Productos.Find(id);
             _context.Productos.Remove(producto);
+            TempData["mensaje"] = producto.Nombre+" ha sido eliminado correctamente.";
             _context.SaveChanges();
             return RedirectToAction("Products");
         }

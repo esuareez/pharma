@@ -2,6 +2,8 @@
 @{
     ViewData["Title"] = "Products";
     Layout = "~/Views/Shared/layoutAdmin.cshtml";
+    bool exist = false;
+    int i = 0;
 }
 
 <div id="main-content container-fluid">
@@ -36,6 +38,7 @@
                                         <th>Tipo</th>
                                         <th>Precio</th>
                                         <th>Cantidad</th>
+                                        <th>ITBIS</th>
                                         <th>Acción</th>
                                     </tr>
                                 </thead>
@@ -47,9 +50,16 @@
                                                 <td>@item.TipoProducto</td>
                                                 <td>@item.PrecioVenta</td>
                                                 <td>@item.Cantidad</td>
+                                                @if(item.Itbis > 0)
+                                                {
+                                                    <td>Apto</td>
+                                                }
+                                                else{
+                                                    <td>No Apto</td>
+                                                }
                                                 <td>
                                                     <a class="btn btn-success" asp-controller="Producto" asp-action="Edit" asp-route-id=@item.Id><i class="fa-solid fa-pen-to-square"></i></a>
-                                                    <a class="btn btn-danger" asp-controller="Producto" asp-action="Remove" asp-route-id=@item.Id><i class="fa-solid fa-trash-can"></i></a>
+                                                    <a class="btn btn-danger" asp-controller="Producto" asp-action="Remove" asp-route-id=@item.Id><i class="fa-solid fa-trash-can"></i></a> 
                                                 </td>
                                         </tr>
                                     }
