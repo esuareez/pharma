@@ -5,14 +5,14 @@ using System.Collections.Generic;
 
 namespace Pharma.Models
 {
-    public partial class TipoPago
+    public partial class FormaPago
     {
-        public TipoPago()
+        public FormaPago()
         {
             Facturas = new HashSet<Factura>();
         }
 
-        public int IdPago { get; set; }
+        public int Id { get; set; }
         public string Descripcion { get; set; }
 
         public virtual ICollection<Factura> Facturas { get; set; }

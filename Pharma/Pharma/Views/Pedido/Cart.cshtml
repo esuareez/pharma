@@ -2,7 +2,11 @@
 @{
 	ViewData["Title"] = "Cart";
 	Layout = "~/Views/Shared/layout.cshtml";
-	double total = ViewBag.Total;
+	double total = 0;
+	double itbis = 0;
+	itbis = ViewBag.itbis;
+	total = ViewBag.Total;
+	double subtotal = total - itbis;
 	int[] pedido;
 }
 
@@ -79,11 +83,11 @@
 							<tbody>
 								<tr class="total-data">
 									<td><strong>Subtotal: </strong></td>
-									<td>RD$ @total</td>
+									<td>RD$ @subtotal</td>
 								</tr>
 								<tr class="total-data">
-									<td><strong>Shipping: </strong></td>
-									<td>RD$ 0</td>
+									<td><strong>ITBIS: </strong></td>
+									<td>RD$ @itbis</td>
 								</tr>
 								<tr class="total-data">
 									<td><strong>Total: </strong></td>
@@ -92,8 +96,8 @@
 							</tbody>
 						</table>
 						<div class="cart-buttons">
-							<a onclick="Update()" class="boxed-btn">Update Cart</a>
-							<a href="checkout.html" class="boxed-btn black">Check Out</a>
+							<a onclick="Update()" class="boxed-btn">Actualizar carrito</a>
+							<a class="boxed-btn black" asp-controller="Factura" asp-action="Factura">Check Out</a>
 							@*<br>
 							<a asp-controller="Cliente" asp-action="Shop" class="boxed-btn black">Seguir comprando</a>*@
 						</div>

@@ -18,9 +18,9 @@ namespace Pharma.Models
         }
 
         public virtual DbSet<Cliente> Clientes { get; set; }
-        public virtual DbSet<ClienteTipoPago> ClienteTipoPagos { get; set; }
         public virtual DbSet<Empleado> Empleados { get; set; }
         public virtual DbSet<Factura> Facturas { get; set; }
+        public virtual DbSet<FormaPago> FormaPagos { get; set; }
         public virtual DbSet<OrdenCompra> OrdenCompras { get; set; }
         public virtual DbSet<OrdenProducto> OrdenProductos { get; set; }
         public virtual DbSet<Pedido> Pedidos { get; set; }
@@ -88,34 +88,6 @@ namespace Pharma.Models
                 entity.Property(e => e.Telefono)
                     .HasMaxLength(50)
                     .IsUnicode(false);
-            });
-
-            modelBuilder.Entity<ClienteTipoPago>(entity =>
-            {
-                entity.HasKey(e => new { e.IdPago, e.IdCliente })
-                    .HasName("PK_ClienteTipoPago_1");
-
-                entity.ToTable("ClienteTipoPago");
-
-                entity.Property(e => e.IdPago).HasColumnName("ID_Pago");
-
-                entity.Property(e => e.IdCliente).HasColumnName("ID_Cliente");
-
-                entity.Property(e => e.Descripcion)
-                    .HasMaxLength(20)
-                    .IsFixedLength(true);
-
-                entity.HasOne(d => d.IdClienteNavigation)
-                    .WithMany(p => p.ClienteTipoPagos)
-                    .HasForeignKey(d => d.IdCliente)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK_ClienteTipoPago_Cliente");
-
-                entity.HasOne(d => d.IdPagoNavigation)
-                    .WithMany(p => p.ClienteTipoPagos)
-                    .HasForeignKey(d => d.IdPago)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK_ClienteTipoPago_TipoPago");
             });
 
             modelBuilder.Entity<Empleado>(entity =>
@@ -188,7 +160,27 @@ namespace Pharma.Models
                     .WithMany(p => p.Facturas)
                     .HasForeignKey(d => d.IdTipoPago)
                     .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_Factura_FormaPago");
+
+                entity.HasOne(d => d.IdTipoPago1)
+                    .WithMany(p => p.Facturas)
+                    .HasForeignKey(d => d.IdTipoPago)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK_Factura_TipoPago");
+            });
+
+            modelBuilder.Entity<FormaPago>(entity =>
+            {
+                entity.ToTable("FormaPago");
+
+                entity.HasIndex(e => e.Descripcion, "UQ__FormaPag__92C53B6C9A8118BE")
+                    .IsUnique();
+
+                entity.Property(e => e.Id).HasColumnName("ID");
+
+                entity.Property(e => e.Descripcion)
+                    .IsRequired()
+                    .HasMaxLength(50);
             });
 
             modelBuilder.Entity<OrdenCompra>(entity =>

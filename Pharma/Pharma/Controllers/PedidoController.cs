@@ -18,15 +18,30 @@ namespace Pharma.Controllers
         public IActionResult Cart()
         {
             double total = 0;
+            double itbis = 0;
+            double totitbis = 0;
             IEnumerable<PedidoProducto> listProducto = _context.PedidoProductos;
-            foreach(var product in listProducto)
+            foreach (var product in listProducto)
             {
                 product.IdproductoNavigation = _context.Productos.Find(product.Idproducto);
                 product.IdpedidoNavigation = _context.Pedidos.Find(product.Idpedido);
                 if (product.IdpedidoNavigation.IdCliente == int.Parse(HttpContext.Request.Cookies["userId"]))
-                    total += (product.IdproductoNavigation.PrecioVenta * product.Cantidad);
+                {
+                    if (product.IdproductoNavigation.Itbis != 0)
+                    {
+                        itbis = product.IdproductoNavigation.PrecioVenta * 0.18;
+                        total += (product.IdproductoNavigation.PrecioVenta * product.Cantidad);
+                        total += itbis;
+                        totitbis += itbis;
+                    }
+                    else
+                    {
+                        total += (product.IdproductoNavigation.PrecioVenta * product.Cantidad);
+                    }
+                }
             }
             ViewBag.Total = total;
+            ViewBag.Itbis = totitbis;
             return View(listProducto);
         }
 

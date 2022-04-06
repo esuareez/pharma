@@ -16,6 +16,7 @@ namespace Pharma.Models
         public int IdTipoPago { get; set; }
 
         public virtual Pedido IdPedidoNavigation { get; set; }
-        public virtual TipoPago IdTipoPagoNavigation { get; set; }
+        public virtual TipoPago IdTipoPago1 { get; set; }
+        public virtual FormaPago IdTipoPagoNavigation { get; set; }
     }
 }

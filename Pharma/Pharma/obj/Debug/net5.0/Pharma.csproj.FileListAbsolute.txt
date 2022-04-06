@@ -333,3 +333,4 @@ D:\PUCMM\ENEABR2022\ISoftware\pharma\Pharma\Pharma\obj\Debug\net5.0\Razor\Views\
 D:\PUCMM\ENEABR2022\ISoftware\pharma\Pharma\Pharma\obj\Debug\net5.0\Razor\Views\Orden\EOrden.cshtml.g.cs
 D:\PUCMM\ENEABR2022\ISoftware\pharma\Pharma\Pharma\obj\Debug\net5.0\Razor\Views\Orden\View.cshtml.g.cs
 D:\PUCMM\ENEABR2022\ISoftware\pharma\Pharma\Pharma\obj\Debug\net5.0\Razor\Views\Proveedor\Edit.cshtml.g.cs
+D:\PUCMM\ENEABR2022\ISoftware\pharma\Pharma\Pharma\obj\Debug\net5.0\Razor\Views\Factura\Factura.cshtml.g.cs
