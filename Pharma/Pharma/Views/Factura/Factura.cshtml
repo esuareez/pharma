@@ -6,6 +6,7 @@
 	double itbis = 0;
 	itbis = ViewBag.itbis;
 	total = ViewBag.Total;
+	int idp = ViewBag.IdP;
 	double subtotal = total - itbis;
 
 }
@@ -72,6 +73,7 @@
 
 				<div class="col-lg-4">
 					<div class="total-section">
+						
 						<table class="total-table">
 							<thead class="total-table-head">
 								<tr class="table-total-row">
@@ -101,17 +103,21 @@
                                                 class="form-check-input form-check-success" checked
                                                 name="customCheck" id="customColorCheck3">
                                             <label class="form-check-label" 
-                                                for="customColorCheck3"><i class="fa-solid fa-money-bill-1-wave"></i></label>
+                                                for="customColorCheck3" >Efectivo</label>
 										</div>
 									</div>
 									</td>
 								</tr>
 							</tbody>
 						</table>
+						<form method="post" asp-action="addFactura">
+						<input type="hidden" name="idp" value=@idp/>
+                        <input type="hidden" name="itbis" value=@itbis />
+                        <input type="hidden" name="monto" value=@total />
 						<div class="cart-buttons">
-							<a class="boxed-btn">Completar pedido</a>
-							<a  class="boxed-btn black">Check Out</a>
+							<button class="boxed-btn" type="submit">Completar pedido</button>
 						</div>
+						</form>
 					</div>
 
 				</div>

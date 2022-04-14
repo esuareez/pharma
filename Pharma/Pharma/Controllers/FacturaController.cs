@@ -38,11 +38,27 @@ namespace Pharma.Controllers
                     {
                         total += (product.IdproductoNavigation.PrecioVenta * product.Cantidad);
                     }
+
                 }
             }
             ViewBag.Total = total;
             ViewBag.itbis = totitbis;
+            var pedido = _context.Pedidos.Where(s => s.IdCliente == int.Parse(HttpContext.Request.Cookies["userId"]) && s.Estado == 1).FirstOrDefault();
+            ViewBag.IdP = pedido.IdPedido;
             return View(listProducto);
+        }
+
+        public IActionResult addFactura(int idp, int itbis, int monto)
+        {
+            var factura = new Factura();
+            factura.IdPedido = idp;
+            factura.Impuesto = itbis;
+            factura.FechaFactura = System.DateTime.Today;
+            factura.IdTipoPago = 1;
+            factura.Monto = monto;
+            _context.Facturas.Add(factura);
+            _context.SaveChanges();
+            return RedirectToAction("Cart");
         }
     }
 }
