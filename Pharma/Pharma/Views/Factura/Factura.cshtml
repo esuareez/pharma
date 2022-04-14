@@ -51,7 +51,7 @@
 							<tbody>
 								@foreach (var item in Model)
 								{
-									@if(item.IdpedidoNavigation.IdCliente == int.Parse(Context.Request.Cookies["userId"]))
+									@if(item.IdpedidoNavigation.IdCliente == int.Parse(Context.Request.Cookies["userId"]) && item.IdpedidoNavigation.Estado == 1)
 									{
 										<tr class="table-body-row">
 										<td class="product-remove"><a asp-controller="Pedido" asp-action="Remove" asp-route-id="@item.IdproductoNavigation.Id"><i class="far fa-window-close"></i></a></td>
@@ -110,14 +110,14 @@
 								</tr>
 							</tbody>
 						</table>
-						<form method="post" asp-action="addFactura">
+						@*<form method="post" asp-action="addFactura">
 						<input type="hidden" name="idp" value=@idp/>
                         <input type="hidden" name="itbis" value=@itbis />
-                        <input type="hidden" name="monto" value=@total />
+                        <input type="hidden" name="monto" value=@total />*@
 						<div class="cart-buttons">
-							<button class="boxed-btn" type="submit">Completar pedido</button>
+							<a class="boxed-btn black" asp-controller="Factura" asp-action="addFactura" asp-route-idp=@idp>Completar pedido</a>
 						</div>
-						</form>
+						@*</form>*@
 					</div>
 
 				</div>

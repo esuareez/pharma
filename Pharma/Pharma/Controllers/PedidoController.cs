@@ -25,7 +25,7 @@ namespace Pharma.Controllers
             {
                 product.IdproductoNavigation = _context.Productos.Find(product.Idproducto);
                 product.IdpedidoNavigation = _context.Pedidos.Find(product.Idpedido);
-                if (product.IdpedidoNavigation.IdCliente == int.Parse(HttpContext.Request.Cookies["userId"]))
+                if (product.IdpedidoNavigation.IdCliente == int.Parse(HttpContext.Request.Cookies["userId"]) && product.IdpedidoNavigation.Estado == 1)
                 {
                     if (product.IdproductoNavigation.Itbis != 0)
                     {

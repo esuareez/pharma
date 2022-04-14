@@ -25,7 +25,7 @@ namespace Pharma.Controllers
             {
                 product.IdproductoNavigation = _context.Productos.Find(product.Idproducto);
                 product.IdpedidoNavigation = _context.Pedidos.Find(product.Idpedido);
-                if (product.IdpedidoNavigation.IdCliente == int.Parse(HttpContext.Request.Cookies["userId"]))
+                if (product.IdpedidoNavigation.IdCliente == int.Parse(HttpContext.Request.Cookies["userId"]) && product.IdpedidoNavigation.Estado == 1)
                 {
                     if (product.IdproductoNavigation.Itbis != 0)
                     {
@@ -38,7 +38,6 @@ namespace Pharma.Controllers
                     {
                         total += (product.IdproductoNavigation.PrecioVenta * product.Cantidad);
                     }
-
                 }
             }
             ViewBag.Total = total;
@@ -48,17 +47,47 @@ namespace Pharma.Controllers
             return View(listProducto);
         }
 
-        public IActionResult addFactura(int idp, int itbis, int monto)
+        public IActionResult addFactura(int idp)
         {
             var factura = new Factura();
+            double total = 0;
+            double itbis = 0;
+            double totitbis = 0;
+            Producto pd = new Producto();
             factura.IdPedido = idp;
+            IEnumerable<PedidoProducto> listProducto = _context.PedidoProductos;
+            foreach (var product in listProducto)
+            {
+                product.IdproductoNavigation = _context.Productos.Find(product.Idproducto);
+                product.IdpedidoNavigation = _context.Pedidos.Find(product.Idpedido);
+                if (product.IdpedidoNavigation.IdCliente == int.Parse(HttpContext.Request.Cookies["userId"]) && product.IdpedidoNavigation.IdPedido == idp)
+                {
+                    if (product.IdproductoNavigation.Itbis != 0)
+                    {
+                        itbis = product.IdproductoNavigation.PrecioVenta * 0.18;
+                        total += (product.IdproductoNavigation.PrecioVenta * product.Cantidad);
+                        total += itbis;
+                        totitbis += itbis;
+                    }
+                    else
+                    {
+                        total += (product.IdproductoNavigation.PrecioVenta * product.Cantidad);
+                    }
+                    pd = _context.Productos.Find(product.Idproducto);
+                    pd.Cantidad -= product.Cantidad;
+                    _context.Productos.Update(pd);
+                }
+            }
             factura.Impuesto = itbis;
             factura.FechaFactura = System.DateTime.Today;
             factura.IdTipoPago = 1;
-            factura.Monto = monto;
+            factura.Monto = total - itbis;
+            var pedido = _context.Pedidos.Find(idp);
+            pedido.Estado = 2;
             _context.Facturas.Add(factura);
+            _context.Pedidos.Update(pedido);
             _context.SaveChanges();
-            return RedirectToAction("Cart");
+            return RedirectToAction("Cart","Pedido");
         }
     }
 }

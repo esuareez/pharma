@@ -161,12 +161,6 @@ namespace Pharma.Models
                     .HasForeignKey(d => d.IdTipoPago)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK_Factura_FormaPago");
-
-                entity.HasOne(d => d.IdTipoPago1)
-                    .WithMany(p => p.Facturas)
-                    .HasForeignKey(d => d.IdTipoPago)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK_Factura_TipoPago");
             });
 
             modelBuilder.Entity<FormaPago>(entity =>
