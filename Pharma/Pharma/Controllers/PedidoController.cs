@@ -55,6 +55,7 @@ namespace Pharma.Controllers
                 var pd = _context.PedidoProductos.Find(pedido.IdPedido,id);
                 _context.PedidoProductos.Remove(pd);
                 _context.SaveChanges();
+                BasicNotification("Pedido eliminado", NotificationType.Error, "Pedido eliminado con éxito.");
                 return RedirectToAction("Cart","Pedido");
             }
             return RedirectToAction("Cart", "Pedido");

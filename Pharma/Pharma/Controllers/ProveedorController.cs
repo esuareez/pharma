@@ -36,7 +36,7 @@ namespace Pharma.Controllers
                 var ordn = _context.Proveedors.Where(s => s.Nombre == proveedor.Nombre);
                 if (ordn.Any())
                 {
-                    TempData["mensaje"] = "Ya existe este proveedor.";
+                    BasicNotification("Proveedor existente", NotificationType.Error, "Este proveedor ya existe.");
                 }
                 else
                 {
@@ -94,7 +94,7 @@ namespace Pharma.Controllers
                 _context.Proveedors.Update(proveedor);
                 _context.Entry(proveedor).Property(o => o.Img).IsModified = false;
             }
-
+            BasicNotification("Proveedor actualizado", NotificationType.Success, "El proveedor ha sido actualizado correctamente.");
             _context.SaveChanges();
             return RedirectToAction("Proveedores");
 

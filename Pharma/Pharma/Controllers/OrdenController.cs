@@ -147,7 +147,7 @@ namespace Pharma.Controllers
                 var prod = _context.Productos.Where(s => s.Nombre == producto.Nombre && s.Laboratorio == producto.Laboratorio);
                 if (prod.Any())
                 {
-                    TempData["mensaje"] = "Ya existe un producto de este laboratorio.";
+                    BasicNotification("Producto existente", NotificationType.Error, "Ya existe un producto de este laboratorio.");
                 }
                 else
                 {
@@ -180,7 +180,7 @@ namespace Pharma.Controllers
                 var ordn = _context.Proveedors.Where(s => s.Nombre == proveedor.Nombre);
                 if (ordn.Any())
                 {
-                    TempData["mensaje"] = "Ya existe este proveedor.";
+                    BasicNotification("Proveedor existente", NotificationType.Error, "Ya existe este proveedor.");
                 }
                 else
                 {
@@ -267,7 +267,7 @@ namespace Pharma.Controllers
                 }
             }
             _context.SaveChanges();
-            TempData["mensaje"] = "Orden de compra entregada.";
+            BasicNotification("Orden de compra completada", NotificationType.Success, "Orden de compra completada con éxito.");
             return RedirectToAction("Orders");
         }
 
@@ -285,7 +285,7 @@ namespace Pharma.Controllers
             var orden = _context.OrdenCompras.Find(id);
             _context.OrdenCompras.Remove(orden);
             _context.SaveChanges();
-            TempData["mensaje"] = "Orden de compra eliminada con éxito.";
+            BasicNotification("Orden de compra eliminada", NotificationType.Error, "Orden de compra eliminada con éxito.");
             return RedirectToAction("Orders");
         }
 

@@ -89,7 +89,7 @@ namespace Pharma.Controllers
                 HttpContext.Response.Cookies.Append("rol", empleado.Puesto, cookieOptions);
                 _context.Empleados.Update(empleado);
                 _context.SaveChanges();
-                BasicNotification("Actualizar empleado", NotificationType.Error, "El empleado se ha actualizado correctamente.");
+                BasicNotification("Actualizar empleado", NotificationType.Success, "El empleado se ha actualizado correctamente.");
                 if (empleado.Puesto == "Farmacéutico")
                     return RedirectToAction("Dashboard");
                 return RedirectToAction("Employee");
@@ -125,7 +125,8 @@ namespace Pharma.Controllers
             _context.Empleados.Remove(empleado);
             _context.SaveChanges();
             TempData["mensaje"] = "El empleado se ha eliminado correctamente.";
-            if(empleado.IdEmpleado == int.Parse(Request.Cookies["emplId"]))
+            BasicNotification("Eliminacion empleado", NotificationType.Error, "El empleado se ha eliminado correctamente.");
+            if (empleado.IdEmpleado == int.Parse(Request.Cookies["emplId"]))
 			{
                 CookieOptions cookieOptions = new CookieOptions();
                 cookieOptions.Expires = new DateTimeOffset(DateTime.Now.AddDays(-1));
