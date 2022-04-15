@@ -88,7 +88,7 @@ namespace Pharma.Controllers
             _context.Facturas.Add(factura);
             _context.Pedidos.Update(pedido);
             _context.SaveChanges();
-            BasicNotification("Pedido efectuado", NotificationType.Success, "El empleado se ha eliminado correctamente.");
+            BasicNotification("Pedido efectuado correctamente", NotificationType.Success, "La factura la puede encontrar en su perfíl.");
             return RedirectToAction("Cart","Pedido");
         }
     }

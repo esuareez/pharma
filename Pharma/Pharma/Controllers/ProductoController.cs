@@ -53,7 +53,7 @@ namespace Pharma.Controllers
                         producto.Img = ms.ToArray();
                     }
                     _context.Productos.Add(producto);
-                    BasicNotification("Producto creado", NotificationType.Error, "Producto creado correctamente.");
+                    BasicNotification("Producto creado", NotificationType.Success, "Producto creado correctamente.");
                     _context.SaveChanges();
                     return RedirectToAction("Products");
                 }
