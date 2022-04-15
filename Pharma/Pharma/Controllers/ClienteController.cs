@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Pharma.Extensions;
 using Pharma.Models;
 using RestSharp;
 using System;
@@ -10,7 +11,7 @@ using System.Security.Claims;
 
 namespace Pharma.Controllers
 {
-    public class ClienteController : Controller
+    public class ClienteController : BaseController
     {   
         private readonly FarmaciaContext _context;
         public ClienteController(FarmaciaContext context)
@@ -44,7 +45,7 @@ namespace Pharma.Controllers
                 var _client = _context.Empleados.Where(s => s.Cedula == cliente.Cedula || s.Correo == cliente.Correo);
                 if (_cliente.Any() || _client.Any())
                 {
-                    //sweetalert
+                    BasicNotification("Error", NotificationType.Error, "Ya existe una cuenta con esta cédula o correo.");
                 }
                 else
                 {
@@ -120,7 +121,7 @@ namespace Pharma.Controllers
 
                 _context.Clientes.Update(cliente);
                 _context.SaveChanges();
-                TempData["mensaje"] = "El usuario se ha actualizado correctamente.";
+                BasicNotification("Actualizar perfíl", NotificationType.Success, "Perfíl actualizado correctamente.");
                 return RedirectToAction();
             }
             return View();
@@ -149,7 +150,7 @@ namespace Pharma.Controllers
             {
                Response.Cookies.Delete("userId",cookieOptions);
             }
-            TempData["mensaje"] = "El usuario se ha eliminado correctamente.";
+            BasicNotification("Eliminar cuenta", NotificationType.Success, "Cuenta eliminada correctamente.");
             return RedirectToAction("Index");
 
 

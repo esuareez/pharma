@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Pharma.Extensions;
 using Pharma.Models;
 using RestSharp;
 using System;
@@ -11,7 +12,7 @@ using System.Linq;
 using System.Security.Claims;
 namespace Pharma.Controllers
 {
-    public class OrdenController : Controller
+    public class OrdenController : BaseController
     {
         private readonly FarmaciaContext _context;
         public OrdenController(FarmaciaContext context)

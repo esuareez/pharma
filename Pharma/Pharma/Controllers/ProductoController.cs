@@ -42,7 +42,8 @@ namespace Pharma.Controllers
                 var prod = _context.Productos.Where(s => s.Nombre == producto.Nombre && s.Laboratorio == producto.Laboratorio);
                 if (prod.Any())
                 {
-                    TempData["mensaje"] = "Ya existe un producto de este laboratorio.";
+                    //TempData["mensaje"] = "Ya existe un producto de este laboratorio.";
+                    BasicNotification("Producto existente", NotificationType.Error, "Ya existe un producto de este laboratorio.");
                 }
                 else
                 {
@@ -52,6 +53,7 @@ namespace Pharma.Controllers
                         producto.Img = ms.ToArray();
                     }
                     _context.Productos.Add(producto);
+                    BasicNotification("Producto creado", NotificationType.Error, "Producto creado correctamente.");
                     _context.SaveChanges();
                     return RedirectToAction("Products");
                 }
@@ -83,9 +85,10 @@ namespace Pharma.Controllers
         public IActionResult Remove(int? id)
         {
             var producto = _context.Productos.Find(id);
-            _context.Productos.Remove(producto);
+            producto.Estado = 3;
+            _context.Productos.Update(producto);
             //TempData["mensaje"] = producto.Nombre+" ha sido eliminado correctamente.";
-            BasicNotification("Producto eliminado", NotificationType.Success, producto.Nombre+" ha sido eliminado correctamente.");
+            BasicNotification("Producto eliminado", NotificationType.Error, producto.Nombre+" ha sido eliminado correctamente.");
             _context.SaveChanges();
             return RedirectToAction("Products");
         }
@@ -109,7 +112,7 @@ namespace Pharma.Controllers
                 _context.Productos.Update(producto);
                 _context.Entry(producto).Property(o => o.Img).IsModified = false;
             }
-
+            BasicNotification("Producto editado", NotificationType.Success, producto.Nombre + " ha sido actualizado correctamente.");
             _context.SaveChanges();
             return RedirectToAction("Products");
 

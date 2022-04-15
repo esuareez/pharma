@@ -87,7 +87,7 @@
                         <tbody>
                             @foreach (var item in Model)
                             {
-                            @if(@item.IdOc == ViewBag.OrdenCompra)
+                            @if(item.IdOc == ViewBag.OrdenCompra && item.IdProductoNavigation.Estado != 3)
                             {
                             <tr>
                                 <td>@item.IdProductoNavigation.Nombre</td>

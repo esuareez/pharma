@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Pharma.Extensions;
 using Pharma.Models;
 using RestSharp;
 using System;
@@ -10,7 +11,7 @@ using System.Security.Claims;
 
 namespace Pharma.Controllers
 {
-    public class EmpleadoController : Controller
+    public class EmpleadoController : BaseController
     {
         private readonly FarmaciaContext _context;
         public EmpleadoController(FarmaciaContext context)
@@ -39,10 +40,10 @@ namespace Pharma.Controllers
         {
             if (ModelState.IsValid)
             {
-                var _empleado = _context.Empleados.Where(s => s.Correo == empleado.Correo && s.Cedula == empleado.Cedula);
+                var _empleado = _context.Empleados.Where(s => s.Correo == empleado.Correo || s.Cedula == empleado.Cedula);
                 if (_empleado.Any())
                 {
-                    //sweetalert
+                    BasicNotification("Empleado existente", NotificationType.Error, "Ya existe un empleado con este correo y cedula.");
                 }
                 else
                 {
@@ -88,10 +89,10 @@ namespace Pharma.Controllers
                 HttpContext.Response.Cookies.Append("rol", empleado.Puesto, cookieOptions);
                 _context.Empleados.Update(empleado);
                 _context.SaveChanges();
-                TempData["mensaje"] = "El empleado se ha actualizado correctamente.";
-                if(empleado.Puesto == "Farmacéutico")
+                BasicNotification("Actualizar empleado", NotificationType.Error, "El empleado se ha actualizado correctamente.");
+                if (empleado.Puesto == "Farmacéutico")
                     return RedirectToAction("Dashboard");
-                return RedirectToAction();
+                return RedirectToAction("Employee");
             }
             return View();
         }

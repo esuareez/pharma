@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Pharma.Extensions;
 using Pharma.Models;
 using System.Collections.Generic;
 using System.IO;
@@ -8,7 +9,7 @@ using System.Linq;
 
 namespace Pharma.Controllers
 {
-    public class PedidoController : Controller
+    public class PedidoController : BaseController
     {
         private readonly FarmaciaContext _context;
         public PedidoController(FarmaciaContext context)
