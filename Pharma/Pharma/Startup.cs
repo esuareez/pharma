@@ -10,6 +10,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Mvc.ViewFeatures;
+
 
 namespace Pharma
 {
@@ -29,6 +31,8 @@ namespace Pharma
             // Configuracion de cadena de conexion
             services.AddDbContext<FarmaciaContext>(options =>
             options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+            services.AddSingleton<ITempDataProvider, CookieTempDataProvider>();
+            services.AddSession();
 
 
             services.AddControllersWithViews();
@@ -51,6 +55,7 @@ namespace Pharma
             app.UseStaticFiles();
 
             app.UseRouting();
+            app.UseSession();
 
             app.UseAuthorization();
 

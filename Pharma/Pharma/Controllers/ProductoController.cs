@@ -4,10 +4,12 @@ using Pharma.Models;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using Pharma.Extensions;
+
 
 namespace Pharma.Controllers
 {
-    public class ProductoController : Controller
+    public class ProductoController : BaseController
     {
         private readonly FarmaciaContext _context;
         public ProductoController(FarmaciaContext context)
@@ -82,7 +84,8 @@ namespace Pharma.Controllers
         {
             var producto = _context.Productos.Find(id);
             _context.Productos.Remove(producto);
-            TempData["mensaje"] = producto.Nombre+" ha sido eliminado correctamente.";
+            //TempData["mensaje"] = producto.Nombre+" ha sido eliminado correctamente.";
+            BasicNotification("Producto eliminado", NotificationType.Success, producto.Nombre+" ha sido eliminado correctamente.");
             _context.SaveChanges();
             return RedirectToAction("Products");
         }
