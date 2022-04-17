@@ -29,8 +29,9 @@
         
     <br>
     <br>
-    
-        <div class="mx-auto" >
+    <a class="btn btn-primary" asp-action="Historial" asp-controller="Cliente" asp-route-id=@int.Parse(Context.Request.Cookies["userId"])>Historial de pedidos</a>
+    <br>    
+    <div class="mx-auto" >
             <!-- Account details card-->
             <div class="card mb-4">
                 <div class="card-header">Datos del perfíl</div>
@@ -99,59 +100,8 @@
                 </div>
             </div>
         </div>
-        <!-- Payment methods card-->
-    <div class="card card-header-actions mb-4">
-        <div class="card-header">
-            Payment Methods
-            <button class="btn btn-sm btn-primary" type="button">Add Payment Method</button>
-        </div>
-        <div class="card-body px-0">
-            <!-- Payment method 1-->
-            <div class="d-flex align-items-center justify-content-between px-4">
-                <div class="d-flex align-items-center">
-                     <i class="fab fa-cc-visa fa-2x cc-color-visa"></i>
-                    <div class="ms-4">
-                        <div class="small">Visa ending in 1234</div>
-                        <div class="text-xs text-muted">Expires 04/2024</div>
-                    </div>
-                </div>
-                <div class="ms-4 small">
-                    <div class="badge bg-light text-dark me-3">Default</div>
-                    <a href="#!">Edit</a>
-                </div>
-            </div>
-            <hr>
-            <!-- Payment method 2-->
-            <div class="d-flex align-items-center justify-content-between px-4">
-                <div class="d-flex align-items-center">
-                    <i class="fab fa-cc-mastercard fa-2x cc-color-mastercard"></i>
-                    <div class="ms-4">
-                        <div class="small">Mastercard ending in 5678</div>
-                        <div class="text-xs text-muted">Expires 05/2022</div>
-                    </div>
-                </div>
-                <div class="ms-4 small">
-                    <a class="text-muted me-3" href="#!">Make Default</a>
-                    <a href="#!">Edit</a>
-                </div>
-            </div>
-            <hr>
-            <!-- Payment method 3-->
-            <div class="d-flex align-items-center justify-content-between px-4">
-                <div class="d-flex align-items-center">
-                    <i class="fab fa-cc-amex fa-2x cc-color-amex"></i>
-                    <div class="ms-4">
-                        <div class="small">American Express ending in 9012</div>
-                        <div class="text-xs text-muted">Expires 01/2026</div>
-                    </div>
-                </div>
-                <div class="ms-4 small">
-                    <a class="text-muted me-3" href="#!">Make Default</a>
-                    <a href="#!">Edit</a>
-                </div>
-            </div>
-        </div>
-    </div>
+        
+        
 </div>
 
 

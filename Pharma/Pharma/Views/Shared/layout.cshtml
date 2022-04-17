@@ -84,6 +84,7 @@
 												<li><a class="user-circle"><i class="fas fa-user-circle"></i></a>
 													<ul class="sub-menu">
 														<li><a asp-controller="Cliente" asp-action="EditProfile" asp-route-id=@int.Parse(Context.Request.Cookies["userId"])>Perfíl</a></li>
+														<li><a  asp-action="Historial" asp-controller="Cliente" asp-route-id=@int.Parse(Context.Request.Cookies["userId"])>Historial de pedidos</a></li>
 														<li><a asp-controller="Cliente" asp-action="LogOut" asp-route-id=@int.Parse(Context.Request.Cookies["userId"])>Cerrar sesión</a></li>
 													</ul>
 												</li>

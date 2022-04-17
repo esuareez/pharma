@@ -177,5 +177,19 @@ namespace Pharma.Controllers
             return View(listProducto);
         }
 
+        public IActionResult Historial(int id)
+        {
+            IEnumerable<Factura> listFactura = _context.Facturas;
+            foreach (var item in listFactura)
+            {
+                item.IdPedidoNavigation = _context.Pedidos.Find(item.IdPedido);
+                if (item.IdPedidoNavigation.IdCliente == int.Parse(HttpContext.Request.Cookies["userId"]))
+                {
+                    item.Total = item.Monto + item.Impuesto;
+                }
+            }
+            return View(listFactura);
+        }
+
     }
 }

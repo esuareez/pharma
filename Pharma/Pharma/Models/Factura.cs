@@ -14,6 +14,7 @@ namespace Pharma.Models
         public DateTime FechaFactura { get; set; }
         public int IdPedido { get; set; }
         public int IdTipoPago { get; set; }
+        public double? Total { get; set; }
 
         public virtual Pedido IdPedidoNavigation { get; set; }
         public virtual FormaPago IdTipoPagoNavigation { get; set; }

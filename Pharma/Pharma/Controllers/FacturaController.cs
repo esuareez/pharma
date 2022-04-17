@@ -66,6 +66,8 @@ namespace Pharma.Controllers
                     if (product.IdproductoNavigation.Itbis != 0)
                     {
                         itbis = product.IdproductoNavigation.PrecioVenta * 0.18;
+                        if (product.Cantidad > 1)
+                            itbis *= product.Cantidad;
                         total += (product.IdproductoNavigation.PrecioVenta * product.Cantidad);
                         total += itbis;
                         totitbis += itbis;
@@ -83,6 +85,7 @@ namespace Pharma.Controllers
             factura.FechaFactura = System.DateTime.Today;
             factura.IdTipoPago = 1;
             factura.Monto = total - itbis;
+            factura.Total = total;
             var pedido = _context.Pedidos.Find(idp);
             pedido.Estado = 2;
             _context.Facturas.Add(factura);

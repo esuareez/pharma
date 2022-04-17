@@ -57,7 +57,7 @@
                                         <tr>
                                             <td>@item.IdProductoNavigation.Nombre</td>
                                             <td>@item.IdProductoNavigation.TipoProducto</td>
-                                            <td>@item.IdProductoNavigation.PrecioCompra</td>
+                                            <td>RD$ @item.IdProductoNavigation.PrecioCompra</td>
                                             <td><input id="cantidad" name="cantidad[]" type="number" min="1" value=@item.Cantidad></td>
                                             <td>
                                                 <a class="btn btn-danger justify-content-end" asp-action="Remove" asp-controller="Orden" asp-route-idp=@item.IdProducto><i class="fa-solid fa-trash-can"></i></a>

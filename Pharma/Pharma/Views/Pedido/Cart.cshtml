@@ -55,7 +55,7 @@
 										<td class="product-remove"><a asp-controller="Pedido" asp-action="Remove" asp-route-id="@item.IdproductoNavigation.Id"><i class="far fa-window-close"></i></a></td>
 										<td class="product-image"><img src="data:image/*;base64,@Convert.ToBase64String(item.IdproductoNavigation.Img)" width="60px" alt=""></td>
 										<td class="product-name">@item.IdproductoNavigation.Nombre</td>
-										<td class="product-price">@item.IdproductoNavigation.PrecioVenta</td>
+										<td class="product-price">RD$ @item.IdproductoNavigation.PrecioVenta</td>
 										<td class="product-quantity"><input id="cantidad" name="cantidad[]" type="number" min="1" max=@item.IdproductoNavigation.Cantidad value=@item.Cantidad></td>
 										<td class="product-total">@item.IdproductoNavigation.Cantidad</td>
 										</tr>
