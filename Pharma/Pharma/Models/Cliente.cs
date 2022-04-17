@@ -7,6 +7,11 @@ namespace Pharma.Models
 {
     public partial class Cliente
     {
+        public Cliente()
+        {
+            Pedidos = new HashSet<Pedido>();
+        }
+
         public int Id { get; set; }
         public string Nombre { get; set; }
         public string Correo { get; set; }
@@ -17,5 +22,7 @@ namespace Pharma.Models
         public string Password { get; set; }
         public string Ciudad { get; set; }
         public string CodPostal { get; set; }
+
+        public virtual ICollection<Pedido> Pedidos { get; set; }
     }
 }

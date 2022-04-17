@@ -18,6 +18,7 @@ namespace Pharma.Models
         public DateTime? FechaPedido { get; set; }
         public int Estado { get; set; }
 
+        public virtual Cliente IdClienteNavigation { get; set; }
         public virtual ICollection<Factura> Facturas { get; set; }
         public virtual ICollection<PedidoProducto> PedidoProductos { get; set; }
     }

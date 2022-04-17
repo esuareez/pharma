@@ -77,7 +77,7 @@
                                     {
                                         <tr>
                                             <td>@item.IdFactura</td>
-                                            <td>@item.FechaFactura</td>
+                                            <td>@String.Format("{0:dd/MM/yyyy}", item.FechaFactura)</td>
                                             <td>RD$ @item.Monto</td>
                                             <td>RD$ @item.Impuesto</td>
                                             <td>RD$ @item.Total</td>

@@ -239,6 +239,12 @@ namespace Pharma.Models
                     .HasColumnName("Fecha_Pedido");
 
                 entity.Property(e => e.IdCliente).HasColumnName("ID_Cliente");
+
+                entity.HasOne(d => d.IdClienteNavigation)
+                    .WithMany(p => p.Pedidos)
+                    .HasForeignKey(d => d.IdCliente)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_Pedido_Cliente");
             });
 
             modelBuilder.Entity<PedidoProducto>(entity =>

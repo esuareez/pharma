@@ -336,3 +336,5 @@ D:\PUCMM\ENEABR2022\ISoftware\pharma\Pharma\Pharma\obj\Debug\net5.0\Razor\Views\
 D:\PUCMM\ENEABR2022\ISoftware\pharma\Pharma\Pharma\bin\Debug\net5.0\libman.json
 D:\PUCMM\ENEABR2022\ISoftware\pharma\Pharma\Pharma\obj\Debug\net5.0\Razor\Views\Shared\_NotificationPartial.cshtml.g.cs
 D:\PUCMM\ENEABR2022\ISoftware\pharma\Pharma\Pharma\obj\Debug\net5.0\Razor\Views\Cliente\Historial.cshtml.g.cs
+D:\PUCMM\ENEABR2022\ISoftware\pharma\Pharma\Pharma\obj\Debug\net5.0\Razor\Views\Pedido\Pedidos.cshtml.g.cs
+D:\PUCMM\ENEABR2022\ISoftware\pharma\Pharma\Pharma\obj\Debug\net5.0\Razor\Views\Pedido\View.cshtml.g.cs
