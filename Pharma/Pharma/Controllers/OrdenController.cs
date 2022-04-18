@@ -271,7 +271,7 @@ namespace Pharma.Controllers
             return RedirectToAction("Orders");
         }
 
-        public IActionResult RemoveOC(int id)
+        public void RemoveOC(int id)
         {
             IEnumerable<Producto> productos = _context.Productos;
             foreach (var item in productos)
@@ -285,8 +285,8 @@ namespace Pharma.Controllers
             var orden = _context.OrdenCompras.Find(id);
             _context.OrdenCompras.Remove(orden);
             _context.SaveChanges();
-            BasicNotification("Orden de compra eliminada", NotificationType.Error, "Orden de compra eliminada con éxito.");
-            return RedirectToAction("Orders");
+            BasicNotification("Orden de compra eliminada", NotificationType.Success, "Orden de compra eliminada con éxito.");
+            
         }
 
         public IActionResult View(int id)

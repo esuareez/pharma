@@ -2,7 +2,7 @@
 @{
     ViewData["Title"] = "Products";
     Layout = "~/Views/Shared/layoutAdmin.cshtml";
-    
+    IEnumerable<Producto> productos = (IEnumerable<Producto>)ViewBag.Productos;
 }
 
 <!-- Include Choices CSS -->
@@ -41,9 +41,13 @@
                                         <h6>Productos</h6>
                                         @*<div class="form-group">*@
                                             <select class="choices form-select" name="idp">
-                                                @foreach (var item in ViewBag.Productos)
+                                                @foreach (var item in productos)
                                                 {
-                                                <option value=@item.Id>@item.Nombre</option>
+                                                    @if(item.Estado != 0 && item.Estado != 3)
+                                                    {
+                                                        <option value=@item.Id>@item.Nombre</option>
+                                                    }
+                                                
                                                 }
                                             </select>
                                             @*</div>*@

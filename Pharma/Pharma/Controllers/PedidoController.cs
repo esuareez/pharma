@@ -103,7 +103,7 @@ namespace Pharma.Controllers
             return RedirectToAction("Pedidos");
         }
 
-        public IActionResult RemovePd(int id)
+        public void RemovePd(int id)
         {
             var factura = _context.Facturas;
             Factura fact;
@@ -136,7 +136,7 @@ namespace Pharma.Controllers
             pedido.Estado = 0; // Estado pedido cancelado
             _context.Pedidos.Update(pedido);
             _context.SaveChanges();
-            return RedirectToAction("Pedidos");
+            BasicNotification("Pedido cancelado", NotificationType.Success, "El pedido se ha cancelado correctamente.");
         }
 
         public IActionResult View(int id)
