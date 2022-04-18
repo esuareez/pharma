@@ -321,6 +321,8 @@ namespace Pharma.Models
                     .HasMaxLength(50)
                     .IsUnicode(false);
 
+                entity.Property(e => e.Estado).HasDefaultValueSql("((1))");
+
                 entity.Property(e => e.Nombre)
                     .IsRequired()
                     .HasMaxLength(100)

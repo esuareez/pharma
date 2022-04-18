@@ -101,12 +101,14 @@ namespace Pharma.Controllers
 
         }
 
-        public IActionResult Remove(int? id)
+        public void Remove(int? id)
         {
             var proveedor = _context.Proveedors.Find(id);
-            _context.Proveedors.Remove(proveedor);
+            proveedor.Estado = 0;
+            _context.Proveedors.Update(proveedor);
             _context.SaveChanges();
-            return RedirectToAction("Proveedores");
+            BasicNotification("Proveedor eliminado", NotificationType.Success, "El proveedor ha sido eliminado correctamente.");
+
         }
     }
 }
