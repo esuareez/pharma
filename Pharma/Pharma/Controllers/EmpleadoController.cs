@@ -81,12 +81,6 @@ namespace Pharma.Controllers
         {
             if (ModelState.IsValid)
             {
-                CookieOptions cookieOptions = new CookieOptions();
-                cookieOptions.Expires = new DateTimeOffset(DateTime.Now.AddDays(1));
-                HttpContext.Response.Cookies.Append("emplId", empleado.IdEmpleado.ToString(), cookieOptions);
-                HttpContext.Response.Cookies.Append("name", empleado.Nombre, cookieOptions);
-                HttpContext.Response.Cookies.Append("lastname", empleado.Apellido, cookieOptions);
-                HttpContext.Response.Cookies.Append("rol", empleado.Puesto, cookieOptions);
                 _context.Empleados.Update(empleado);
                 _context.SaveChanges();
                 BasicNotification("Actualizar empleado", NotificationType.Success, "El empleado se ha actualizado correctamente.");
