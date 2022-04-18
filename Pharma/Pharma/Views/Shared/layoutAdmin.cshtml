@@ -55,11 +55,20 @@
                             </a>
                         </li>
                         
-                        <li class="sidebar-item  ">
-                            <a asp-controller="Producto" asp-action="Products" class='sidebar-link'>
+                        <li class="sidebar-item  has-sub">
+                            <a class='sidebar-link'>
                                 <i class="fa-solid fa-box"></i>
                                 <span>Productos</span>
                             </a>
+                           <ul class="submenu ">
+                               <li class="submenu-item ">
+                        <a asp-controller="Producto" asp-action="Products" class='sidebar-link'>Productos</a>
+                    </li>
+                    <li class="submenu-item ">
+                        <a asp-controller="Producto" asp-action="ProductsDLTD" class='sidebar-link'>Productos eliminados</a>
+                    </li>
+                    
+                </ul>
                         </li>
 
                         <li class="sidebar-item  ">

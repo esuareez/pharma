@@ -26,6 +26,16 @@ namespace Pharma.Controllers
             return View(listProducto);
         }
 
+        public ActionResult ProductsDLTD()
+        {
+            IEnumerable<Producto> listProducto = _context.Productos;
+            IEnumerable<OrdenProducto> ordenCompras = _context.OrdenProductos;
+            IEnumerable<PedidoProducto> listPedidos = _context.PedidoProductos;
+            ViewBag.PedidoProducto = listPedidos;
+            ViewBag.OrdenProducto = ordenCompras;
+            return View(listProducto);
+        }
+
 
         public ActionResult Create()
         {
@@ -164,6 +174,15 @@ namespace Pharma.Controllers
                 return RedirectToAction("Login","Cliente");
             }
             
+        }
+
+        public void Recovery(int? id)
+        {
+            var producto = _context.Productos.Find(id);
+            producto.Estado = 1;
+            _context.Productos.Update(producto);
+            _context.SaveChanges();
+            BasicNotification("Producto recuperado", NotificationType.Success, producto.Nombre + " ha sido recuperado correctamente y ya lo puedes ver en la lista de productos.");
         }
 
     }
