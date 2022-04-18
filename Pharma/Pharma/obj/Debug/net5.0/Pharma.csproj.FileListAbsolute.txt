@@ -340,3 +340,4 @@ D:\PUCMM\ENEABR2022\ISoftware\pharma\Pharma\Pharma\obj\Debug\net5.0\Razor\Views\
 D:\PUCMM\ENEABR2022\ISoftware\pharma\Pharma\Pharma\obj\Debug\net5.0\Razor\Views\Shared\layout.cshtml.g.cs
 D:\PUCMM\ENEABR2022\ISoftware\pharma\Pharma\Pharma\obj\Debug\net5.0\Razor\Views\Producto\ProductsDLTD.cshtml.g.cs
 D:\PUCMM\ENEABR2022\ISoftware\pharma\Pharma\Pharma\obj\Debug\net5.0\Razor\Views\Proveedor\ProveedoresDLTD.cshtml.g.cs
+D:\PUCMM\ENEABR2022\ISoftware\pharma\Pharma\Pharma\obj\Debug\net5.0\Razor\Views\Cliente\About.cshtml.g.cs

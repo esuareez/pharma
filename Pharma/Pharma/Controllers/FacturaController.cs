@@ -22,10 +22,26 @@ namespace Pharma.Controllers
             double itbis = 0;
             double totitbis = 0;
             IEnumerable<PedidoProducto> listProducto = _context.PedidoProductos;
+            IEnumerable<Pedido> listPedido = _context.Pedidos;
+            foreach (var item in listPedido)
+            {
+                item.IdClienteNavigation = _context.Clientes.Find(int.Parse(HttpContext.Request.Cookies["userId"]));
+                if(item.IdClienteNavigation.Id == item.IdCliente)
+                {
+                    if(item.IdClienteNavigation.Direccion == null || item.IdClienteNavigation.Telefono == null ||
+                        item.IdClienteNavigation.Ciudad == null || item.IdClienteNavigation.CodPostal == null)
+                    {
+                        BasicNotification("Dirección, teléfono, código postal y ciudad.", NotificationType.Info, "Complete su perfíl rellenando los campos de su perfíl para emitir un pedido.");
+                        return RedirectToAction("Index","Cliente");
+                    }
+                }
+                
+            }            
             foreach (var product in listProducto)
             {
                 product.IdproductoNavigation = _context.Productos.Find(product.Idproducto);
                 product.IdpedidoNavigation = _context.Pedidos.Find(product.Idpedido);
+                product.IdpedidoNavigation.IdClienteNavigation = _context.Clientes.Find(product.IdpedidoNavigation.IdCliente);
                 if (product.IdpedidoNavigation.IdCliente == int.Parse(HttpContext.Request.Cookies["userId"]) && product.IdpedidoNavigation.Estado == 1)
                 {
                     if (product.IdproductoNavigation.Itbis != 0)

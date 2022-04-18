@@ -23,6 +23,12 @@ namespace Pharma.Controllers
             IEnumerable<Producto> listProducto = _context.Productos;
             return View(listProducto);
         }
+
+        public IActionResult About()
+        {
+           
+            return View();
+        }
         public IActionResult Login()
         {
             ViewBag.data = "right-panel-active";
