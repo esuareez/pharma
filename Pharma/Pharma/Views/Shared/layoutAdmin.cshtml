@@ -87,11 +87,20 @@
                             </a>
                             </li>
 
-                            <li class="sidebar-item  ">
-                            <a asp-controller="Proveedor" asp-action="Proveedores" class='sidebar-link'>
+                            <li class="sidebar-item  has-sub">
+                            <a class='sidebar-link'>
                                 <i class="fa-solid fa-address-book"></i>
                                 <span>Proveedores</span>
                             </a>
+                            <ul class="submenu ">
+                               <li class="submenu-item ">
+                        <a asp-controller="Proveedor" asp-action="Proveedores" class='sidebar-link'>Proveedores</a>
+                    </li>
+                    <li class="submenu-item ">
+                        <a asp-controller="Proveedor" asp-action="ProveedoresDLTD" class='sidebar-link'>Proveedores eliminados</a>
+                    </li>
+                    
+                </ul>
                             </li>
 
                             <li class="sidebar-item  ">

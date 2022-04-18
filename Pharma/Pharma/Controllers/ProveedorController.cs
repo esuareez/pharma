@@ -21,6 +21,11 @@ namespace Pharma.Controllers
             IEnumerable<Proveedor> listProveedor = _context.Proveedors;
             return View(listProveedor);
         }
+        public IActionResult ProveedoresDLTD()
+        {
+            IEnumerable<Proveedor> listProveedor = _context.Proveedors;
+            return View(listProveedor);
+        }
         public IActionResult Create()
         {
             return View();
@@ -109,6 +114,15 @@ namespace Pharma.Controllers
             _context.SaveChanges();
             BasicNotification("Proveedor eliminado", NotificationType.Success, "El proveedor ha sido eliminado correctamente.");
 
+        }
+
+        public void Recovery(int? id)
+        {
+            var proveedor = _context.Proveedors.Find(id);
+            proveedor.Estado = 1;
+            _context.Proveedors.Update(proveedor);
+            _context.SaveChanges();
+            BasicNotification("Proveedor recuperado", NotificationType.Success, "El proveedor ha sido recuperado correctamente y ya lo puedes ver en la lista de proveedores.");
         }
     }
 }
