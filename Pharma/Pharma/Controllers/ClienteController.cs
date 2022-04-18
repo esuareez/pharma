@@ -130,9 +130,8 @@ namespace Pharma.Controllers
         }
 
         //HTTP Get Delete
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public IActionResult DeleteCliente(int? id)
+        
+        public IActionResult Remove(int? id)
         {
             // Obtener cliente por id
 
