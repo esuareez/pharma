@@ -7215,11 +7215,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\PUCMM\\ENEABR2022\\ISoftware\\pharma\\Pharma\\Pharma\\Pharma.csproj",
+      "projectUniqueName": "C:\\Users\\eliam\\OneDrive\\Desktop\\pharma\\Pharma\\Pharma\\Pharma.csproj",
       "projectName": "Pharma",
-      "projectPath": "D:\\PUCMM\\ENEABR2022\\ISoftware\\pharma\\Pharma\\Pharma\\Pharma.csproj",
+      "projectPath": "C:\\Users\\eliam\\OneDrive\\Desktop\\pharma\\Pharma\\Pharma\\Pharma.csproj",
       "packagesPath": "C:\\Users\\eliam\\.nuget\\packages\\",
-      "outputPath": "D:\\PUCMM\\ENEABR2022\\ISoftware\\pharma\\Pharma\\Pharma\\obj\\",
+      "outputPath": "C:\\Users\\eliam\\OneDrive\\Desktop\\pharma\\Pharma\\Pharma\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\eliam\\AppData\\Roaming\\NuGet\\NuGet.Config",

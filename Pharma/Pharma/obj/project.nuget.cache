@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "7d1K2iH2JiLPLjTQnNkrxLkRpPdCdr69HHlrXyWSCV7avJ06xCpEs1QhRt1OFJ2YZbOfhV5ztGFBHpU9j1cpOg==",
+  "dgSpecHash": "uIgZU60BGgvBk9onSzVjUCGX6ro2yA0vvlH1mwbvqzn54PxEoUM4CHEzhWYSdhWUAvfArNnkWt36PbaKn/bkgw==",
   "success": true,
-  "projectFilePath": "D:\\PUCMM\\ENEABR2022\\ISoftware\\pharma\\Pharma\\Pharma\\Pharma.csproj",
+  "projectFilePath": "C:\\Users\\eliam\\OneDrive\\Desktop\\pharma\\Pharma\\Pharma\\Pharma.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\eliam\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\eliam\\.nuget\\packages\\microsoft.aspnetcore.html.abstractions\\2.2.0\\microsoft.aspnetcore.html.abstractions.2.2.0.nupkg.sha512",
