@@ -108,7 +108,7 @@ namespace Pharma.Controllers
             _context.Pedidos.Update(pedido);
             _context.SaveChanges();
             BasicNotification("Pedido efectuado correctamente", NotificationType.Success, "La factura la puede encontrar en su perfíl.");
-            return RedirectToAction("Cart","Pedido");
+            return RedirectToAction("Index","Cliente");
         }
     }
 }

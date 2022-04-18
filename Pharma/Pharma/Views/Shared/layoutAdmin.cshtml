@@ -48,12 +48,12 @@
                     <ul class="menu">
                         <li class="sidebar-title">Menu</li>
 
-                        <li class="sidebar-item">
+                        @*<li class="sidebar-item">
                             <a  class='sidebar-link' asp-controller="Empleado" asp-action="Dashboard">
                                 <i class="fa-solid fa-bars"></i>
                                 <span>Dashboard</span>
                             </a>
-                        </li>
+                        </li>*@
                         
                         <li class="sidebar-item  has-sub">
                             <a class='sidebar-link'>
@@ -158,17 +158,12 @@
                                         <h6 class="dropdown-header">Hola, @nombre!</h6>
                                     </li>
                                     <li><a class="dropdown-item" asp-controller="Empleado" asp-action="EditProfile"
-                                         asp-route-id=@int.Parse(Context.Request.Cookies["emplId"])><i class="icon-mid bi bi-person me-2"></i> My
-                                            Profile</a></li>
-                                    <li><a class="dropdown-item" href="#"><i class="icon-mid bi bi-gear me-2"></i>
-                                            Settings</a></li>
-                                    <li><a class="dropdown-item" href="#"><i class="icon-mid bi bi-wallet me-2"></i>
-                                            Wallet</a></li>
+                                         asp-route-id=@int.Parse(Context.Request.Cookies["emplId"])><i class="icon-mid bi bi-person me-2"></i> Mi perfíl</a></li>
                                     <li>
                                         <hr class="dropdown-divider">
                                     </li>
                                     <li><a class="dropdown-item" asp-controller="Empleado" asp-action="Logout"><i
-                                                class="icon-mid bi bi-box-arrow-left me-2"></i> Logout</a></li>
+                                                class="icon-mid bi bi-box-arrow-left me-2"></i> Cerrar sesión</a></li>
                                 </ul>
                             </div>
                         </div>

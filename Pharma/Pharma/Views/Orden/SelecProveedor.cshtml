@@ -2,7 +2,7 @@
 @{
     ViewData["Title"] = "Products";
     Layout = "~/Views/Shared/layoutAdmin.cshtml";
-
+    IEnumerable<Proveedor> proveedor = (IEnumerable<Proveedor>)ViewBag.Proveedors;
 }
 
 <div id="main-content container-fluid">
@@ -29,12 +29,13 @@
                                 <br>
                                 <div class="col-md-8 form-group">
                                     <select class="choices form-select" name="id">
-                                    @foreach (var item in ViewBag.Proveedors)
+                                    @foreach (var item in proveedor)
+                                {
+                                    @if (item.Estado != 0)
                                     {
-
                                         <option value=@item.IdProveedor>@item.Nombre</option>
-                                                
                                     }
+                                }
                                     </select>
                                 </div>     
                         </div>

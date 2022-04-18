@@ -24,6 +24,7 @@
                                     <tr>
                                         <th>ID Pedido</th>
                                         <th>Cliente</th>
+                                        <th>Fecha</th>
                                         <th>Estado</th>
                                         <th>Acciones</th>
                                     </tr>
@@ -36,6 +37,7 @@
                                         <tr>
                                                 <td>@item.IdPedido</td>
                                                 <td>@item.IdClienteNavigation.Nombre @item.IdClienteNavigation.Apellido</td>
+                                                <td>@String.Format("{0:dd/MM/yyyy}", item.FechaPedido)</td>
                                                 @if(item.Estado == 2)
                                                 {
                                                 <td><span class="badge bg-warning">En proceso</span></td>

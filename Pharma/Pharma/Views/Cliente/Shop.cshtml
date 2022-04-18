@@ -47,12 +47,14 @@
 							<div class="product-image">
 								<img src="data:image/*;base64,@Convert.ToBase64String(item.Img)" height="200px" alt="">
 							</div>
-							<h3>@item.Nombre</h3>
-							<p class="product-price">RD$ @item.PrecioVenta</p>
 							@if(item.Laboratorio != null)
 							{
-								<p class="product-price">@item.Laboratorio</p>
+								<h3>@item.Nombre (@item.Laboratorio)</h3>
+							}else{
+								<h3>@item.Nombre</h3>
 							}
+							<p class="product-price">RD$ @item.PrecioVenta</p>
+							
 							<a class="cart-btn" asp-controller="Producto" asp-action="addCart" asp-route-id=@item.Id><i class="fas fa-shopping-cart"></i> Añadir al carrito</a>
 						</div>
 						</div>

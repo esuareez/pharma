@@ -155,6 +155,7 @@ namespace Pharma.Controllers
                 {
                     Pedido _pedido = new Pedido();
                     _pedido.Estado = 1;
+                    _pedido.FechaPedido = System.DateTime.Today;
                     _pedido.IdCliente = idUser;
                     _context.Pedidos.Add(_pedido);
                     _context.SaveChanges();

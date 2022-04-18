@@ -20,7 +20,7 @@ namespace Pharma.Controllers
         }
         public ActionResult Dashboard()
         {
-            return View();
+            return RedirectToAction("Pedidos", "Pedido");
         }
 
         public ActionResult Create()
