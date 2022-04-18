@@ -116,16 +116,14 @@ namespace Pharma.Controllers
             return View(empleado);
         }
         //HTTP Get Delete
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public IActionResult DeleteEmpleado(Empleado empleado)
+        
+        public void RemoveEmp(int? id)
         {
             // Obtener cliente por id
-
+            var empleado = _context.Empleados.Find(id);
             _context.Empleados.Remove(empleado);
             _context.SaveChanges();
-            TempData["mensaje"] = "El empleado se ha eliminado correctamente.";
-            BasicNotification("Eliminacion empleado", NotificationType.Error, "El empleado se ha eliminado correctamente.");
+            BasicNotification("Eliminacion empleado", NotificationType.Success, "El empleado se ha eliminado correctamente.");
             if (empleado.IdEmpleado == int.Parse(Request.Cookies["emplId"]))
 			{
                 CookieOptions cookieOptions = new CookieOptions();
@@ -134,10 +132,8 @@ namespace Pharma.Controllers
                 Response.Cookies.Delete("name", cookieOptions);
                 Response.Cookies.Delete("lastname", cookieOptions);
                 Response.Cookies.Delete("rol", cookieOptions);
-                RedirectToAction("Index", "Cliente");
+                
             }
-            return RedirectToAction("Employee");
-
 
         }
         public IActionResult LogOut(int? id)
