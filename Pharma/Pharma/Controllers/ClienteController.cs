@@ -35,12 +35,7 @@ namespace Pharma.Controllers
             return View("Login");
         }
 
-        public void Validate()
-        {
-            
-            
-
-        }
+        
 
         [HttpPost]
         [ValidateAntiForgeryToken] // que un bot no pueda enviar muchas request

@@ -82,15 +82,14 @@ namespace Pharma.Controllers
             return View(producto);
         }
 
-        public IActionResult Remove(int? id)
+        public void Remove(int? id)
         {
             var producto = _context.Productos.Find(id);
             producto.Estado = 3;
             _context.Productos.Update(producto);
             //TempData["mensaje"] = producto.Nombre+" ha sido eliminado correctamente.";
-            BasicNotification("Producto eliminado", NotificationType.Error, producto.Nombre+" ha sido eliminado correctamente.");
+            BasicNotification("Producto eliminado", NotificationType.Success, producto.Nombre+" ha sido eliminado correctamente.");
             _context.SaveChanges();
-            return RedirectToAction("Products");
         }
 
         [HttpPost]
