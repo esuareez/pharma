@@ -25,7 +25,14 @@ namespace Pharma.Controllers
         }
         public IActionResult Login()
         {
+            ViewBag.data = "right-panel-active";
             return View();
+        }
+
+        public IActionResult CreateNC()
+        {
+            ViewBag.data = "";
+            return View("Login");
         }
 
         public void Validate()
