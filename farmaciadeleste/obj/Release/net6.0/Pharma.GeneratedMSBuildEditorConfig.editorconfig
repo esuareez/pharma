@@ -1,0 +1,180 @@
+is_global = true
+build_property.TargetFramework = net6.0
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = true
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = 
+build_property.PlatformNeutralAssembly = 
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property.RootNamespace = Pharma
+build_property.RootNamespace = Pharma
+build_property.ProjectDir = C:\Users\Randy\Desktop\farmaciadeleste\farmaciadeleste\
+build_property.RazorLangVersion = 6.0
+build_property.SupportLocalizedComponentNames = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = 
+build_property.MSBuildProjectDirectory = C:\Users\Randy\Desktop\farmaciadeleste\farmaciadeleste
+build_property._RazorSourceGeneratorDebug = 
+
+[C:/Users/Randy/Desktop/farmaciadeleste/farmaciadeleste/Views/Cliente/About.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2xpZW50ZVxBYm91dC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Randy/Desktop/farmaciadeleste/farmaciadeleste/Views/Cliente/EditProfile.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2xpZW50ZVxFZGl0UHJvZmlsZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Randy/Desktop/farmaciadeleste/farmaciadeleste/Views/Cliente/ForgotPassword.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2xpZW50ZVxGb3Jnb3RQYXNzd29yZC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Randy/Desktop/farmaciadeleste/farmaciadeleste/Views/Cliente/Historial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2xpZW50ZVxIaXN0b3JpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Randy/Desktop/farmaciadeleste/farmaciadeleste/Views/Cliente/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2xpZW50ZVxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Randy/Desktop/farmaciadeleste/farmaciadeleste/Views/Cliente/Login.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2xpZW50ZVxMb2dpbi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Randy/Desktop/farmaciadeleste/farmaciadeleste/Views/Cliente/Shop.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2xpZW50ZVxTaG9wLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Randy/Desktop/farmaciadeleste/farmaciadeleste/Views/Empleado/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRW1wbGVhZG9cQ3JlYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Randy/Desktop/farmaciadeleste/farmaciadeleste/Views/Empleado/Dashboard.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRW1wbGVhZG9cRGFzaGJvYXJkLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Randy/Desktop/farmaciadeleste/farmaciadeleste/Views/Empleado/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRW1wbGVhZG9cRGVsZXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Randy/Desktop/farmaciadeleste/farmaciadeleste/Views/Empleado/EditProfile.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRW1wbGVhZG9cRWRpdFByb2ZpbGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Randy/Desktop/farmaciadeleste/farmaciadeleste/Views/Empleado/Employee.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRW1wbGVhZG9cRW1wbG95ZWUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Randy/Desktop/farmaciadeleste/farmaciadeleste/Views/Factura/Factura.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRmFjdHVyYVxGYWN0dXJhLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Randy/Desktop/farmaciadeleste/farmaciadeleste/Views/Home/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Randy/Desktop/farmaciadeleste/farmaciadeleste/Views/Home/Privacy.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Randy/Desktop/farmaciadeleste/farmaciadeleste/Views/Orden/CreateProduct.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcT3JkZW5cQ3JlYXRlUHJvZHVjdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Randy/Desktop/farmaciadeleste/farmaciadeleste/Views/Orden/CreateProveedor.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcT3JkZW5cQ3JlYXRlUHJvdmVlZG9yLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Randy/Desktop/farmaciadeleste/farmaciadeleste/Views/Orden/EOrden.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcT3JkZW5cRU9yZGVuLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Randy/Desktop/farmaciadeleste/farmaciadeleste/Views/Orden/Orders.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcT3JkZW5cT3JkZXJzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Randy/Desktop/farmaciadeleste/farmaciadeleste/Views/Orden/SelecProducto.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcT3JkZW5cU2VsZWNQcm9kdWN0by5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Randy/Desktop/farmaciadeleste/farmaciadeleste/Views/Orden/SelecProveedor.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcT3JkZW5cU2VsZWNQcm92ZWVkb3IuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Randy/Desktop/farmaciadeleste/farmaciadeleste/Views/Orden/View.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcT3JkZW5cVmlldy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Randy/Desktop/farmaciadeleste/farmaciadeleste/Views/Pedido/Cart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGVkaWRvXENhcnQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Randy/Desktop/farmaciadeleste/farmaciadeleste/Views/Pedido/Pedidos.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGVkaWRvXFBlZGlkb3MuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Randy/Desktop/farmaciadeleste/farmaciadeleste/Views/Pedido/View.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGVkaWRvXFZpZXcuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Randy/Desktop/farmaciadeleste/farmaciadeleste/Views/Producto/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZHVjdG9cQ3JlYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Randy/Desktop/farmaciadeleste/farmaciadeleste/Views/Producto/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZHVjdG9cRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Randy/Desktop/farmaciadeleste/farmaciadeleste/Views/Producto/Products.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZHVjdG9cUHJvZHVjdHMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Randy/Desktop/farmaciadeleste/farmaciadeleste/Views/Producto/ProductsDLTD.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZHVjdG9cUHJvZHVjdHNETFRELmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Randy/Desktop/farmaciadeleste/farmaciadeleste/Views/Proveedor/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvdmVlZG9yXENyZWF0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Randy/Desktop/farmaciadeleste/farmaciadeleste/Views/Proveedor/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvdmVlZG9yXEVkaXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Randy/Desktop/farmaciadeleste/farmaciadeleste/Views/Proveedor/Proveedores.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvdmVlZG9yXFByb3ZlZWRvcmVzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Randy/Desktop/farmaciadeleste/farmaciadeleste/Views/Proveedor/ProveedoresDLTD.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvdmVlZG9yXFByb3ZlZWRvcmVzRExURC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Randy/Desktop/farmaciadeleste/farmaciadeleste/Views/Shared/Error.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Randy/Desktop/farmaciadeleste/farmaciadeleste/Views/Shared/layout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXGxheW91dC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Randy/Desktop/farmaciadeleste/farmaciadeleste/Views/Shared/layoutAdmin.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXGxheW91dEFkbWluLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Randy/Desktop/farmaciadeleste/farmaciadeleste/Views/Shared/_NotificationPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9Ob3RpZmljYXRpb25QYXJ0aWFsLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Randy/Desktop/farmaciadeleste/farmaciadeleste/Views/Shared/_ValidationScriptsPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Randy/Desktop/farmaciadeleste/farmaciadeleste/Views/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Randy/Desktop/farmaciadeleste/farmaciadeleste/Views/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Randy/Desktop/farmaciadeleste/farmaciadeleste/Views/Shared/_Layout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = b-aj8h5tdxk6

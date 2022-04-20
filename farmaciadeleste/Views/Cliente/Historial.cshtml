@@ -1,0 +1,107 @@
+﻿
+@model IEnumerable<Pharma.Models.Factura>
+@{
+    Layout = "~/Views/Shared/layout.cshtml";
+}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Farmacia del Este</title>
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="~/css/css-emp/css/bootstrap.css">
+
+    <link rel="stylesheet" href="~/css/css-emp/vendors/perfect-scrollbar/perfect-scrollbar.css">
+    <link rel="stylesheet" href="~/css/css-emp/vendors/bootstrap-icons/bootstrap-icons.css">
+    <link rel="stylesheet" href="~/css/css-emp/css/app.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+    <link rel="stylesheet" href="~/lib/limonte-sweetalert2/sweetalert2.min.css">
+    <link rel="shortcut icon" href="~/css/css-emp/images/favicon.svg" type="image/x-icon">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+
+<body>
+    <script src="~/lib/limonte-sweetalert2/sweetalert2.min.js" asp-append-version="true"></script>
+    <div class="hero-area" style = "background-image: url(/img/editprofile/editpr.jpg)">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-9 offset-lg-2 text-center">
+					<div class="hero-text">
+						<div class="hero-text-tablecell">
+							<h1>Historial de facturas</h1>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+    <div class="container">
+    <div id="main-content container-fluid">
+                
+                @if (Model.Count() > 0)
+                {
+                <section class="section">
+                    <div class="card">
+                        <div class="card-header">
+                            <div class="page-heading">
+                                <div class="page-title">
+                                    <div class="row">
+                                        <div class="col-12 col-md-6 order-md-1 order-last">
+                                            <h3>Datos de facturas</h3>
+                                            <p class="text-subtitle text-muted">Ver facturas.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <table class="table table-striped" id="table1">
+                                <thead>
+                                    <tr>
+                                        <th>ID de la factura</th>
+                                        <th>Fecha</th>
+                                        <th>Monto</th>
+                                        <th>ITBIS</th>
+                                        <th>Total</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var item in Model)
+                                    {
+                                    @if (item.IdPedidoNavigation.IdCliente == int.Parse(Context.Request.Cookies["userId"]))
+                                    {
+                                        <tr>
+                                            <td>@item.IdFactura</td>
+                                            <td>@String.Format("{0:dd/MM/yyyy}", item.FechaFactura)</td>
+                                            <td>RD$ @item.Monto</td>
+                                            <td>RD$ @item.Impuesto</td>
+                                            <td>RD$ @item.Total</td>
+                                        </tr>
+                                    }
+                                }
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                </section>
+        
+           }else{
+                <p>No existen registros de facturas.</p>
+            }
+            </div>
+</div>
+</div>
+    <script src="~/css/css-emp/vendors/perfect-scrollbar/perfect-scrollbar.min.js"></script>
+    <script src="~/css/css-emp/js/bootstrap.bundle.min.js"></script>
+    <script src="~/css/css-emp/js/main.js"></script>
+</body>
+
+</html>
+
+<partial name="_NotificationPartial" /> 

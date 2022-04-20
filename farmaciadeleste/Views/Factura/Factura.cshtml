@@ -1,0 +1,120 @@
+﻿@model IEnumerable<Pharma.Models.PedidoProducto>
+@{
+	ViewData["Title"] = "Cart";
+	Layout = "~/Views/Shared/layout.cshtml";
+	double total = 0;
+	double itbis = 0;
+	itbis = ViewBag.itbis;
+	total = ViewBag.Total;
+	int idp = ViewBag.IdP;
+	double subtotal = total - itbis;
+
+}
+
+
+<!-- breadcrumb-section -->
+<div class="hero-area" style = "background-image: url(/img/shopcart.jpg); background-size: cover; background-repeat:no-repeat;">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-9 offset-lg-2 text-center">
+					<div class="hero-text">
+						<div class="hero-text-tablecell">
+						<h1>Carrito</h1>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- end breadcrumb section -->
+
+	<!-- cart -->
+@if (Model.Count() > 0)
+{
+	<div class="cart-section mt-150 mb-150">
+		<div class="container">
+
+			<div class="row">
+				<div class="col-lg-8 col-md-12">
+					<div class="cart-table-wrap">
+
+						<table class="cart-table">
+							<thead class="cart-table-head">
+								<tr class="table-head-row">
+									<th class="product-remove"></th>
+									<th class="product-image">Imagen</th>
+									<th class="product-name">Nombre</th>
+									<th class="product-price">Precio</th>
+									<th class="product-quantity">Cantidad</th>
+									<th class="product-total">Disponibilidad</th>
+								</tr>
+							</thead>
+							<tbody>
+								@foreach (var item in Model)
+								{
+									@if(item.IdpedidoNavigation.IdCliente == int.Parse(Context.Request.Cookies["userId"]) && item.IdpedidoNavigation.Estado == 1)
+									{
+										<tr class="table-body-row">
+										<td class="product-remove"><a asp-controller="Pedido" asp-action="Remove" asp-route-id="@item.IdproductoNavigation.Id"><i class="far fa-window-close"></i></a></td>
+										<td class="product-image"><img src="data:image/*;base64,@Convert.ToBase64String(item.IdproductoNavigation.Img)" width="60px" alt=""></td>
+										<td class="product-name">@item.IdproductoNavigation.Nombre</td>
+										<td class="product-price">RD$ @item.IdproductoNavigation.PrecioVenta</td>
+										<td class="product-quantity">@item.Cantidad</td>
+										<td class="product-total">@item.IdproductoNavigation.Cantidad</td>
+										</tr>
+									}
+									
+								}
+								
+							</tbody>
+						</table>
+
+					</div>
+				</div>
+
+				<div class="col-lg-4">
+					<div class="total-section">
+						
+						<table class="total-table">
+							<thead class="total-table-head">
+								<tr class="table-total-row">
+									<th>Total</th>
+									<th>Price</th>
+								</tr>
+							</thead>
+							
+							<tbody>
+								<tr class="total-data">
+									<td><strong>Subtotal: </strong></td>
+									<td>RD$ @subtotal</td>
+								</tr>
+								<tr class="total-data">
+									<td><strong>ITBIS: </strong></td>
+									<td>RD$ @itbis</td>
+								</tr>
+								<tr class="total-data">
+									<td><strong>Total: </strong></td>
+									<td>RD$ @total</td>
+								</tr>
+							</tbody>
+						</table>
+						@*<form method="post" asp-action="addFactura">
+						<input type="hidden" name="idp" value=@idp/>
+                        <input type="hidden" name="itbis" value=@itbis />
+                        <input type="hidden" name="monto" value=@total />*@
+						<div class="cart-buttons">
+							<a class="boxed-btn black" asp-controller="Factura" asp-action="addFactura" asp-route-idp=@idp>Completar pedido</a>
+						</div>
+						@*</form>*@
+					</div>
+
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+}
+
+
+
