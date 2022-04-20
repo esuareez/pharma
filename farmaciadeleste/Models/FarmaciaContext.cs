@@ -127,6 +127,8 @@ namespace Pharma.Models
 
                 entity.Property(e => e.IdFactura).HasColumnName("ID_Factura");
 
+                entity.Property(e => e.Estado).HasDefaultValueSql("((0))");
+
                 entity.Property(e => e.FechaFactura)
                     .HasColumnType("date")
                     .HasColumnName("Fecha_Factura");

@@ -1849,19 +1849,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Randy\\.nuget\\packages\\": {}
+    "C:\\Users\\eliam\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Randy\\Desktop\\farmaciadeleste\\farmaciadeleste\\Pharma.csproj",
+      "projectUniqueName": "C:\\Users\\eliam\\OneDrive\\Desktop\\pharma\\farmaciadeleste\\Pharma.csproj",
       "projectName": "Pharma",
-      "projectPath": "C:\\Users\\Randy\\Desktop\\farmaciadeleste\\farmaciadeleste\\Pharma.csproj",
-      "packagesPath": "C:\\Users\\Randy\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Randy\\Desktop\\farmaciadeleste\\farmaciadeleste\\obj\\",
+      "projectPath": "C:\\Users\\eliam\\OneDrive\\Desktop\\pharma\\farmaciadeleste\\Pharma.csproj",
+      "packagesPath": "C:\\Users\\eliam\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\eliam\\OneDrive\\Desktop\\pharma\\farmaciadeleste\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\Randy\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\eliam\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -1920,7 +1920,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.101\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.201\\RuntimeIdentifierGraph.json"
       }
     }
   }

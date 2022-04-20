@@ -68,6 +68,7 @@
                                         <th>Monto</th>
                                         <th>ITBIS</th>
                                         <th>Total</th>
+                                        <th>Estado</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -81,6 +82,14 @@
                                             <td>RD$ @item.Monto</td>
                                             <td>RD$ @item.Impuesto</td>
                                             <td>RD$ @item.Total</td>
+                                            @if(item.Estado == 0)
+                                            {
+                                            <td><span class="badge bg-warning">En proceso</span></td>
+                                            }
+                                            @if(item.Estado == 1)
+                                            {
+                                            <td><span class="badge bg-success">Entregada</span></td>
+                                            }
                                         </tr>
                                     }
                                 }

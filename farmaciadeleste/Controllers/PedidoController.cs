@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Pharma.Extensions;
 using Pharma.Models;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -90,12 +91,16 @@ namespace Pharma.Controllers
             {
                 item.IdClienteNavigation = _context.Clientes.Find(item.IdCliente);
             }
+            listPedidos = listPedidos.OrderByDescending(s => s.FechaPedido).ToList();
+            
             return View(listPedidos);
         }
 
         public IActionResult Complete(int id)
         {
             var pedido = _context.Pedidos.Find(id);
+            var factura = _context.Facturas.Where(s => s.IdPedido == id).FirstOrDefault();
+            factura.Estado = 1;
             pedido.Estado = 3; // Estado pedido entregado
             _context.Pedidos.Update(pedido);
             _context.SaveChanges();
